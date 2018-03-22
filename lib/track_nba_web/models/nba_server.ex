@@ -30,6 +30,6 @@ defmodule TrackNbaWeb.NbaServer do
   end
 
   defp schedule_work() do
-    Process.send_after(self(), :work, 2 * 1000) # In 2 seconds
+    Process.send_after(self(), :work, 10 * 1000) # In 2 seconds
   end
 end

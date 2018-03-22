@@ -15,7 +15,9 @@ import "phoenix_html"
 import React from "react";
 import {render} from "react-dom";
 import App from './containers/App';
-
+import ReactDOM from "react-dom"
+import { Provider } from "react-redux"
+import store from "./store"
 // Import local files
 //
 // Local files can be imported directly using relative
@@ -23,7 +25,8 @@ import App from './containers/App';
 
 import socket from "./socket"
 
-render(
-  <App/>,
-  document.getElementById("app")
-);
+const app = document.getElementById('app')
+
+ReactDOM.render(<Provider store={store}>
+  <App />
+</Provider>, app);

@@ -1,26 +1,42 @@
-import React, {Component} from "react";
-import {createStore, applyMiddleware, compose} from "redux";
-import {Provider} from "react-redux";
-import thunk from 'redux-thunk';
-import rootReducer from "../reducers/index";
-import { TrackNbaApp } from "../components/TrackNbaApp";
+import React from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from 'redux';
+import { changeTheName } from "../actions";
 
-const store = createStore(
-  rootReducer,
-  compose(
-    applyMiddleware(thunk),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  )
-);
+// possibly @?
 
-export default class App extends Component {
+const mapStateToProps = (state) => {
+  return {
+    name: state.testReducer.name
+  }
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  dispatch,
+  ...bindActionCreators(dispatch)
+});
+
+export class App extends React.Component {
+  // componentWillMount() {
+  //   this.props.dispatch(changeTheName())
+  // }
+
+  doThing() {
+    this.props.dispatch(changeTheName())
+  }
+
   render() {
-    return (
-      <Provider store={store}>
-        <div>
-          <TrackNbaApp />
-        </div>
-      </Provider>
+    const { name } = this.props;
+
+    return(
+      <div>
+        <button onClick={this.doThing.bind(this)}>change</button>
+        <h1>{name}</h1>
+        <h1>hello</h1>
+      </div>
     );
   }
 }
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

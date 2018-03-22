@@ -3,17 +3,13 @@ import {
   CHANGE_NAME
 } from "../constants/test";
 
-const initialState = {
+export default function(state={
   name: "before"
-};
-
-export default function(state={initialState}, action) {
+}, action) {
   switch(action.type) {
     case CHANGE_NAME: {
       return {...state, name: action.name}
     }
-    default: {
-      return state || initialState;
-    }
   }
+  return state;
 }
