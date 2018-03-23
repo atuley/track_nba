@@ -16,7 +16,7 @@ defmodule TrackNbaWeb.NbaServer do
   end
 
   def handle_info(:work,state) do
-    score = NbaEx.boxscore("20180320", "0021701062")
+    score = NbaEx.boxscore("20180321", "0021700809")
     val = score.home_team_stats.totals.points
     # IO.puts " Current score: #{val}"
     Endpoint.broadcast!("rooms:lobby", "score_update", %{score: val})
