@@ -14,7 +14,7 @@
 import "phoenix_html"
 import React from "react";
 import {render} from "react-dom";
-import App from './containers/App';
+import TrackNbaContainer from './containers/TrackNbaContainer';
 import ReactDOM from "react-dom"
 import { Provider } from "react-redux"
 import store from "./store"
@@ -28,5 +28,5 @@ import socket from "./socket"
 const app = document.getElementById('app')
 
 ReactDOM.render(<Provider store={store}>
-  <App />
+  <TrackNbaContainer />
 </Provider>, app);

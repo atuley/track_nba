@@ -3,8 +3,6 @@ import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
 import { changeTheName } from "../actions";
 
-// possibly @?
-
 const mapStateToProps = (state) => {
   return {
     name: state.testReducer.name
@@ -16,11 +14,7 @@ const mapDispatchToProps = (dispatch) => ({
   ...bindActionCreators(dispatch)
 });
 
-export class App extends React.Component {
-  // componentWillMount() {
-  //   this.props.dispatch(changeTheName())
-  // }
-
+export class TrackNbaContainer extends React.Component {
   doThing() {
     this.props.dispatch(changeTheName())
   }
@@ -28,6 +22,7 @@ export class App extends React.Component {
   render() {
     const { name } = this.props;
 
+    //this will eventually be returning a main component
     return(
       <div>
         <button onClick={this.doThing.bind(this)}>change</button>
@@ -39,4 +34,4 @@ export class App extends React.Component {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(TrackNbaContainer);
