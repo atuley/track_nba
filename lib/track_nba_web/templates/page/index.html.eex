@@ -1,12 +1,6 @@
-<div class="row">
-  <div class="col-lg-6">
-    <h4><%= @player.firstName  %></h4>
-    <h4><%= @player.lastName  %></h4>
-  </div>
+<!-- other hard coded stuff -->
 
-  <div class="score">
-    <h1 class="the-score"></h1>
-  </div>
-
-  <div id="app"></div>
+<div class="score">
+  <h1 class="the-score"></h1>
 </div>
+<div id="app"></div>
