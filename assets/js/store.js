@@ -3,7 +3,6 @@ import { applyMiddleware, createStore, compose } from "redux"
 import logger from "redux-logger"
 import thunk from "redux-thunk"
 // import promise from "redux-promise-middleware"
-
 import rootReducer from "./reducers/index"
 
 const middleware = applyMiddleware(thunk)

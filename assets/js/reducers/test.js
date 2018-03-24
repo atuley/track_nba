@@ -1,7 +1,7 @@
 import _ from "lodash";
 import {
   CHANGE_NAME
-} from "../constants/test";
+} from "../constants";
 
 export default function(state={
   name: "before"

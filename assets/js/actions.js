@@ -2,7 +2,7 @@ import thunk from 'redux-thunk';
 
 import {
   CHANGE_NAME
-} from "./constants/test";
+} from "./constants";
 
 export function changeTheName() {
   return {

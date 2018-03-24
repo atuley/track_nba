@@ -20,13 +20,13 @@ export class TrackNbaContainer extends React.Component {
   }
 
   render() {
-    const { name } = this.props;
+    // const { name } = this.props;
 
     //this will eventually be returning a main component
     return(
       <div>
         <button onClick={this.doThing.bind(this)}>change</button>
-        <h1>{name}</h1>
+        <h1>{this.props.name}</h1>
         <h1>hello</h1>
       </div>
     );
