@@ -4,6 +4,7 @@ defmodule TrackNbaWeb.RoomChannel do
 
   def join("rooms:lobby", params, socket) do
     Logger.debug("Joined channel...")
+    # Start up genserver here
     {:ok, %{}, socket}
   end
 end
