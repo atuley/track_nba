@@ -1,0 +1,12 @@
+.container {
+  max-width: 1000px !important;
+}
+
+.player-stat {
+  &__container {
+    border: 1px solid #aaaaaa;
+    border-radius: 3px;
+    padding: 20px;
+    margin: 20px;
+  }
+}

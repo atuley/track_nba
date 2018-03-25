@@ -12,7 +12,7 @@ export default class TrackNba extends React.Component {
     };
   }
 
-  doThing() {
+  onChangeNameBtnClick() {
     this.props.dispatch(changeTheName())
   }
 
@@ -27,7 +27,7 @@ export default class TrackNba extends React.Component {
     return (
       <div>
         <h1>{this.props.name}</h1>
-        <button onClick={this.doThing.bind(this)}>Change Name</button>
+        <button onClick={this.onChangeNameBtnClick.bind(this)}>Change Name</button>
 
         <button onClick={this.onAddBtnClick.bind(this)}>Add</button>
         <div className="row">
