@@ -13,6 +13,11 @@ defmodule TrackNbaWeb.Router do
     plug :accepts, ["json"]
   end
 
+  scope "/api", TrackNbaWeb do
+    pipe_through :api
+    get "/players", PageController, :show
+  end
+
   scope "/", TrackNbaWeb do
     pipe_through :browser # Use the default browser stack
 
