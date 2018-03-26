@@ -12,6 +12,10 @@ export default class TrackNba extends React.Component {
     };
   }
 
+  // componentDidUpdate(prevProps) {
+
+  // }
+
   onChangeNameBtnClick() {
     this.props.dispatch(changeTheName())
   }
@@ -21,6 +25,17 @@ export default class TrackNba extends React.Component {
     this.setState({
       playersWatching: _.concat(playersWatching, <PlayerStat key={playersWatching.length} />)
     });
+  }
+
+  searchPlayers(searchContent, { target: { value: searchText } }) {
+    //needs refactoring and doesn't like spaces
+    let temp = this.props[searchContent];
+    const updated = _.filter(temp, function(tp)
+      {
+        return _.chain(tp).values().lowerCase().includes(_.lowerCase(searchText)).value();
+      }
+    )
+    this.setState({ [searchContent]: updated });
   }
 
   render() {
@@ -35,6 +50,12 @@ export default class TrackNba extends React.Component {
               return player;
           })}
         </div>
+        <input placeholder="Search" type="text" onChange={this.searchPlayers.bind(this, 'players')}/>
+        <ul>
+          {_.map(this.state.players, (player) => {
+              return <li key={player.id}>{`${player.firstName} ${player.lastName}`}</li>;
+          })}
+        </ul>
       </div>
     );
   }
