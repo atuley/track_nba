@@ -1,12 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
-import { changeTheName } from "../actions";
+import { changeTheName, getAllPlayers } from "../actions";
 import TrackNba from "../components/TrackNba"
 
 const mapStateToProps = (state) => {
   return {
-    name: state.testReducer.name
+    name: state.playerReducer.name,
+    players: state.playerReducer.players
   }
 };
 
@@ -17,6 +18,9 @@ const mapDispatchToProps = (dispatch) => ({
 
 export class TrackNbaContainer extends React.Component {
   // fetch all players on component mount to search through
+  componentDidMount() {
+    this.props.dispatch(getAllPlayers());
+  }
   render() {
     return <TrackNba {...this.props} />;
   }

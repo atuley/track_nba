@@ -1,1 +1,2 @@
 export const CHANGE_NAME = "CHANGE_NAME";
+export const RECEIVE_PLAYERS = "RECEIVE_PLAYERS";
