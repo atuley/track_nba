@@ -16,10 +16,11 @@ export function subscribeToPlayerStats(playerId) {
     channel.join()
       .receive("ok", resp => { console.log("Joined player channel successful", resp); })
       .receive("error", resp => { console.log("Unable to join", resp); });
-      
+
     console.log(channel);
 
     channel.on("player_stat_update", payload => {
+      console.log(`Got score update message for ${playerId}` , payload);
       dispatch({type: UPDATE_PLAYER_STATE, stats: payload});
     });
   };

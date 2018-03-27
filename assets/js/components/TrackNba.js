@@ -12,15 +12,7 @@ export default class TrackNba extends React.Component {
     };
   }
 
-  // componentDidUpdate(prevProps) {
-
-  // }
-
-  onChangeNameBtnClick() {
-    this.props.dispatch(changeTheName())
-  }
-
-  onAddBtnClick() {
+  addPlayer() {
     const playersWatching = this.state.playersWatching;
     this.setState({
       playersWatching: _.concat(playersWatching, <PlayerStat key={playersWatching.length} />)
@@ -29,6 +21,7 @@ export default class TrackNba extends React.Component {
 
   subscribeToPlayerStats(playerId) {
     this.props.dispatch(subscribeToPlayerStats(playerId))
+    this.addPlayer()
   }
 
   searchPlayers(searchContent, { target: { value: searchText } }) {
@@ -46,14 +39,6 @@ export default class TrackNba extends React.Component {
   render() {
     return (
       <div>
-        <h1>{this.props.name}</h1>
-        <button onClick={this.onChangeNameBtnClick.bind(this)}>Change Name</button>
-
-        <div className="row">
-          {_.map(this.state.playersWatching, (player) => {
-              return player;
-          })}
-        </div>
         <input placeholder="Search" type="text" onChange={this.searchPlayers.bind(this, 'players')}/>
         <ul>
           {_.map(this.state.players, (player) => {
@@ -65,6 +50,12 @@ export default class TrackNba extends React.Component {
               );
           })}
         </ul>
+
+        <div className="row">
+          {_.map(this.state.playersWatching, (player) => {
+              return player;
+          })}
+        </div>
       </div>
     );
   }

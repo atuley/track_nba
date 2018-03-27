@@ -12,7 +12,8 @@ defmodule TrackNba.Application do
       supervisor(TrackNba.Repo, []),
       # Start the endpoint when the application starts
       supervisor(TrackNbaWeb.Endpoint, []),
-      worker(TrackNbaWeb.NbaServer, [[]])
+      worker(TrackNbaWeb.NbaServer, [[]]),
+      worker(TrackNba.GameLogServer, [])
       # Start your own worker by calling: TrackNba.Worker.start_link(arg1, arg2, arg3)
       # worker(TrackNba.Worker, [arg1, arg2, arg3]),
     ]
