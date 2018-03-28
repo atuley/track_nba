@@ -26,7 +26,7 @@ defmodule TrackNba.GameLogServer do
 
   #### CALLBACKS ####
   def handle_call({:log_for, player_id}, _from, state) do
-    state = Map.put(state, player_id, NbaEx.player_game_log(player_id))
+    state = Map.put(state, player_id, NbaEx.player_game_log(player_id) |> List.first)
     Endpoint.broadcast("rooms:" <> player_id, "player_stat_update", %{"log" => state})
     {:reply, state[player_id], state}
   end
@@ -41,7 +41,7 @@ defmodule TrackNba.GameLogServer do
   def handle_info(:work, state) do
     tasks = for id <- Map.keys(state) do
       Task.start_link(fn ->
-        updated_log = NbaEx.player_game_log(id)
+        updated_log = NbaEx.player_game_log(id) |> List.first
         unless updated_log == state[id], do: update_log(id, updated_log)
       end)
 
