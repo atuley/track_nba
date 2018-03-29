@@ -26,7 +26,8 @@ defmodule TrackNbaWeb.PageView do
       teamId: player.teamId,
       weightPounds: player.weightPounds,
       yearsPro: player.yearsPro,
-      fullName: "#{player.firstName} #{player.lastName}"
+      fullName: "#{player.firstName} #{player.lastName}",
+      stats: %{}
     }
   end
 end

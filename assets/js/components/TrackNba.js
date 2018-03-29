@@ -1,27 +1,22 @@
 import React from "react";
 import _ from 'lodash';
-import { changeTheName, subscribeToPlayerStats } from "../actions";
+import { addPlayerToWatch, changeTheName, subscribeToPlayerStats } from "../actions";
 import { bindActionCreators } from 'redux';
 import PlayerStat from "./PlayerStat"
 
 export default class TrackNba extends React.Component {
   constructor(props) {
     super(props);
+    // debugger;
     this.state = {
-      playersWatching: []
+      players: []
+      // playersWatching: []
     };
   }
 
-  addPlayer() {
-    const playersWatching = this.state.playersWatching;
-    this.setState({
-      playersWatching: _.concat(playersWatching, <PlayerStat key={playersWatching.length} />)
-    });
-  }
-
-  subscribeToPlayerStats(playerId) {
-    this.props.dispatch(subscribeToPlayerStats(playerId))
-    this.addPlayer()
+  subscribeToPlayerStats(player) {
+    this.props.dispatch(addPlayerToWatch(player))
+    this.props.dispatch(subscribeToPlayerStats(player, this.props.playersWatching))
   }
 
   searchPlayers(searchContent, { target: { value: searchText } }) {
@@ -45,15 +40,14 @@ export default class TrackNba extends React.Component {
               return (
                 <li key={player.id}>
                   {`${player.firstName} ${player.lastName}`}
-                  <button onClick={this.subscribeToPlayerStats.bind(this, player.id)}>Add</button>
+                  <button onClick={this.subscribeToPlayerStats.bind(this, player)}>Add</button>
                 </li>
               );
           })}
         </ul>
-
         <div className="row">
-          {_.map(this.state.playersWatching, (player) => {
-              return player;
+          {_.map(this.props.playersWatching, (player) => {
+              return <PlayerStat key={player.id} {...this.props} player={player}/>;
           })}
         </div>
       </div>

@@ -7,7 +7,9 @@ import TrackNba from "../components/TrackNba"
 const mapStateToProps = (state) => {
   return {
     name: state.playerReducer.name,
-    players: state.playerReducer.players
+    players: state.playerReducer.players,
+    stats: state.playerReducer.stats,
+    playersWatching: state.playerReducer.playersWatching
   }
 };
 

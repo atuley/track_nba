@@ -42,10 +42,8 @@ defmodule TrackNba.GameLogServer do
     tasks = for id <- Map.keys(state) do
       Task.start_link(fn ->
         updated_log = NbaEx.player_game_log(id) |> List.first
-        unless updated_log == state[id], do: update_log(id, updated_log)
+        update_log(id, updated_log)
       end)
-
-
     end
     schedule_work()
     {:noreply, state}
