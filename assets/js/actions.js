@@ -19,7 +19,7 @@ export function addPlayerToWatch(player) {
 }
 
 export function subscribeToPlayerStats(player, playersWatching) {
-  debugger;
+  // debugger;
   return dispatch => {
     let channel = socket.channel(`rooms:${player.id}`);
 
@@ -29,12 +29,8 @@ export function subscribeToPlayerStats(player, playersWatching) {
 
     // console.log(channel);
 
-    //move this into actual component function?
-    var newPlayersWatching = playersWatching;
-    var index = _.findIndex(newPlayersWatching, function(p) { return p.id == player.id; });
-
     channel.on("player_stat_update", payload => {
-      console.log(`Got score update message for ${player.id}`, payload.log.stats);
+      console.log(`Got score update message for ${player.id}`, payload);
       dispatch({type: UPDATE_PLAYER_STATE, stats: payload.log.stats});
     });
   };

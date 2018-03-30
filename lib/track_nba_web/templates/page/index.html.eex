@@ -1,6 +1,2 @@
 <!-- other hard coded stuff -->
-
-<div class="score">
-  <h1 class="the-score"></h1>
-</div>
 <div id="app"></div>

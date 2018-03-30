@@ -1,13 +1,12 @@
 import React from 'react';
 
 const PlayerStat = ({stats, player}) => {
+  // var playerStats = stats;
+  // var index = -1;
   // componentDidMount() {
-  //   //fire off action that will join the channel with the playerId
+  //   // index = _.findIndex(stats, function(p) { return p.id == ; });
   // }
 
-  // console.log(`PROPS: ${stats.points}`);
-  // console.log(player);
-  // console.log(`PLAYER ${player.firstName}`);
   return(
     <div className="col-md-5 player-stat__container">
       <div className="row">
@@ -24,7 +23,7 @@ const PlayerStat = ({stats, player}) => {
       </div>
       <div className="row">
         <div className="col-md-4">Rebounds:</div>
-        <div className="col-md-8">4</div>
+        <div className="col-md-8">hard coded</div>
       </div>
     </div>
   );

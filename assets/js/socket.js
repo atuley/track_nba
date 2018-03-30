@@ -58,18 +58,18 @@ socket.connect()
 
 // instead of lobby, use the player_id or game_id so that other users can hook into the same channel
 // if they want to watch the same player/game
-let channel = socket.channel("rooms:lobby", {})
-
-
-
-channel.join()
-  .receive("ok", resp => { console.log("Joined successfully", resp) })
-  .receive("error", resp => { console.log("Unable to join", resp) })
-var counter = 0;
-channel.on("score_update", (payload) => {
-  counter++;
-  console.log("Got score update message: ", payload);
-  document.querySelector(".the-score").textContent = `${payload.score}`;
-})
+// let channel = socket.channel("rooms:lobby", {})
+//
+//
+//
+// channel.join()
+//   .receive("ok", resp => { console.log("Joined successfully", resp) })
+//   .receive("error", resp => { console.log("Unable to join", resp) })
+// var counter = 0;
+// channel.on("score_update", (payload) => {
+//   counter++;
+//   console.log("Got score update message: ", payload);
+//   document.querySelector(".the-score").textContent = `${payload.score}`;
+// })
 
 export default socket
