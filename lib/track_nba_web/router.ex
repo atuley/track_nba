@@ -15,7 +15,7 @@ defmodule TrackNbaWeb.Router do
 
   scope "/api", TrackNbaWeb do
     pipe_through :api
-    get "/players", PageController, :show
+    get "/players", PageController, :players
   end
 
   scope "/", TrackNbaWeb do

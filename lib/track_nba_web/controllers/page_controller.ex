@@ -1,4 +1,5 @@
 defmodule TrackNbaWeb.PageController do
+  alias TrackNbaWeb.Utils
   use TrackNbaWeb, :controller
 
   def index(conn, _params) do
@@ -6,10 +7,19 @@ defmodule TrackNbaWeb.PageController do
     render(conn, "index.html", player: player)
   end
 
-  def show(conn, _params) do
+  def players(conn, _params) do
     players = NbaEx.players()
-    # |> Poison.encode!
 
-    render(conn, "show.json", data: players)
+    render(conn, "players.json", data: players)
+  end
+
+  def create(conn, %{player: player}) do
+    stats = player.id
+    |> NbaEx.player_game_log
+    |> List.first
+
+    Map.put_new(player, :stats, stats)
+
+    render(conn, "player.json", data: player)
   end
 end
