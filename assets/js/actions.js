@@ -50,7 +50,7 @@ export function subscribeToPlayerStats(player, playersWatching) {
 
     channel.on("player_stat_update", payload => {
       console.log(`Got score update message for ${player.id}`, payload);
-      dispatch({type: UPDATE_PLAYER_STATE, stats: {[player.id]: payload.log.stats}});
+      dispatch({type: UPDATE_PLAYER_STATE, stats: {[player.id]: payload.player.stats.stats}});
     });
   };
 }

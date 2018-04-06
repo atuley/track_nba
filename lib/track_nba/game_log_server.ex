@@ -26,13 +26,22 @@ defmodule TrackNba.GameLogServer do
 
   #### CALLBACKS ####
   def handle_call({:log_for, player_id}, _from, state) do
-    state = Map.put(state, player_id, NbaEx.player_game_log(player_id) |> List.first)
-    Endpoint.broadcast("rooms:" <> player_id, "player_stat_update", %{"log" => state})
+    stats = player_id
+    |> NbaEx.player_game_log
+    |> List.first
+
+    player = NbaEx.players()
+    |> Enum.find(fn(player) -> player.personId == player_id end)
+
+    new_player = Map.put_new(player, :stats, stats)
+
+    state = Map.put(state, player_id, new_player)
+    Endpoint.broadcast("rooms:" <> player_id, "player_stat_update", %{"player" => state})
     {:reply, state[player_id], state}
   end
 
   def handle_call({:update_log, player_id, updated_log}, _from, state) do
-    Endpoint.broadcast("rooms:" <> player_id, "player_stat_update", %{"log" => updated_log})
+    Endpoint.broadcast("rooms:" <> player_id, "player_stat_update", %{"player" => updated_log})
     {:reply, state[player_id], Map.put(state, player_id, updated_log)}
   end
 
@@ -41,8 +50,17 @@ defmodule TrackNba.GameLogServer do
   def handle_info(:work, state) do
     tasks = for id <- Map.keys(state) do
       Task.start_link(fn ->
-        updated_log = NbaEx.player_game_log(id) |> List.first
-        update_log(id, updated_log)
+        stats = id
+        |> NbaEx.player_game_log
+        |> List.first
+
+        player = NbaEx.players()
+        |> Enum.find(fn(player) -> player.personId == id end)
+
+        new_player = Map.put_new(player, :stats, stats)
+
+        # updated_log = NbaEx.player_game_log(id) |> List.first
+        update_log(id, new_player)
       end)
     end
     schedule_work()
