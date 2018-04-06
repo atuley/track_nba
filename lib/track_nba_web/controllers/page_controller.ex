@@ -13,13 +13,16 @@ defmodule TrackNbaWeb.PageController do
     render(conn, "players.json", data: players)
   end
 
-  def create(conn, %{player: player}) do
-    stats = player.id
+  def create(conn, %{"player_id" => player_id}) do
+    stats = player_id
     |> NbaEx.player_game_log
     |> List.first
 
-    Map.put_new(player, :stats, stats)
+    player = NbaEx.players()
+    |> Enum.find(fn(player) -> player.personId == player_id end)
 
-    render(conn, "player.json", data: player)
+    new_player = Map.put_new(player, :stats, stats)
+
+    render(conn, "player_stat.json", data: new_player)
   end
 end

@@ -21,7 +21,24 @@ defmodule TrackNbaWeb.PageView do
       pos: player.pos,
       teamId: player.teamId,
       fullName: "#{player.firstName} #{player.lastName}",
-      # stats: player.stats
+    }
+  end
+
+  def render("player_stat.json", %{data: player}) do
+    %{data:
+      %{
+        id: player.personId,
+        country: player.country,
+        firstName: player.firstName,
+        heightFeet: player.heightFeet,
+        heightInches: player.heightInches,
+        isActive: player.isActive,
+        lastName: player.lastName,
+        pos: player.pos,
+        teamId: player.teamId,
+        fullName: "#{player.firstName} #{player.lastName}",
+        stats: player.stats
+      }
     }
   end
 end
