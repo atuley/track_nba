@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PlayerStat = ({stats, player}) => {
+const PlayerStat = ({player}) => {
   return(
     <div className="col-md-5 player-stat__container">
       <div className="row">

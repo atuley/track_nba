@@ -17,16 +17,14 @@ const defaultHeaders = {
 };
 
 export function addPlayerToWatch(player) {
-  // console.log(player);
   return dispatch => {
     fetch(`/api/player/${player.id}`, {
       headers: defaultHeaders,
-      method: 'POST',
-      body: JSON.stringify({'comment': ''})
+      method: 'POST'
     })
       .then(grabJSON)
       .then((response) => {
-        console.log(`RESPONSE: ${response.data}`);
+        // console.log(`RESPONSE: ${response.data}`);
         return dispatch(receivePlayer(response.data));
       });
   };

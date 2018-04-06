@@ -7,10 +7,8 @@ import PlayerStat from "./PlayerStat"
 export default class TrackNba extends React.Component {
   constructor(props) {
     super(props);
-    // debugger;
     this.state = {
       players: []
-      // playersWatching: []
     };
   }
 

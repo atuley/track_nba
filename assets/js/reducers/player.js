@@ -6,8 +6,6 @@ import {
   RECEIVE_PLAYER_TO_WATCH
 } from "../constants";
 
-//initial state might not be working
-
 export default function(state={
   name: "before",
   players: [],

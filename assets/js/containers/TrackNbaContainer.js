@@ -19,7 +19,6 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export class TrackNbaContainer extends React.Component {
-  // fetch all players on component mount to search through
   componentDidMount() {
     this.props.dispatch(getAllPlayers());
   }
