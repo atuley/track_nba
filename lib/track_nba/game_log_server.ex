@@ -50,6 +50,6 @@ defmodule TrackNba.GameLogServer do
   end
 
   defp schedule_work() do
-    Process.send_after(self(), :work, 3 * 1000) # In 2 seconds
+    Process.send_after(self(), :work, 5 * 1000) # In 5 seconds
   end
 end
