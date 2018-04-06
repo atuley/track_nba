@@ -3,7 +3,7 @@ import {
   CHANGE_NAME,
   RECEIVE_PLAYERS,
   UPDATE_PLAYER_STATE,
-  ADD_PLAYER_TO_WATCH
+  RECEIVE_PLAYER_TO_WATCH
 } from "../constants";
 
 //initial state might not be working
@@ -22,9 +22,16 @@ export default function(state={
       return {...state, players: action.players}
     }
     case UPDATE_PLAYER_STATE: {
-      return {...state, stats: action.stats}
+      // Might want to create a player struct that already has the game log appended to it so I don't have to have a stats array
+      // _.filter(state.stats, function(stat) {return Object.keys(stat)[0] != Object.keys(action.stats)[0]})
+      // if (state.stats.hasValue(Object.keys(action.stats)[0])) { //if the playerId exists in stats array
+      //   replaceListItem()
+      // } else {
+      //   concat new playerstats to array
+      // }
+      return {...state, stats: _.concat(state.stats, action.stats)}
     }
-    case ADD_PLAYER_TO_WATCH: {
+    case RECEIVE_PLAYER_TO_WATCH: {
       return {...state, playersWatching: _.concat(state.playersWatching, action.player)}
     }
   }

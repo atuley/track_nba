@@ -8,12 +8,33 @@ import {
   CHANGE_NAME,
   RECEIVE_PLAYERS,
   UPDATE_PLAYER_STATE,
-  ADD_PLAYER_TO_WATCH
+  RECEIVE_PLAYER_TO_WATCH
 } from "./constants";
 
+const defaultHeaders = {
+  'Accept': 'application/json',
+  'Content-Type': 'application/json',
+};
+
 export function addPlayerToWatch(player) {
+  // console.log(player);
+  return dispatch => {
+    fetch(`/api/player/${player.id}`, {
+      headers: defaultHeaders,
+      method: 'POST',
+      body: JSON.stringify({'comment': ''})
+    })
+      .then(grabJSON)
+      .then((response) => {
+        console.log(`RESPONSE: ${response.data}`);
+        return dispatch(receivePlayer(response.data));
+      });
+  };
+}
+
+export function receivePlayer(player) {
   return {
-    type: ADD_PLAYER_TO_WATCH,
+    type: RECEIVE_PLAYER_TO_WATCH,
     player: player
   };
 }
@@ -31,7 +52,7 @@ export function subscribeToPlayerStats(player, playersWatching) {
 
     channel.on("player_stat_update", payload => {
       console.log(`Got score update message for ${player.id}`, payload);
-      dispatch({type: UPDATE_PLAYER_STATE, stats: payload.log.stats});
+      dispatch({type: UPDATE_PLAYER_STATE, stats: {[player.id]: payload.log.stats}});
     });
   };
 }
