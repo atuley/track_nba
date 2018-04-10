@@ -23,7 +23,7 @@ let socket = new Socket("/socket", {params: {token: window.userToken}})
 //
 //     defp put_user_token(conn, _) do
 //       if current_user = conn.assigns[:current_user] do
-//         token = Phoenix.Token.sign(conn, "user socket", current_user.id)
+//         token = Phoenix.Token.sign(conn, "user socket", current_user.personId)
 //         assign(conn, :user_token, token)
 //       else
 //         conn

@@ -36,7 +36,7 @@ export default class TrackNba extends React.Component {
         <ul>
           {_.map(this.state.players, (player) => {
               return (
-                <li key={player.id}>
+                <li key={player.personId}>
                   {`${player.firstName} ${player.lastName}`}
                   <button onClick={this.subscribeToPlayerStats.bind(this, player)}>Add</button>
                 </li>
@@ -45,7 +45,7 @@ export default class TrackNba extends React.Component {
         </ul>
         <div className="row">
           {_.map(this.props.playersWatching, (player) => {
-              return <PlayerStat key={player.id} {...this.props} player={player}/>;
+              return <PlayerStat key={player.personId} {...this.props} player={player}/>;
           })}
         </div>
       </div>

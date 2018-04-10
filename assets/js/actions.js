@@ -18,13 +18,12 @@ const defaultHeaders = {
 
 export function addPlayerToWatch(player) {
   return dispatch => {
-    fetch(`/api/player/${player.id}`, {
+    fetch(`/api/player/${player.personId}`, {
       headers: defaultHeaders,
       method: 'POST'
     })
       .then(grabJSON)
       .then((response) => {
-        // console.log(`RESPONSE: ${response.data}`);
         return dispatch(receivePlayer(response.data));
       });
   };
@@ -38,19 +37,16 @@ export function receivePlayer(player) {
 }
 
 export function subscribeToPlayerStats(player, playersWatching) {
-  // debugger;
   return dispatch => {
-    let channel = socket.channel(`rooms:${player.id}`);
+    let channel = socket.channel(`rooms:${player.personId}`);
 
     channel.join()
       .receive("ok", resp => { console.log("Joined player channel successful", resp); })
       .receive("error", resp => { console.log("Unable to join", resp); });
 
-    // console.log(channel);
-
     channel.on("player_stat_update", payload => {
-      console.log(`Got score update message for ${player.id}`, payload);
-      dispatch({type: UPDATE_PLAYER_STATE, stats: {[player.id]: payload.player.stats.stats}});
+      console.log(`Got score update message for ${player.personId}`, payload);
+      dispatch({type: UPDATE_PLAYER_STATE, player: payload.player});
     });
   };
 }

@@ -11,7 +11,7 @@ defmodule TrackNbaWeb.PageView do
   # dont use unecessary fields
   def render("player.json", %{data: player}) do
     %{
-      id: player.personId,
+      personId: player.personId,
       country: player.country,
       firstName: player.firstName,
       heightFeet: player.heightFeet,
@@ -27,7 +27,7 @@ defmodule TrackNbaWeb.PageView do
   def render("player_stat.json", %{data: player}) do
     %{data:
       %{
-        id: player.personId,
+        personId: player.personId,
         country: player.country,
         firstName: player.firstName,
         heightFeet: player.heightFeet,

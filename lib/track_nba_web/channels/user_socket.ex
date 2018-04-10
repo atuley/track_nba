@@ -30,7 +30,7 @@ defmodule TrackNbaWeb.UserSocket do
   # Would allow you to broadcast a "disconnect" event and terminate
   # all active sockets and channels for a given user:
   #
-  #     TrackNbaWeb.Endpoint.broadcast("user_socket:#{user.id}", "disconnect", %{})
+  #     TrackNbaWeb.Endpoint.broadcast("user_socket:#{user.personId}", "disconnect", %{})
   #
   # Returning `nil` makes this socket anonymous.
   def id(_socket), do: nil
