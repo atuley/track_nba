@@ -1,4 +1,5 @@
 defmodule TrackNbaWeb.PlayerController do
+  alias TrackNbaWeb.Utils
   use TrackNbaWeb, :controller
 
   def index(conn, _params) do
@@ -7,8 +8,9 @@ defmodule TrackNbaWeb.PlayerController do
 
   def create(conn, %{"player_id" => player_id}) do
     stats = player_id
-    |> NbaEx.player_game_log
-    |> List.first
+    |> Utils.find_team()
+    |> Utils.find_game()
+    |> Utils.retrieve_stats_for_player(player_id)
 
     player = NbaEx.players()
     |> Enum.find(fn(player) -> player.personId == player_id end)

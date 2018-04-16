@@ -1,6 +1,6 @@
 defmodule TrackNba.GameLogServer do
   use GenServer
-  alias TrackNbaWeb.Endpoint
+  alias TrackNbaWeb.{Endpoint, Utils}
 
   def start_link do
     GenServer.start_link(__MODULE__, [], name: __MODULE__)
@@ -27,8 +27,9 @@ defmodule TrackNba.GameLogServer do
   #### CALLBACKS ####
   def handle_call({:log_for, player_id}, _from, state) do
     stats = player_id
-    |> NbaEx.player_game_log
-    |> List.first
+    |> Utils.find_team()
+    |> Utils.find_game()
+    |> Utils.retrieve_stats_for_player(player_id)
 
     player = NbaEx.players()
     |> Enum.find(fn(player) -> player.personId == player_id end)
@@ -51,8 +52,9 @@ defmodule TrackNba.GameLogServer do
     tasks = for id <- Map.keys(state) do
       Task.start_link(fn ->
         stats = id
-        |> NbaEx.player_game_log
-        |> List.first
+        |> Utils.find_team()
+        |> Utils.find_game()
+        |> Utils.retrieve_stats_for_player(id)
 
         player = NbaEx.players()
         |> Enum.find(fn(player) -> player.personId == id end)
