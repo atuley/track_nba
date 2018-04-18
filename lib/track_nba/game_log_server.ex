@@ -49,7 +49,7 @@ defmodule TrackNba.GameLogServer do
   def handle_call(:state, _from, state), do: {:reply, state, state}
 
   def handle_info(:work, state) do
-    tasks = for id <- Map.keys(state) do
+    for id <- Map.keys(state) do
       Task.start_link(fn ->
         stats = id
         |> Utils.find_team()
