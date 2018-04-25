@@ -2,11 +2,29 @@
   max-width: 1000px !important;
 }
 
+.player-name {
+  text-align: center;
+}
+
+.player-pic {
+  border-radius: 50%;
+  background-image: url("/images/bensimmons.png");
+  height: 125px;
+  width: 125px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  position: relative;
+  // border: 1px solid #aaaaaa;
+  margin: auto;
+}
+
 .player-stat {
   &__container {
     border: 1px solid #aaaaaa;
     border-radius: 3px;
     padding: 20px;
     margin: 20px;
+    font-family: 'Roboto', sans-serif;
   }
 }
