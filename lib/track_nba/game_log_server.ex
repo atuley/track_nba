@@ -34,7 +34,10 @@ defmodule TrackNba.GameLogServer do
     player = NbaEx.players()
     |> Enum.find(fn(player) -> player.personId == player_id end)
 
-    new_player = Map.put_new(player, :stats, stats)
+    new_player = case stats do
+      {:error, "Game for player not found"} -> Map.put_new(player, :stats, %NbaEx.PlayerStat{})
+      _ -> Map.put_new(player, :stats, stats)
+    end
 
     state = Map.put(state, player_id, new_player)
     Endpoint.broadcast("rooms:" <> player_id, "player_stat_update", %{"player" => state})
@@ -59,7 +62,10 @@ defmodule TrackNba.GameLogServer do
         player = NbaEx.players()
         |> Enum.find(fn(player) -> player.personId == id end)
 
-        new_player = Map.put_new(player, :stats, stats)
+        new_player = case stats do
+          {:error, "Game for player not found"} -> Map.put_new(player, :stats, %NbaEx.PlayerStat{})
+          _ -> Map.put_new(player, :stats, stats)
+        end
 
         # updated_log = NbaEx.player_game_log(id) |> List.first
         update_log(id, new_player)

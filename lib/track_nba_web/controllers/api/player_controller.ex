@@ -3,7 +3,10 @@ defmodule TrackNbaWeb.PlayerController do
   use TrackNbaWeb, :controller
 
   def index(conn, _params) do
-    render(conn, "players.json", data: NbaEx.players())
+    players = NbaEx.players()
+    |> Utils.filter_out_non_franchise_players()
+
+    render(conn, "players.json", data: players)
   end
 
   def create(conn, %{"player_id" => player_id}) do
@@ -15,7 +18,10 @@ defmodule TrackNbaWeb.PlayerController do
     player = NbaEx.players()
     |> Enum.find(fn(player) -> player.personId == player_id end)
 
-    new_player = Map.put_new(player, :stats, stats)
+    new_player = case stats do
+      {:error, "Game for player not found"} -> Map.put_new(player, :stats, %NbaEx.PlayerStat{})
+      _ -> Map.put_new(player, :stats, stats)
+    end
 
     render(conn, "player_stat.json", data: new_player)
   end
