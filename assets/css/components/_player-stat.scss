@@ -1,8 +1,20 @@
+h2 {
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+}
+
 .container {
   max-width: 1000px !important;
 }
 
+.main-stats {
+  border-bottom: 1px solid #aaaaaa;
+  padding: 5px;
+  text-align: center;
+}
+
 .player-name {
+  margin-top: 8px;
   text-align: center;
 }
 
@@ -23,8 +35,20 @@
   &__container {
     border: 1px solid #aaaaaa;
     border-radius: 3px;
-    padding: 20px;
     margin: 20px;
     font-family: 'Roboto', sans-serif;
   }
+}
+
+.row {
+  padding: 0px !important;
+}
+
+.secondary-stats {
+  text-align: center;
+}
+
+.game-stat {
+  margin-bottom: 3px;
+  text-align: center;
 }
