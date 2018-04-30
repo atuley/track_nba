@@ -27,16 +27,21 @@ h2 {
   background-repeat: no-repeat;
   background-position: 50% 50%;
   position: relative;
-  // border: 1px solid #aaaaaa;
   margin: auto;
 }
 
 .player-stat {
   &__container {
-    border: 1px solid #aaaaaa;
-    border-radius: 3px;
-    margin: 20px;
+    border-right: 1px solid #aaaaaa;
+    border-top: 1px solid #aaaaaa;
+    border-bottom: 1px solid #aaaaaa;
+    margin-top: 20px;
+    margin-right: 20px;
     font-family: 'Roboto', sans-serif;
+  }
+
+  &__border {
+    border-left: 8px solid #006BB6;
   }
 }
 

@@ -1,0 +1,29 @@
+.player-search {
+  overflow: auto;
+  max-height: 500px;
+}
+
+.add-button {
+  background-color: #006BB6;
+  border: none;
+  padding: 10px;
+  color: white;
+  width: 100px;
+}
+
+.search-border {
+  border-left: 8px solid #006BB6;
+}
+
+.form-control {
+  border-radius: 0px !important;
+}
+
+table {
+  border-bottom: 1px solid #aaaaaa;
+
+}
+
+table>tbody>tr>td {
+  border-top: 1px solid #aaaaaa !important;
+}

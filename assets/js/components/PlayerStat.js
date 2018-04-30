@@ -3,7 +3,7 @@ import React from 'react';
 const PlayerStat = ({player}) => {
   return(
     <div className="col-md-5 player-stat__container">
-      <div className="row">
+      <div className="row player-stat__border">
         <div className="col-md-5">
           <div className="row">
             <div className="player-pic"></div>

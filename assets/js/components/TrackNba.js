@@ -32,20 +32,22 @@ export default class TrackNba extends React.Component {
   render() {
     return (
       <div>
-        <input className="form-control" placeholder="Search" type="text" onChange={this.searchPlayers.bind(this, 'players')}/>
-        <div className="player-search">
-          <table className="table">
-            <tbody>
-              {_.map(this.state.players, (player) => {
-                  return (
-                    <tr key={player.personId}>
-                      <td>{`${player.firstName} ${player.lastName}`}</td>
-                      <td><button onClick={this.subscribeToPlayerStats.bind(this, player)}>Add</button></td>
-                    </tr>
-                  );
-              })}
-            </tbody>
-          </table>
+        <div className="row">
+          <input className="form-control" placeholder="Search for a player by name" type="text" onChange={this.searchPlayers.bind(this, 'players')}/>
+          <div className="player-search">
+            <table className="table">
+              <tbody>
+                {_.map(this.state.players, (player) => {
+                    return (
+                      <tr key={player.personId}>
+                        <td className="search-border">{`${player.firstName} ${player.lastName}`}</td>
+                        <td className="u-align-right"><button className="add-button" onClick={this.subscribeToPlayerStats.bind(this, player)}>Add</button></td>
+                      </tr>
+                    );
+                })}
+              </tbody>
+            </table>
+          </div>
         </div>
         <div className="row">
           {_.map(this.props.playersWatching, (player) => {
