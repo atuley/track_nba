@@ -6,7 +6,7 @@ defmodule TrackNbaWeb.Utils do
   end
 
   def find_game(team_id) do
-    scoreboard = NbaEx.scoreboard_for("20180411") # use NbaEx.scoreboard
+    scoreboard = NbaEx.scoreboard() # use NbaEx.scoreboard
 
     result = scoreboard.games
     |> Enum.find(fn(game) -> game.vTeam.teamId == team_id || game.hTeam.teamId == team_id end)
@@ -17,11 +17,19 @@ defmodule TrackNbaWeb.Utils do
     end
   end
 
-  def retrieve_stats_for_player({:error, "Game for player not found"}, player_id), do: {:error, "Game for player not found"}
+  def retrieve_stats_for_player({:error, "Game for player not found"}, _player_id), do: {:error, "Game for player not found"}
   def retrieve_stats_for_player(game_id, player_id) do
-    result = NbaEx.boxscore("20180411", game_id) # pass in date from scoreboard
-    |> Map.get(:player_stats)
-    |> Enum.find(fn(player) -> player.personId == player_id end) # if player did not play? result will be nil
+    result = NbaEx.boxscore(current_date(), game_id)
+
+    l = Kernel.length(Map.get(result, :player_stats))
+
+    if l != 1 do
+      result
+      |> Map.get(:player_stats)
+      |> Enum.find(fn(player) -> player.personId == player_id end)
+    else
+      result
+    end
   end
 
   def current_date do
