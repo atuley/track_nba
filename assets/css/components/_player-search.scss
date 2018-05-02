@@ -5,25 +5,44 @@
 
 .add-button {
   background-color: #006BB6;
+  border-radius: 3px;
   border: none;
-  padding: 10px;
+  padding: 7px;
   color: white;
-  width: 100px;
+  width: 75px;
+  margin-right: 20px;
+}
+.add-button:hover {
+  background-color: #004d84;
 }
 
 .search-border {
   border-left: 8px solid #006BB6;
+  border-right: 1px solid #aaaaaa;
 }
 
 .form-control {
   border-radius: 0px !important;
 }
 
-table {
-  border-bottom: 1px solid #aaaaaa;
-
+.player-pos {
+  font-size: 12px !important;
+  font-weight: bold;
+  margin-left: 10px;
 }
 
-table>tbody>tr>td {
-  border-top: 1px solid #aaaaaa !important;
+.player-name {
+  font-size: 15px;
+}
+
+.search-player-pic {
+  border-radius: 50%;
+  height: 75px;
+  width: auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  position: relative;
+  margin: auto;
+  padding: 7px;
 }

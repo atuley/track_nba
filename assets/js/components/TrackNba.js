@@ -39,9 +39,25 @@ export default class TrackNba extends React.Component {
               <tbody>
                 {_.map(this.state.players, (player) => {
                     return (
-                      <tr key={player.personId}>
-                        <td className="search-border">{`${player.firstName} ${player.lastName}`}</td>
-                        <td className="u-align-right"><button className="add-button" onClick={this.subscribeToPlayerStats.bind(this, player)}>Add</button></td>
+                      <tr className="search-border" key={player.personId}>
+                        <td className="col-md-2">
+                          <img className="search-player-pic" src={`https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/${player.teamId}/2017/260x190/${player.personId}.png`}/>
+                        </td>
+                        <td className="col-md-8">
+                          <span className="player-name">
+                            {`${player.firstName} ${player.lastName}`}
+                          </span>
+                          <span className="player-pos">
+                            {player.pos}
+                          </span>
+                        </td>
+                        <td className="u-align-right col-md-2">
+                          <button className="add-button" onClick={this.subscribeToPlayerStats.bind(this, player)}>
+                            <span>
+                              Watch
+                            </span>
+                          </button>
+                        </td>
                       </tr>
                     );
                 })}

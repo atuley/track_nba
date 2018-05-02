@@ -1,0 +1,24 @@
+
+table {
+  border-bottom: 1px solid #aaaaaa;
+
+}
+
+table>tbody>tr>td {
+  border-top: 1px solid #aaaaaa !important;
+  vertical-align: middle !important;
+  padding: 0px !important;
+}
+
+body {
+  font-family: 'Roboto', sans-serif !important;
+}
+
+h2 {
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+}
+
+.row {
+  padding: 0px !important;
+}
