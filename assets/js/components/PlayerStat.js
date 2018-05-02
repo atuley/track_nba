@@ -44,9 +44,13 @@ const PlayerStat = ({player}) => {
               <div className="col-md-6">{player.stats.fgp}%</div>
               <div className="col-md-6">FGP</div>
             </div>
-            <div className="row u-main-stat">
+            <div className="row u-border-bottom u-main-stat">
               <div className="col-md-6">{player.stats.fgm}/{player.stats.fga}</div>
               <div className="col-md-6">FGM/FGA</div>
+            </div>
+            <div className="row u-main-stat">
+              <div className="col-md-6">{player.min}</div>
+              <div className="col-md-6">min</div>
             </div>
           </div>
         </div>
