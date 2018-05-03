@@ -11,7 +11,8 @@ export default function(state={
   name: "before",
   players: [],
   stats: [],
-  playersWatching: []
+  playersWatching: [],
+  playerLoading: true
 }, action) {
   switch(action.type) {
     case CHANGE_NAME: {
@@ -35,7 +36,7 @@ export default function(state={
       };
     }
     case RECEIVE_PLAYER_TO_WATCH: {
-      return {...state, playersWatching: _.concat(state.playersWatching, action.player)}
+      return {...state, playersWatching: _.concat(state.playersWatching, action.player), playerLoading: false}
     }
   }
   return state;
