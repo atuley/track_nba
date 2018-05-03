@@ -42,4 +42,16 @@ defmodule TrackNbaWeb.Utils do
     players
     |> Enum.filter(fn(player) -> player.yearsPro != "" end)
   end
+
+  def add_team_color(players) do
+    players
+    |> Enum.each(fn(player) -> find_and_add_color(player) end)
+  end
+
+  defp find_and_add_color(player) do
+    team_config = NbaEx.teams_config()
+    |> Enum.find(fn(color) -> player.teamId == color.teamId end)
+
+    Map.put(player, :color, "#{team_config.primaryColor}")
+  end
 end
