@@ -1,17 +1,9 @@
-
-table {
-  border-bottom: 1px solid #aaaaaa;
-
-}
-
-table>tbody>tr>td {
-  border-top: 1px solid #aaaaaa !important;
-  vertical-align: middle !important;
-  padding: 0px !important;
-}
-
 body {
   font-family: 'Roboto', sans-serif !important;
+}
+
+.form-control {
+  border-radius: 0px !important;
 }
 
 h2 {
@@ -20,5 +12,14 @@ h2 {
 }
 
 .row {
+  padding: 0px !important;
+}
+
+table {
+  border-bottom: 1px solid #aaaaaa;
+}
+table>tbody>tr>td {
+  border-top: 1px solid #aaaaaa !important;
+  vertical-align: middle !important;
   padding: 0px !important;
 }
