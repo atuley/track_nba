@@ -55,7 +55,7 @@ export default class TrackNba extends React.Component {
                         <td className="u-align-right col-md-2">
                           <button className="add-button" disabled={player.isWatching} onClick={this.subscribeToPlayerStats.bind(this, player)}>
                             <span>
-                              Watch
+                              {player.isWatching ? "Watching" : "Watch"}
                             </span>
                           </button>
                         </td>

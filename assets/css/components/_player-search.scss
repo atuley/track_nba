@@ -12,6 +12,15 @@
   width: 75px;
   margin-right: 20px;
 }
+.add-button:disabled {
+  background-color: #528ab2;
+  cursor: not-allowed;
+}
+.add-button:disabled:hover {
+  background-color: #528ab2;
+  cursor: not-allowed;
+}
+
 .add-button:hover {
   background-color: #004d84;
 }
