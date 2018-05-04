@@ -1,0 +1,28 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "http://data.nba.net/prod/v1/20180504/0041700233_boxscore.json"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"_internal\":{\"pubDateTime\":\"2018-05-04 16:30:21.654\",\"xslt\":\"xsl/game/boxscore/marty_boxscore.xsl\",\"eventName\":\"game_schedule_update_for_gameId\"},\"basicGameData\":{\"seasonStageId\":4,\"seasonYear\":\"2017\",\"gameId\":\"0041700233\",\"arena\":{\"name\":\"Smoothie King Center\",\"isDomestic\":true,\"city\":\"New Orleans\",\"stateAbbr\":\"LA\",\"country\":\"USA\"},\"isGameActivated\":false,\"statusNum\":1,\"extendedStatusNum\":0,\"startTimeEastern\":\"8:00 PM ET\",\"startTimeUTC\":\"2018-05-05T00:00:00.000Z\",\"startDateEastern\":\"20180504\",\"clock\":\"\",\"isBuzzerBeater\":false,\"isPreviewArticleAvail\":true,\"isRecapArticleAvail\":false,\"tickets\":{\"mobileApp\":\"https://a.data.nba.com/tickets/single/2017/0041700233/APP_TIX\",\"desktopWeb\":\"https://a.data.nba.com/tickets/single/2017/0041700233/TEAM_SCH\",\"mobileWeb\":\"https://a.data.nba.com/tickets/single/2017/0041700233/WEB_MWEB\"},\"hasGameBookPdf\":false,\"isStartTimeTBD\":false,\"nugget\":{\"text\":\"\"},\"attendance\":\"\",\"gameDuration\":{\"hours\":\"\",\"minutes\":\"\"},\"tags\":[\"W2\"],\"playoffs\":{\"roundNum\":\"2\",\"confName\":\"West\",\"seriesId\":\"21\",\"seriesSummaryText\":\"GSW leads 2-0\",\"isSeriesCompleted\":false,\"gameNumInSeries\":\"3\",\"isIfNecessary\":false,\"vTeam\":{\"seedNum\":\"2\",\"seriesWin\":\"2\",\"isSeriesWinner\":false},\"hTeam\":{\"seedNum\":\"6\",\"seriesWin\":\"0\",\"isSeriesWinner\":false}},\"period\":{\"current\":0,\"type\":0,\"maxRegular\":4,\"isHalftime\":false,\"isEndOfPeriod\":false},\"vTeam\":{\"teamId\":\"1610612744\",\"triCode\":\"GSW\",\"win\":\"6\",\"loss\":\"1\",\"seriesWin\":\"2\",\"seriesLoss\":\"0\",\"score\":\"\",\"linescore\":[]},\"hTeam\":{\"teamId\":\"1610612740\",\"triCode\":\"NOP\",\"win\":\"4\",\"loss\":\"2\",\"seriesWin\":\"0\",\"seriesLoss\":\"2\",\"score\":\"\",\"linescore\":[]},\"watch\":{\"broadcast\":{\"broadcasters\":{\"national\":[{\"shortName\":\"ESPN\",\"longName\":\"ESPN\"}],\"canadian\":[{\"shortName\":\"TSN2\",\"longName\":\"TSN2\"}],\"vTeam\":[],\"hTeam\":[],\"spanish_hTeam\":[],\"spanish_vTeam\":[],\"spanish_national\":[]},\"video\":{\"regionalBlackoutCodes\":\"\",\"canPurchase\":false,\"isLeaguePass\":true,\"isNationalBlackout\":true,\"isTNTOT\":false,\"isVR\":false,\"tntotIsOnAir\":false,\"streams\":[{\"streamType\":\"vTeam\",\"isOnAir\":false,\"doesArchiveExist\":false,\"isArchiveAvailToWatch\":false,\"streamId\":\"\",\"duration\":0},{\"streamType\":\"hTeam\",\"isOnAir\":false,\"doesArchiveExist\":false,\"isArchiveAvailToWatch\":false,\"streamId\":\"\",\"duration\":0},{\"streamType\":\"espanol_vTeam\",\"isOnAir\":false,\"doesArchiveExist\":false,\"isArchiveAvailToWatch\":false,\"streamId\":\"\",\"duration\":0},{\"streamType\":\"espanol_hTeam\",\"isOnAir\":false,\"doesArchiveExist\":false,\"isArchiveAvailToWatch\":false,\"streamId\":\"\",\"duration\":0},{\"streamType\":\"espanol_natl\",\"isOnAir\":false,\"doesArchiveExist\":false,\"isArchiveAvailToWatch\":false,\"streamId\":\"\",\"duration\":0},{\"streamType\":\"mobile\",\"isOnAir\":false,\"doesArchiveExist\":false,\"isArchiveAvailToWatch\":false,\"streamId\":\"\",\"duration\":0},{\"streamType\":\"condensed\",\"isOnAir\":false,\"doesArchiveExist\":false,\"isArchiveAvailToWatch\":false,\"streamId\":\"\",\"duration\":0}],\"deepLink\":[{\"broadcaster\":\"ESPN\",\"regionalMarketCodes\":\"\",\"iosApp\":\"http://www.espn.com/watch?id=3320106\",\"androidApp\":\"http://www.espn.com/watch?id=3320106\",\"desktopWeb\":\"http://www.espn.com/watch?id=3320106\",\"mobileWeb\":\"http://www.espn.com/watch?id=3320106\"}]},\"audio\":{\"national\":{\"streams\":[{\"language\":\"English\",\"isOnAir\":false,\"streamId\":\"\"},{\"language\":\"Spanish\",\"isOnAir\":false,\"streamId\":\"\"}],\"broadcasters\":[]},\"vTeam\":{\"streams\":[{\"language\":\"English\",\"isOnAir\":false,\"streamId\":\"\"},{\"language\":\"Spanish\",\"isOnAir\":false,\"streamId\":\"\"}],\"broadcasters\":[{\"shortName\":\"\",\"longName\":\"\"}]},\"hTeam\":{\"streams\":[{\"language\":\"English\",\"isOnAir\":false,\"streamId\":\"\"},{\"language\":\"Spanish\",\"isOnAir\":false,\"streamId\":\"\"}],\"broadcasters\":[{\"shortName\":\"\",\"longName\":\"\"}]}}}},\"officials\":{\"formatted\":[]}},\"previousMatchup\":{\"gameId\":\"0041700232\",\"gameDate\":\"20180501\"}}",
+      "headers": {
+        "Server": "nginx",
+        "Content-Type": "application/json",
+        "Last-Modified": "Fri, 04 May 2018 20:30:21 GMT",
+        "Cache-Control": "public, max-age=5",
+        "Date": "Fri, 04 May 2018 20:31:45 GMT",
+        "Content-Length": "3746",
+        "Connection": "keep-alive",
+        "Access-Control-Allow-Origin": ""
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

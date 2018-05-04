@@ -6,7 +6,7 @@ defmodule TrackNbaWeb.Utils do
   end
 
   def find_game(team_id) do
-    scoreboard = NbaEx.scoreboard() # use NbaEx.scoreboard
+    scoreboard = NbaEx.scoreboard()
 
     result = scoreboard.games
     |> Enum.find(fn(game) -> game.vTeam.teamId == team_id || game.hTeam.teamId == team_id end)
