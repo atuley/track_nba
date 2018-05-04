@@ -13,6 +13,7 @@ export default class TrackNba extends React.Component {
   }
 
   subscribeToPlayerStats(player) {
+    player.isWatching = true;
     this.props.dispatch(addPlayerToWatch(player))
     this.props.dispatch(subscribeToPlayerStats(player, this.props.playersWatching))
   }
@@ -52,7 +53,7 @@ export default class TrackNba extends React.Component {
                           </span>
                         </td>
                         <td className="u-align-right col-md-2">
-                          <button className="add-button" onClick={this.subscribeToPlayerStats.bind(this, player)}>
+                          <button className="add-button" disabled={player.isWatching} onClick={this.subscribeToPlayerStats.bind(this, player)}>
                             <span>
                               Watch
                             </span>

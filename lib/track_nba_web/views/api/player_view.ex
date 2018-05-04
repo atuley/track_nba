@@ -21,6 +21,7 @@ defmodule TrackNbaWeb.PlayerView do
       pos: player.pos,
       teamId: player.teamId,
       fullName: "#{player.firstName} #{player.lastName}",
+      isWatching: false
     }
   end
 
