@@ -56,6 +56,7 @@ defmodule UtilsTest do
     use_cassette "players" do
       players = NbaEx.players()
 
+      assert players |> length == 604
       assert Utils.filter_out_non_franchise_players(players) |> length == 505
     end
   end
