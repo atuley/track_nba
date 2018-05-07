@@ -27,6 +27,10 @@ config :logger, :console,
 import_config "#{Mix.env}.exs"
 
 if Mix.env() == :test do
+  config :track_nba, TrackNbaWeb.Endpoint,
+    http: [port: 4001],
+    server: true
+
   config :exvcr,
     vcr_cassette_library_dir: "test/fixture/vcr_cassettes",
     custom_cassette_library_dir: "test/fixture/custom_cassettes",
@@ -36,4 +40,8 @@ if Mix.env() == :test do
     filter_url_params: false,
     filter_request_headers: [],
     response_headers_blacklist: []
+
+  config :hound,
+    browser: "chrome",
+    driver: "chrome_driver"
 end

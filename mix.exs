@@ -34,6 +34,7 @@ defmodule TrackNba.Mixfile do
   defp deps do
     [
       {:exvcr, "~> 0.10.1", only: :test},
+      {:hound, "~> 1.0", only: :test},
       {:phoenix, "~> 1.3.2"},
       {:phoenix_pubsub, "~> 1.0"},
       {:phoenix_ecto, "~> 3.2"},
