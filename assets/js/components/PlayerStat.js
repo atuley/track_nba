@@ -49,7 +49,7 @@ const PlayerStat = ({player, playerLoading}) => {
               <div className="col-md-6">FGM/FGA</div>
             </div>
             <div className="row u-main-stat">
-              <div className="col-md-6">{player.min || 0}</div>
+              <div className="col-md-6">{player.stats.min || 0}</div>
               <div className="col-md-6">min</div>
             </div>
           </div>
