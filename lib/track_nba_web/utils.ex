@@ -5,8 +5,9 @@ defmodule TrackNbaWeb.Utils do
     |> Map.get(:teamId)
   end
 
-  def find_game(team_id) do
-    result = NbaEx.scoreboard()
+  def find_game(team_id, date) do
+    result = date
+    |> NbaEx.scoreboard_for()
     |> Map.get(:games)
     |> Enum.find(fn(game) -> game.vTeam.teamId == team_id || game.hTeam.teamId == team_id end)
 
@@ -16,17 +17,18 @@ defmodule TrackNbaWeb.Utils do
     end
   end
 
-  def retrieve_stats_for_player({:error, "Game for player not found"}, _player_id), do: {:error, "Game for player not found"}
-  def retrieve_stats_for_player(game_id, player_id) do
-    result = NbaEx.boxscore(current_date(), game_id)
+  def retrieve_stats_for_player({:error, "Game for player not found"}, _player_id, _date), do: {:error, "Game for player not found"}
+  def retrieve_stats_for_player(game_id, player_id, date) do
+    result = date
+    |> NbaEx.boxscore(game_id)
 
     Map.get(result, :player_stats)
     |> Kernel.length
-    |> has_stats?(result)
+    |> has_stats?(result, player_id)
   end
 
-  defp has_stats(1, result), do: result
-  defp has_stats(_length, result) do
+  defp has_stats?(1, result, _player_id), do: result
+  defp has_stats?(_length, result, player_id) do
     result
     |> Map.get(:player_stats)
     |> Enum.find(fn(player) -> player.personId == player_id end)

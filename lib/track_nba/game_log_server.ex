@@ -28,8 +28,8 @@ defmodule TrackNba.GameLogServer do
   def handle_call({:log_for, player_id}, _from, state) do
     stats = player_id
     |> Utils.find_team()
-    |> Utils.find_game()
-    |> Utils.retrieve_stats_for_player(player_id)
+    |> Utils.find_game(Utils.current_date())
+    |> Utils.retrieve_stats_for_player(player_id, Utils.current_date())
 
     player = NbaEx.players()
     |> Enum.find(fn(player) -> player.personId == player_id end)
@@ -56,8 +56,8 @@ defmodule TrackNba.GameLogServer do
       Task.start_link(fn ->
         stats = id
         |> Utils.find_team()
-        |> Utils.find_game()
-        |> Utils.retrieve_stats_for_player(id)
+        |> Utils.find_game(Utils.current_date())
+        |> Utils.retrieve_stats_for_player(id, Utils.current_date())
 
         player = NbaEx.players()
         |> Enum.find(fn(player) -> player.personId == id end)
@@ -67,7 +67,6 @@ defmodule TrackNba.GameLogServer do
           _ -> Map.put_new(player, :stats, stats)
         end
 
-        # updated_log = NbaEx.player_game_log(id) |> List.first
         update_log(id, new_player)
       end)
     end
