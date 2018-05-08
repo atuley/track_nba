@@ -3,12 +3,6 @@ defmodule TrackNbaWeb.RoomChannel do
   alias TrackNba.GameLogServer, as: LogServer
   require Logger
 
-  def join("rooms:lobby", _params, socket) do
-    Logger.debug("Joined channel...")
-    # Start up genserver here
-    {:ok, %{}, socket}
-  end
-
   def join("rooms:" <> player_id, _params, socket) do
     Logger.debug "Following #{inspect player_id}"
     send(self(), {:assign_player_id, player_id})

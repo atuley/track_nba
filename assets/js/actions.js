@@ -51,13 +51,6 @@ export function subscribeToPlayerStats(player, playersWatching) {
   };
 }
 
-export function changeTheName() {
-  return {
-    type: CHANGE_NAME,
-    name: "New name"
-  };
-}
-
 export function getAllPlayers() {
   return dispatch => {
     fetch(`/api/players`)
@@ -75,8 +68,6 @@ export function receivePlayers(players) {
   };
 }
 
-
-//this will go away even
 function grabJSON(response) {
   return response.json();
 }
