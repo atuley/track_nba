@@ -46,6 +46,10 @@ defmodule TrackNbaWeb.Utils do
   end
 
   def add_team_colors(players) do
+    Enum.map(players, fn(player) -> add_color(player) end)
+  end
+
+  def add_color(player) do
     colors =
       [
         %NbaEx.TeamConfig{
@@ -336,11 +340,6 @@ defmodule TrackNbaWeb.Utils do
           ttsName: nil
         }
       ]
-
-    Enum.map(players, fn(player) -> add_color(player, colors) end)
-  end
-
-  defp add_color(player, colors) do
     team_color_for_player = Enum.find(colors, fn(color) -> color.teamId == player.teamId end)
     Map.put(player, :teamColor, team_color_for_player.primaryColor)
   end

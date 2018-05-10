@@ -3,7 +3,7 @@ import React from 'react';
 const PlayerStat = ({player, playerLoading}) => {
   return(
     <div className="col-md-5 player-stat__container">
-      <div className="row player-stat__border" style={{borderLeft: '8px solid #006BB6'}}>
+      <div className="row player-stat__border" style={{borderLeft: `8px solid ${player.teamColor}`}}>
         <div className="col-md-5">
           <div className="row">
             <img className="player-pic" src={`https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/${player.teamId}/2017/260x190/${player.personId}.png`}/>

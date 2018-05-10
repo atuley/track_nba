@@ -39,7 +39,7 @@ defmodule TrackNbaWeb.PlayerView do
         teamId: player.teamId,
         fullName: "#{player.firstName} #{player.lastName}",
         stats: player.stats,
-        teamColor: ""
+        teamColor: player.teamColor
       }
     }
   end
