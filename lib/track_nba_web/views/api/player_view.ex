@@ -20,7 +20,8 @@ defmodule TrackNbaWeb.PlayerView do
       pos: player.pos,
       teamId: player.teamId,
       fullName: "#{player.firstName} #{player.lastName}",
-      isWatching: false
+      isWatching: false,
+      teamColor: player.teamColor
     }
   end
 
@@ -37,7 +38,8 @@ defmodule TrackNbaWeb.PlayerView do
         pos: player.pos,
         teamId: player.teamId,
         fullName: "#{player.firstName} #{player.lastName}",
-        stats: player.stats
+        stats: player.stats,
+        teamColor: ""
       }
     }
   end

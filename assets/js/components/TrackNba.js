@@ -1,6 +1,6 @@
 import React from "react";
 import _ from 'lodash';
-import { addPlayerToWatch, changeTheName, subscribeToPlayerStats } from "../actions";
+import { addPlayerToWatch, subscribeToPlayerStats } from "../actions";
 import { bindActionCreators } from 'redux';
 import PlayerStat from "./PlayerStat"
 
@@ -40,7 +40,7 @@ export default class TrackNba extends React.Component {
               <tbody>
                 {_.map(this.state.players, (player) => {
                     return (
-                      <tr className="search-border" key={player.personId}>
+                      <tr className="search-border" key={player.personId} style={{borderLeft: `8px solid ${player.teamColor}`}}>
                         <td className="col-md-2">
                           <img className="search-player-pic" src={`https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/${player.teamId}/2017/260x190/${player.personId}.png`}/>
                         </td>

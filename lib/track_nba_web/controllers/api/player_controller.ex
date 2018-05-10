@@ -5,6 +5,7 @@ defmodule TrackNbaWeb.PlayerController do
   def index(conn, _params) do
     players = NbaEx.players()
     |> Utils.filter_out_non_franchise_players()
+    |> Utils.add_team_colors()
 
     render(conn, "players.json", data: players)
   end
