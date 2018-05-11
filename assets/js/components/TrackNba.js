@@ -2,7 +2,7 @@ import React from "react";
 import _ from 'lodash';
 import { addPlayerToWatch, subscribeToPlayerStats } from "../actions";
 import { bindActionCreators } from 'redux';
-import PlayerStat from "./PlayerStat"
+import PlayerStat from "./PlayerStat";
 
 export default class TrackNba extends React.Component {
   constructor(props) {
@@ -13,21 +13,37 @@ export default class TrackNba extends React.Component {
   }
 
   subscribeToPlayerStats(player) {
-    player.isWatching = true;
+    this.disableButton(player)
     this.props.dispatch(addPlayerToWatch(player))
     this.props.dispatch(subscribeToPlayerStats(player, this.props.playersWatching))
   }
 
+  disableButton(player) {
+    var updatedPlayers = this.state.players
+    var index = _.findIndex(updatedPlayers, function(p) {
+      return p.personId == player.personId;
+    })
+    updatedPlayers[index].isWatching = true
+
+    this.setState({
+      players: updatedPlayers
+    })
+  }
+
   searchPlayers(searchContent, { target: { value: searchText } }) {
-    //needs refactoring and doesn't like spaces
-    //doesnt seem to downcase for lebron james?
-    let temp = this.props[searchContent];
-    const updated = _.filter(temp, function(tp)
-      {
-        return _.chain(tp).values().lowerCase().includes(_.lowerCase(searchText)).value();
-      }
-    )
-    this.setState({ [searchContent]: updated });
+    let currentPlayers = this.props[searchContent];
+    const updatedPlayers = _.filter(currentPlayers, function(player) {
+      return _.chain(player)
+              .values()
+              .lowerCase()
+              .includes(
+                _.lowerCase(searchText))
+                .value();
+    })
+
+    this.setState({
+      [searchContent]: updatedPlayers
+    });
   }
 
   render() {
