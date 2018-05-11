@@ -1,6 +1,6 @@
 import React from "react";
 import _ from 'lodash';
-import { addPlayer, addPlayerToWatch, subscribeToPlayerStats } from "../actions";
+import { addPlayerToWatch, subscribeToPlayerStats } from "../actions";
 import { bindActionCreators } from 'redux';
 import PlayerStat from "./PlayerStat";
 
@@ -14,7 +14,6 @@ export default class TrackNba extends React.Component {
 
   subscribeToPlayerStats(player) {
     this.disableButton(player)
-    this.props.dispatch(addPlayer())
     this.props.dispatch(addPlayerToWatch(player))
     this.props.dispatch(subscribeToPlayerStats(player, this.props.playersWatching))
   }
@@ -48,21 +47,14 @@ export default class TrackNba extends React.Component {
   }
 
   render() {
-    if (this.props.isLoading) {
-      return (
+    return (
+      <div>
         <div className="row">
-          Loading...
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          <div className="row">
-            <input className="form-control" placeholder="Search for a player by name" type="text" onChange={this.searchPlayers.bind(this, 'players')}/>
-            <div className="player-search">
-              <table className="table">
-                <tbody>
-                  {_.map(this.state.players, (player) => {
+          <input className="form-control" placeholder="Search for a player by name" type="text" onChange={this.searchPlayers.bind(this, 'players')}/>
+          <div className="player-search">
+            <table className="table">
+              <tbody>
+                {_.map(this.state.players, (player) => {
                     return (
                       <tr className="search-border" key={player.personId} style={{borderLeft: `8px solid ${player.teamColor}`}}>
                         <td className="col-md-2">
@@ -85,18 +77,17 @@ export default class TrackNba extends React.Component {
                         </td>
                       </tr>
                     );
-                  })}
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div className="row">
-            {_.map(this.props.playersWatching, (player) => {
-                return <PlayerStat key={player.personId} {...this.props} player={player}/>;
-            })}
+                })}
+              </tbody>
+            </table>
           </div>
         </div>
-      );
-    }
+        <div className="row">
+          {_.map(this.props.playersWatching, (player) => {
+              return <PlayerStat key={player.personId} {...this.props} player={player}/>;
+          })}
+        </div>
+      </div>
+    );
   }
 }

@@ -8,21 +8,13 @@ import {
   CHANGE_NAME,
   RECEIVE_PLAYERS,
   UPDATE_PLAYER_STATE,
-  RECEIVE_PLAYER_TO_WATCH,
-  ADD_PLAYER_TO_WATCH
+  RECEIVE_PLAYER_TO_WATCH
 } from "./constants";
 
 const defaultHeaders = {
   'Accept': 'application/json',
   'Content-Type': 'application/json',
 };
-
-export function addPlayer() {
-  return {
-    type: ADD_PLAYER_TO_WATCH,
-    isLoading: true
-  };
-}
 
 export function addPlayerToWatch(player) {
   return dispatch => {
@@ -40,8 +32,7 @@ export function addPlayerToWatch(player) {
 export function receivePlayer(player) {
   return {
     type: RECEIVE_PLAYER_TO_WATCH,
-    player: player,
-    isLoading: false
+    player: player
   };
 }
 

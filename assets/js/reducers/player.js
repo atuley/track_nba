@@ -4,8 +4,7 @@ import {
   CHANGE_NAME,
   RECEIVE_PLAYERS,
   UPDATE_PLAYER_STATE,
-  RECEIVE_PLAYER_TO_WATCH,
-  ADD_PLAYER_TO_WATCH
+  RECEIVE_PLAYER_TO_WATCH
 } from "../constants";
 
 export default function(state={
@@ -13,7 +12,7 @@ export default function(state={
   players: [],
   stats: [],
   playersWatching: [],
-  isLoading: false
+  playerLoading: true
 }, action) {
   switch(action.type) {
     case CHANGE_NAME: {
@@ -36,11 +35,8 @@ export default function(state={
         playersWatching: newPlayersList
       };
     }
-    case ADD_PLAYER_TO_WATCH: {
-      return {...state, isLoading: action.isLoading}
-    }
     case RECEIVE_PLAYER_TO_WATCH: {
-      return {...state, playersWatching: _.concat(state.playersWatching, action.player), isLoading: action.isLoading}
+      return {...state, playersWatching: _.concat(state.playersWatching, action.player), playerLoading: false}
     }
   }
   return state;

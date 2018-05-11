@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PlayerStat = ({player}) => {
+const PlayerStat = ({player, playerLoading}) => {
   return(
     <div className="col-md-5 player-stat__container">
       <div className="row player-stat__border" style={{borderLeft: `8px solid ${player.teamColor}`}}>
