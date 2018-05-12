@@ -17,11 +17,10 @@
   border-radius: 50%;
   height: 125px;
   width: auto;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  position: relative;
-  margin: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
 }
 
 .player-stat {
