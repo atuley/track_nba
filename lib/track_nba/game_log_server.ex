@@ -33,6 +33,7 @@ defmodule TrackNba.GameLogServer do
 
     player = NbaEx.players()
     |> Enum.find(fn(player) -> player.personId == player_id end)
+    |> Utils.add_color()
 
     new_player = case stats do
       {:error, "Game for player not found"} -> Map.put_new(player, :stats, %NbaEx.PlayerStat{})
@@ -61,6 +62,7 @@ defmodule TrackNba.GameLogServer do
 
         player = NbaEx.players()
         |> Enum.find(fn(player) -> player.personId == id end)
+        |> Utils.add_color()
 
         new_player = case stats do
           {:error, "Game for player not found"} -> Map.put_new(player, :stats, %NbaEx.PlayerStat{})

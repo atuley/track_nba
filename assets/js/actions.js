@@ -8,7 +8,8 @@ import {
   CHANGE_NAME,
   RECEIVE_PLAYERS,
   UPDATE_PLAYER_STATE,
-  RECEIVE_PLAYER_TO_WATCH
+  RECEIVE_PLAYER_TO_WATCH,
+  RECEIVE_CACHED_PLAYERS
 } from "./constants";
 
 const defaultHeaders = {
@@ -58,6 +59,32 @@ export function getAllPlayers() {
       .then((response) => {
         return dispatch(receivePlayers(response.data));
       });
+  };
+}
+
+export function getCachedPlayers() {
+  var cachedPlayers = JSON.parse(localStorage.getItem('playersWatching'));
+  return dispatch => {
+    dispatch(sendCachedPlayers(cachedPlayers))
+    for (var i = 0; i < cachedPlayers.length; i++) {
+      let channel = socket.channel(`rooms:${cachedPlayers[i].personId}`);
+
+      channel.join()
+        .receive("ok", resp => { console.log("Joined player channel successful", resp); })
+        .receive("error", resp => { console.log("Unable to join", resp); });
+
+      channel.on("player_stat_update", payload => {
+        console.log(`Got score update message for ${payload.player.personId}`, payload);
+        dispatch({type: UPDATE_PLAYER_STATE, player: payload.player});
+      });
+    }
+  }
+}
+
+export function sendCachedPlayers(cachedPlayers) {
+  return {
+    type: RECEIVE_CACHED_PLAYERS,
+    playersWatching: cachedPlayers
   };
 }
 
