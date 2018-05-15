@@ -30,7 +30,7 @@ export default class TrackNba extends React.Component {
       players: updatedPlayers
     })
   }
-
+  
   searchPlayers(searchContent, { target: { value: searchText } }) {
     let currentPlayers = this.props[searchContent];
     const updatedPlayers = _.filter(currentPlayers, function(player) {

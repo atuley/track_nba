@@ -10,7 +10,8 @@ import {
   UPDATE_PLAYER_STATE,
   RECEIVE_PLAYER_TO_WATCH,
   RECEIVE_CACHED_PLAYERS,
-  ADD_PLAYER_TO_WATCH
+  ADD_PLAYER_TO_WATCH,
+  REMOVE_PLAYER
 } from "./constants";
 
 const defaultHeaders = {
@@ -43,6 +44,22 @@ export function receivePlayer(player) {
     type: RECEIVE_PLAYER_TO_WATCH,
     player: player,
     isLoading: false
+  };
+}
+
+export function removePlayer(player) {
+  // debugger;
+  console.log("in here");
+  localStorage.removeItem('playersWatching')
+
+  let channel = socket.channel(`rooms:${player.personId}`);
+  channel.leave()
+    .receive("ok", resp => { console.log("Left successful", resp); })
+    .receive("error", resp => { console.log("Unable to leave", resp); });
+
+  return {
+    type: REMOVE_PLAYER,
+    playersWatching: []
   };
 }
 

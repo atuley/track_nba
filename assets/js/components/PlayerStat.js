@@ -1,6 +1,13 @@
 import React from 'react';
+import { connect } from "react-redux";
+import { bindActionCreators } from 'redux';
+import { removePlayer } from "../actions";
 
-const PlayerStat = ({player}) => {
+const doSomething = (dispatch, player) => {
+  dispatch(removePlayer(player));
+}
+
+const PlayerStat = ({player, dispatch}) => {
   return(
     <div className="col-md-5 player-stat__container">
       <div className="row player-stat__border" style={{borderLeft: `8px solid ${player.teamColor}`}}>
@@ -12,7 +19,7 @@ const PlayerStat = ({player}) => {
             <strong>{player.firstName} {player.lastName}</strong>
           </div>
           <div className="row game-stat">
-            PHL 100 - GSW 101
+            <button onClick={doSomething.bind(this,dispatch, player)}>Remove</button>
           </div>
         </div>
         <div className="col-md-7 col-xs-7 u-border-left">
@@ -59,4 +66,9 @@ const PlayerStat = ({player}) => {
   );
 };
 
-export default PlayerStat;
+const mapDispatchToProps = (dispatch) => ({
+  dispatch,
+  ...bindActionCreators(dispatch)
+});
+
+export default connect(mapDispatchToProps)(PlayerStat);
