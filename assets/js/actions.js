@@ -10,8 +10,7 @@ import {
   UPDATE_PLAYER_STATE,
   RECEIVE_PLAYER_TO_WATCH,
   RECEIVE_CACHED_PLAYERS,
-  ADD_PLAYER_TO_WATCH,
-  REMOVE_PLAYER
+  ADD_PLAYER_TO_WATCH
 } from "./constants";
 
 const defaultHeaders = {
@@ -102,21 +101,6 @@ export function receivePlayers(players) {
   return {
     type: RECEIVE_PLAYERS,
     players: players
-  };
-}
-
-export function removePlayer(player) {
-  var cachedPlayers = JSON.parse(localStorage.getItem('playersWatching'));
-  var index = _.findIndex(cachedPlayers, function(o) {
-    return o.personId == player.personId;
-  })
-  // cachedPlayers = cachedPlayers.splice(index, 1);
-  // console.log(cachedPlayers);
-  // localStorage.removeItem('playersWatching')
-  localStorage.setItem('playersWatching', JSON.stringify(cachedPlayers))
-  return {
-    type: REMOVE_PLAYER,
-    playersWatching: cachedPlayers
   };
 }
 

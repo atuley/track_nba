@@ -6,8 +6,7 @@ import {
   UPDATE_PLAYER_STATE,
   RECEIVE_PLAYER_TO_WATCH,
   RECEIVE_CACHED_PLAYERS,
-  ADD_PLAYER_TO_WATCH,
-  REMOVE_PLAYER
+  ADD_PLAYER_TO_WATCH
 } from "../constants";
 
 export default function(state={
@@ -58,9 +57,6 @@ export default function(state={
       return {...state, playersWatching: _.concat(state.playersWatching, action.player), isLoading: action.isLoading}
     }
     case RECEIVE_CACHED_PLAYERS: {
-      return {...state, playersWatching: action.playersWatching}
-    }
-    case REMOVE_PLAYER: {
       return {...state, playersWatching: action.playersWatching}
     }
   }

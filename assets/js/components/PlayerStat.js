@@ -1,6 +1,4 @@
 import React from 'react';
-import { bindActionCreators } from 'redux';
-import { removePlayer } from "../actions";
 
 const PlayerStat = ({player}) => {
   return(
@@ -15,9 +13,6 @@ const PlayerStat = ({player}) => {
           </div>
           <div className="row game-stat">
             PHL 100 - GSW 101
-          </div>
-          <div className="row">
-            <button onClick={ removePlayer.bind(this, player)}>>Remove</button>
           </div>
         </div>
         <div className="col-md-7 col-xs-7 u-border-left">
