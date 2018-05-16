@@ -1,6 +1,6 @@
 import React from "react";
 import _ from 'lodash';
-import { addPlayer, addPlayerToWatch, subscribeToPlayerStats } from "../actions";
+import { addPlayer, addPlayerToWatch, subscribeToPlayerStats, manageButton } from "../actions";
 import { bindActionCreators } from 'redux';
 import PlayerStat from "./PlayerStat";
 
@@ -11,6 +11,12 @@ export default class TrackNba extends React.Component {
       players: []
     };
   }
+
+  // componentDidUpdate() {
+  //   if (localStorage.getItem('playersWatching')) {
+  //     this.props.dispatch(manageButton(this.state.players))
+  //   }
+  // }
 
   subscribeToPlayerStats(player) {
     this.disableButton(player)
@@ -30,7 +36,7 @@ export default class TrackNba extends React.Component {
       players: updatedPlayers
     })
   }
-  
+
   searchPlayers(searchContent, { target: { value: searchText } }) {
     let currentPlayers = this.props[searchContent];
     const updatedPlayers = _.filter(currentPlayers, function(player) {

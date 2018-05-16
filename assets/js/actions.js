@@ -11,7 +11,8 @@ import {
   RECEIVE_PLAYER_TO_WATCH,
   RECEIVE_CACHED_PLAYERS,
   ADD_PLAYER_TO_WATCH,
-  REMOVE_PLAYER
+  REMOVE_PLAYER,
+  UPDATE_BUTTON
 } from "./constants";
 
 const defaultHeaders = {
@@ -48,9 +49,14 @@ export function receivePlayer(player) {
 }
 
 export function removePlayer(player) {
-  // debugger;
-  console.log("in here");
-  localStorage.removeItem('playersWatching')
+  //      update 'watching' text
+  var cachedPlayers = JSON.parse(localStorage.getItem('playersWatching'))
+  var index = _.findIndex(cachedPlayers, function(o) {
+    return o.personId == player.personId;
+  });
+
+  cachedPlayers.splice(index, 1)
+  localStorage.setItem('playersWatching', cachedPlayers)
 
   let channel = socket.channel(`rooms:${player.personId}`);
   channel.leave()
@@ -59,7 +65,7 @@ export function removePlayer(player) {
 
   return {
     type: REMOVE_PLAYER,
-    playersWatching: []
+    playersWatching: cachedPlayers
   };
 }
 
@@ -106,6 +112,31 @@ export function getCachedPlayers() {
     }
   }
 }
+
+// export function manageButton(players) {
+//   // if player.isWatching == true && player.isNot in playersWatching
+//   //   player.isWatching == false
+//
+//   var newPlayers = players;
+//   var cachedPlayers = JSON.parse(localStorage.getItem('playersWatching'));
+//   for (var i = 0; i < newPlayers.length; i++) {
+//     if (newPlayers[i].isWatching && (_.findIndex(cachedPlayers, function(o) { return o.personId == newPlayers[i].personId; })) == -1) {
+//       newPlayers[i].isWatching = true
+//     }
+//   }
+//   return {
+//     type: UPDATE_BUTTON,
+//     players: newPlayers
+//   };
+//   // var cachedPlayers = JSON.parse(localStorage.getItem('playersWatching'));
+//   // for (var i = 0; i < newPlayers.length; i++) {
+//   //   for (var j = 0; j < cachedPlayers.length; j++) {
+//   //     if (cachedPlayers[j].personId == newPlayers[i].personId && cachedPlayers[i].isWatching) {
+//   //       newPlayers[i].isWatching = true
+//   //     }
+//   //   }
+//   // }
+// }
 
 export function sendCachedPlayers(cachedPlayers) {
   return {

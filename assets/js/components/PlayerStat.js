@@ -19,7 +19,7 @@ const PlayerStat = ({player, dispatch}) => {
             <strong>{player.firstName} {player.lastName}</strong>
           </div>
           <div className="row game-stat">
-            <button onClick={doSomething.bind(this,dispatch, player)}>Remove</button>
+            <button onClick={doSomething.bind(this, dispatch, player)}>Remove</button>
           </div>
         </div>
         <div className="col-md-7 col-xs-7 u-border-left">

@@ -7,7 +7,8 @@ import {
   RECEIVE_PLAYER_TO_WATCH,
   RECEIVE_CACHED_PLAYERS,
   ADD_PLAYER_TO_WATCH,
-  REMOVE_PLAYER
+  REMOVE_PLAYER,
+  UPDATE_BUTTON
 } from "../constants";
 
 export default function(state={
@@ -45,7 +46,7 @@ export default function(state={
       );
 
       localStorage.setItem('playersWatching', JSON.stringify(newPlayersList))
-      // debugger;
+
       return {
         ...state,
         playersWatching: newPlayersList
@@ -63,6 +64,9 @@ export default function(state={
     case REMOVE_PLAYER: {
       return {...state, playersWatching: action.playersWatching}
     }
+    // case UPDATE_BUTTON: {
+    //   return {...state, players: action.players}
+    // }
   }
   return state;
 }
