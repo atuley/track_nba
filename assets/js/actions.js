@@ -49,7 +49,11 @@ export function receivePlayer(player) {
 }
 
 export function removePlayer(player) {
-  //      update 'watching' text
+  let channel = socket.channel(`rooms:${player.personId}`);
+  channel.leave()
+    .receive("ok", resp => { console.log("Left successful", resp); })
+    .receive("error", resp => { console.log("Unable to leave", resp); });
+
   var cachedPlayers = JSON.parse(localStorage.getItem('playersWatching'))
   var index = _.findIndex(cachedPlayers, function(o) {
     return o.personId == player.personId;
@@ -57,11 +61,6 @@ export function removePlayer(player) {
 
   cachedPlayers.splice(index, 1)
   localStorage.setItem('playersWatching', cachedPlayers)
-
-  let channel = socket.channel(`rooms:${player.personId}`);
-  channel.leave()
-    .receive("ok", resp => { console.log("Left successful", resp); })
-    .receive("error", resp => { console.log("Unable to leave", resp); });
 
   return {
     type: REMOVE_PLAYER,
@@ -112,31 +111,6 @@ export function getCachedPlayers() {
     }
   }
 }
-
-// export function manageButton(players) {
-//   // if player.isWatching == true && player.isNot in playersWatching
-//   //   player.isWatching == false
-//
-//   var newPlayers = players;
-//   var cachedPlayers = JSON.parse(localStorage.getItem('playersWatching'));
-//   for (var i = 0; i < newPlayers.length; i++) {
-//     if (newPlayers[i].isWatching && (_.findIndex(cachedPlayers, function(o) { return o.personId == newPlayers[i].personId; })) == -1) {
-//       newPlayers[i].isWatching = true
-//     }
-//   }
-//   return {
-//     type: UPDATE_BUTTON,
-//     players: newPlayers
-//   };
-//   // var cachedPlayers = JSON.parse(localStorage.getItem('playersWatching'));
-//   // for (var i = 0; i < newPlayers.length; i++) {
-//   //   for (var j = 0; j < cachedPlayers.length; j++) {
-//   //     if (cachedPlayers[j].personId == newPlayers[i].personId && cachedPlayers[i].isWatching) {
-//   //       newPlayers[i].isWatching = true
-//   //     }
-//   //   }
-//   // }
-// }
 
 export function sendCachedPlayers(cachedPlayers) {
   return {

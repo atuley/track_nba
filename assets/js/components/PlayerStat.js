@@ -1,13 +1,14 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
-import { removePlayer } from "../actions";
+import { removePlayer, startRemove } from "../actions";
 
 const doSomething = (dispatch, player) => {
+  dispatch(startRemove());
   dispatch(removePlayer(player));
 }
 
-const PlayerStat = ({player, dispatch}) => {
+const PlayerStat = ({player, dispatch, isLoading}) => {
   return(
     <div className="col-md-5 player-stat__container">
       <div className="row player-stat__border" style={{borderLeft: `8px solid ${player.teamColor}`}}>

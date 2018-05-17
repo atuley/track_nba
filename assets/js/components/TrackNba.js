@@ -12,12 +12,6 @@ export default class TrackNba extends React.Component {
     };
   }
 
-  // componentDidUpdate() {
-  //   if (localStorage.getItem('playersWatching')) {
-  //     this.props.dispatch(manageButton(this.state.players))
-  //   }
-  // }
-
   subscribeToPlayerStats(player) {
     this.disableButton(player)
     this.props.dispatch(addPlayer())
@@ -56,8 +50,43 @@ export default class TrackNba extends React.Component {
   render() {
     if (this.props.isLoading) {
       return (
-        <div className="row">
-          Loading...
+        <div>
+          <div className="row">
+            <input className="form-control" placeholder="Search for a player by name" type="text" onChange={this.searchPlayers.bind(this, 'players')}/>
+            <div className="player-search">
+              <table className="table">
+                <tbody>
+                  {_.map(this.state.players, (player) => {
+                    return (
+                      <tr className="search-border" key={player.personId} style={{borderLeft: `8px solid ${player.teamColor}`}}>
+                        <td className="col-md-2">
+                          <img className="search-player-pic" src={`https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/${player.teamId}/2017/260x190/${player.personId}.png`}/>
+                        </td>
+                        <td className="col-md-8">
+                          <span className="player-name">
+                            {`${player.firstName} ${player.lastName}`}
+                          </span>
+                          <span className="player-pos">
+                            {player.pos}
+                          </span>
+                        </td>
+                        <td className="u-align-right col-md-2">
+                          <button className="add-button" disabled={player.isWatching} onClick={this.subscribeToPlayerStats.bind(this, player)}>
+                            <span>
+                              {player.isWatching ? "Watching" : "Watch"}
+                            </span>
+                          </button>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div className="row">
+            <img className="loading-gif" src="images/load.gif"/>
+          </div>
         </div>
       );
     } else {

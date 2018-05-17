@@ -64,9 +64,6 @@ export default function(state={
     case REMOVE_PLAYER: {
       return {...state, playersWatching: action.playersWatching}
     }
-    // case UPDATE_BUTTON: {
-    //   return {...state, players: action.players}
-    // }
   }
   return state;
 }
