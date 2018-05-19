@@ -2,6 +2,25 @@
   max-width: 1000px !important;
 }
 
+.remove {
+  background-color: #c62525;
+  width: 25px;
+  height: 25px;
+  float: right;
+  margin-top: -16px;
+  margin-right: -27px;
+  color: white;
+  border-radius: 50%;
+}
+.remove:hover {
+  cursor: pointer;
+}
+
+.delete {
+  display: block;
+  padding-top: 3px;
+}
+
 .main-stats {
   border-bottom: 1px solid #aaaaaa;
   padding: 5px;
