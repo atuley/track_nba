@@ -77,4 +77,14 @@ defmodule UtilsTest do
       assert first_player.teamColor == "#002d62"
     end
   end
+
+  test "find_last_game/1" do
+    use_cassette "game_log" do
+      stats = Utils.find_last_game("201939")
+
+      assert stats.fgp == "36.8"
+      assert stats.min == "34:06"
+      assert stats.points == "16"
+    end
+  end
 end

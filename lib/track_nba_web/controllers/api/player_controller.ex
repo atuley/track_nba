@@ -12,9 +12,7 @@ defmodule TrackNbaWeb.PlayerController do
 
   def create(conn, %{"player_id" => player_id}) do
     stats = player_id
-    |> Utils.find_team()
-    |> Utils.find_game(Utils.current_date())
-    |> Utils.retrieve_stats_for_player(player_id, Utils.current_date())
+    |> Utils.find_last_game()
 
     player = NbaEx.players()
     |> Enum.find(fn(player) -> player.personId == player_id end)

@@ -1,10 +1,14 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
-import { removePlayer } from "../actions";
+import { removePlayer, subscribeToPlayerStats } from "../actions";
 
 const remove = (dispatch, player) => {
   dispatch(removePlayer(player));
+}
+
+const watchLive = (dispatch, player) => {
+  dispatch(subscribeToPlayerStats(player));
 }
 
 const PlayerStat = ({player, dispatch, isLoading}) => {
@@ -20,7 +24,7 @@ const PlayerStat = ({player, dispatch, isLoading}) => {
               <strong>{player.firstName} {player.lastName}</strong>
             </div>
             <div className="row game-stat">
-              GSW 100-101
+              <button onClick={watchLive.bind(this, dispatch, player)}>Watch live</button>
             </div>
           </div>
           <div className="col-md-7 col-xs-7 u-border-left">

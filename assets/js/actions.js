@@ -68,7 +68,7 @@ export function removePlayer(player) {
   };
 }
 
-export function subscribeToPlayerStats(player, playersWatching) {
+export function subscribeToPlayerStats(player) {
   return dispatch => {
     let channel = socket.channel(`rooms:${player.personId}`);
 

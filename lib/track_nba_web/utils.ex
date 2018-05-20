@@ -17,6 +17,21 @@ defmodule TrackNbaWeb.Utils do
     end
   end
 
+  def find_last_game(player_id) do
+    result = player_id
+    |> NbaEx.player_game_log()
+    |> List.first
+
+    date = result
+    |> Map.get(:gameDateUTC)
+    |> String.replace("-", "")
+
+    game_id = result
+    |> Map.get(:gameId)
+
+    retrieve_stats_for_player(game_id, player_id, date)
+  end
+
   def retrieve_stats_for_player({:error, "Game for player not found"}, _player_id, _date), do: {:error, "Game for player not found"}
   def retrieve_stats_for_player(game_id, player_id, date) do
     result = date
