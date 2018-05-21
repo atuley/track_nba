@@ -40,7 +40,14 @@ defmodule TrackNba.GameLogServer do
       _ -> Map.put_new(player, :stats, stats)
     end
 
-    state = Map.put(state, player_id, new_player)
+    new_stat = case new_player.stats.teamId do
+      nil -> Map.put_new(new_player.stats, :gameActive, false)
+      _ -> Map.put_new(new_player.stats, :gameActive, true)
+    end
+
+    new_new = Map.put(new_player, :stats, new_stat)
+
+    state = Map.put(state, player_id, new_new)
     Endpoint.broadcast("rooms:" <> player_id, "player_stat_update", %{"player" => state})
     {:reply, state[player_id], state}
   end
@@ -69,7 +76,14 @@ defmodule TrackNba.GameLogServer do
           _ -> Map.put_new(player, :stats, stats)
         end
 
-        update_log(id, new_player)
+        new_stat = case new_player.stats.teamId do
+          nil -> Map.put_new(new_player.stats, :gameActive, false)
+          _ -> Map.put_new(new_player.stats, :gameActive, true)
+        end
+
+        new_new = Map.put(new_player, :stats, new_stat)
+
+        update_log(id, new_new)
       end)
     end
     schedule_work()

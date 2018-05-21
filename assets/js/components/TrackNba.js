@@ -16,6 +16,7 @@ export default class TrackNba extends React.Component {
     this.disableButton(player)
     this.props.dispatch(addPlayer())
     this.props.dispatch(addPlayerToWatch(player))
+    // this.props.dispatch(findGame(player))
   }
 
   disableButton(player) {

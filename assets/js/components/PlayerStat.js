@@ -11,6 +11,12 @@ const watchLive = (dispatch, player) => {
   dispatch(subscribeToPlayerStats(player));
 }
 
+const watchLiveButton = (dispatch, player) => {
+  return(
+    <button onClick={watchLive.bind(this, dispatch, player)}>Watch live</button>
+  );
+}
+
 const PlayerStat = ({player, dispatch, isLoading}) => {
   return(
     <div>
@@ -24,7 +30,7 @@ const PlayerStat = ({player, dispatch, isLoading}) => {
               <strong>{player.firstName} {player.lastName}</strong>
             </div>
             <div className="row game-stat">
-              <button onClick={watchLive.bind(this, dispatch, player)}>Watch live</button>
+            {player.stats.gameActive ? watchLiveButton(dispatch, player) : "Score goes here" }
             </div>
           </div>
           <div className="col-md-7 col-xs-7 u-border-left">
