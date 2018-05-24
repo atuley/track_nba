@@ -39,22 +39,14 @@ defmodule TrackNbaWeb.Utils do
 
     Map.get(result, :player_stats)
     |> Kernel.length
-    |> has_stats?(result, player_id, date)
+    |> has_stats?(result, player_id)
   end
 
-  defp has_stats?(1, result, _player_id, _date), do: result
-  defp has_stats?(_length, result, player_id, date) do
-    new_result = result
+  defp has_stats?(1, result, _player_id), do: result
+  defp has_stats?(_length, result, player_id) do
+    result
     |> Map.get(:player_stats)
     |> Enum.find(fn(player) -> player.personId == player_id end)
-
-    # IO.puts "Current date: #{current_date()}"
-    # IO.puts "param #{date}"
-
-    cond do
-      current_date() == date -> new_result |> Map.put_new(:gameActive, true)
-      true -> new_result |> Map.put_new(:gameActive, false)
-    end
   end
 
   def current_date do
