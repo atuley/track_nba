@@ -36,7 +36,7 @@ defmodule TrackNba.GameLogServer do
     |> Utils.add_color()
 
     new_player = case stats do
-      {:error, "Game for player not found"} -> Map.put_new(player, :stats, %NbaEx.PlayerStat{})
+      {:error, "Game for player not found"} -> Map.put_new(player, :stats, Map.put_new(%NbaEx.Boxscore{}, :stats, %NbaEx.PlayerStat{}))
       _ -> Map.put_new(player, :stats, stats)
     end
 
@@ -65,7 +65,7 @@ defmodule TrackNba.GameLogServer do
         |> Utils.add_color()
 
         new_player = case stats do
-          {:error, "Game for player not found"} -> Map.put_new(player, :stats, %NbaEx.PlayerStat{})
+          {:error, "Game for player not found"} -> Map.put_new(player, :stats, Map.put_new(%NbaEx.Boxscore{}, :stats, %NbaEx.PlayerStat{}))
           _ -> Map.put_new(player, :stats, stats)
         end
 

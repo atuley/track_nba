@@ -36,10 +36,13 @@ defmodule TrackNbaWeb.Utils do
   def retrieve_stats_for_player(game_id, player_id, date) do
     result = date
     |> NbaEx.boxscore(game_id)
+    # |> IO.inspect
 
-    Map.get(result, :player_stats)
+    stat = Map.get(result, :player_stats)
     |> Kernel.length
     |> has_stats?(result, player_id)
+
+    Map.put(result, :stats, stat)
   end
 
   defp has_stats?(1, result, _player_id), do: result
