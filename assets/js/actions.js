@@ -12,7 +12,8 @@ import {
   RECEIVE_CACHED_PLAYERS,
   ADD_PLAYER_TO_WATCH,
   REMOVE_PLAYER,
-  UPDATE_BUTTON
+  UPDATE_BUTTON,
+  RECEIVE_SAME_PLAYER
 } from "./constants";
 
 const defaultHeaders = {
@@ -49,10 +50,10 @@ export function receivePlayer(player) {
 }
 
 export function removePlayer(player) {
-  let channel = socket.channel(`rooms:${player.personId}`);
-  channel.leave()
-    .receive("ok", resp => { console.log("Left successful", resp); })
-    .receive("error", resp => { console.log("Unable to leave", resp); });
+  // let channel = socket.channel(`rooms:${player.personId}`);
+  // channel.leave()
+  //   .receive("ok", resp => { console.log("Left successful", resp); })
+  //   .receive("error", resp => { console.log("Unable to leave", resp); });
 
   var cachedPlayers = JSON.parse(localStorage.getItem('playersWatching'))
   var index = _.findIndex(cachedPlayers, function(o) {
@@ -93,22 +94,40 @@ export function getAllPlayers() {
   };
 }
 
+// export function getCachedPlayers() {
+//   var cachedPlayers = JSON.parse(localStorage.getItem('playersWatching'));
+//   return dispatch => {
+//     dispatch(sendCachedPlayers(cachedPlayers))
+//     for (var i = 0; i < cachedPlayers.length; i++) {
+//       let channel = socket.channel(`rooms:${cachedPlayers[i].personId}`);
+//
+//       channel.join()
+//         .receive("ok", resp => { console.log("Joined player channel successful", resp); })
+//         .receive("error", resp => { console.log("Unable to join", resp); });
+//
+//       channel.on("player_stat_update", payload => {
+//         console.log(`Got score update message for ${payload.player.personId}`, payload);
+//         dispatch({type: UPDATE_PLAYER_STATE, player: payload.player});
+//       });
+//     }
+//   }
+// }
+
 export function getCachedPlayers() {
   var cachedPlayers = JSON.parse(localStorage.getItem('playersWatching'));
+
+  // return dispatch => {
+  //   fetch(`/api/player/${playerIds}`, {
+  //     headers: defaultHeaders,
+  //     method: 'POST'
+  //   })
+  //     .then(grabJSON)
+  //     .then((response) => {
+  //       return dispatch(sendCachedPlayers(response.data));
+  //     });
+  // };
   return dispatch => {
     dispatch(sendCachedPlayers(cachedPlayers))
-    for (var i = 0; i < cachedPlayers.length; i++) {
-      let channel = socket.channel(`rooms:${cachedPlayers[i].personId}`);
-
-      channel.join()
-        .receive("ok", resp => { console.log("Joined player channel successful", resp); })
-        .receive("error", resp => { console.log("Unable to join", resp); });
-
-      channel.on("player_stat_update", payload => {
-        console.log(`Got score update message for ${payload.player.personId}`, payload);
-        dispatch({type: UPDATE_PLAYER_STATE, player: payload.player});
-      });
-    }
   }
 }
 

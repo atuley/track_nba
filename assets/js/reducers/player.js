@@ -55,7 +55,11 @@ export default function(state={
     }
     case RECEIVE_PLAYER_TO_WATCH: {
       var newPlayersList = _.concat(state.playersWatching, action.player)
-      localStorage.setItem('playersWatching', JSON.stringify(newPlayersList))
+      var playerIdList = []
+      _.forEach(newPlayersList, function(value) {
+        playerIdList.push(value.personId)
+      })
+      localStorage.setItem('playersWatching', JSON.stringify(playerIdList))
       return {...state, playersWatching: newPlayersList, isLoading: action.isLoading}
     }
     case RECEIVE_CACHED_PLAYERS: {
