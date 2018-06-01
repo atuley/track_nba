@@ -116,19 +116,19 @@ export function getAllPlayers() {
 export function getCachedPlayers() {
   var cachedPlayers = JSON.parse(localStorage.getItem('playersWatching'));
 
-  // return dispatch => {
-  //   fetch(`/api/player/${playerIds}`, {
-  //     headers: defaultHeaders,
-  //     method: 'POST'
-  //   })
-  //     .then(grabJSON)
-  //     .then((response) => {
-  //       return dispatch(sendCachedPlayers(response.data));
-  //     });
-  // };
   return dispatch => {
-    dispatch(sendCachedPlayers(cachedPlayers))
-  }
+    fetch(`/api/players/${cachedPlayers}`, {
+      headers: defaultHeaders,
+      method: 'POST'
+    })
+      .then(grabJSON)
+      .then((response) => {
+        return dispatch(sendCachedPlayers(response.data));
+      });
+  };
+  // return dispatch => {
+  //   dispatch(sendCachedPlayers(cachedPlayers))
+  // }
 }
 
 export function sendCachedPlayers(cachedPlayers) {
