@@ -5,15 +5,12 @@ import socket from "./socket";
 import _ from 'lodash';
 
 import {
-  CHANGE_NAME,
   RECEIVE_PLAYERS,
   UPDATE_PLAYER_STATE,
   RECEIVE_PLAYER_TO_WATCH,
   RECEIVE_CACHED_PLAYERS,
   ADD_PLAYER_TO_WATCH,
-  REMOVE_PLAYER,
-  UPDATE_BUTTON,
-  RECEIVE_SAME_PLAYER
+  REMOVE_PLAYER
 } from "./constants";
 
 const defaultHeaders = {
@@ -50,10 +47,6 @@ export function receivePlayer(player) {
 }
 
 export function removePlayer(playersWatching, player) {
-  // let channel = socket.channel(`rooms:${player.personId}`);
-  // channel.leave()
-  //   .receive("ok", resp => { console.log("Left successful", resp); })
-  //   .receive("error", resp => { console.log("Unable to leave", resp); });
   var cachedPlayers = JSON.parse(localStorage.getItem('playersWatching'))
   var index = _.findIndex(cachedPlayers, function(o) {
     return o == player.personId;
@@ -96,25 +89,6 @@ export function getAllPlayers() {
   };
 }
 
-// export function getCachedPlayers() {
-//   var cachedPlayers = JSON.parse(localStorage.getItem('playersWatching'));
-//   return dispatch => {
-//     dispatch(sendCachedPlayers(cachedPlayers))
-//     for (var i = 0; i < cachedPlayers.length; i++) {
-//       let channel = socket.channel(`rooms:${cachedPlayers[i].personId}`);
-//
-//       channel.join()
-//         .receive("ok", resp => { console.log("Joined player channel successful", resp); })
-//         .receive("error", resp => { console.log("Unable to join", resp); });
-//
-//       channel.on("player_stat_update", payload => {
-//         console.log(`Got score update message for ${payload.player.personId}`, payload);
-//         dispatch({type: UPDATE_PLAYER_STATE, player: payload.player});
-//       });
-//     }
-//   }
-// }
-
 export function getCachedPlayers() {
   var cachedPlayers = JSON.parse(localStorage.getItem('playersWatching'));
 
@@ -128,9 +102,6 @@ export function getCachedPlayers() {
         return dispatch(sendCachedPlayers(response.data));
       });
   };
-  // return dispatch => {
-  //   dispatch(sendCachedPlayers(cachedPlayers))
-  // }
 }
 
 export function sendCachedPlayers(cachedPlayers) {

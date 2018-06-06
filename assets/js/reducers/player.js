@@ -1,14 +1,12 @@
 import _ from "lodash";
 import { replaceListItem } from "../utils";
 import {
-  CHANGE_NAME,
   RECEIVE_PLAYERS,
   UPDATE_PLAYER_STATE,
   RECEIVE_PLAYER_TO_WATCH,
   RECEIVE_CACHED_PLAYERS,
   ADD_PLAYER_TO_WATCH,
   REMOVE_PLAYER,
-  UPDATE_BUTTON
 } from "../constants";
 
 export default function(state={
@@ -19,9 +17,6 @@ export default function(state={
   isLoading: false
 }, action) {
   switch(action.type) {
-    case CHANGE_NAME: {
-      return {...state, name: action.name}
-    }
     case RECEIVE_PLAYERS: {
       var newPlayers = action.players;
       if (localStorage.getItem('playersWatching')) {

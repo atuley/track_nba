@@ -7,16 +7,6 @@ const remove = (dispatch, playersWatching, player) => {
   dispatch(removePlayer(playersWatching, player));
 }
 
-const watchLive = (dispatch, player) => {
-  dispatch(subscribeToPlayerStats(player));
-}
-
-const watchLiveButton = (dispatch, player) => {
-  return(
-    <button onClick={watchLive.bind(this, dispatch, player)}>Watch live</button>
-  );
-}
-
 const PlayerStat = ({player, playersWatching,dispatch, isLoading}) => {
   return(
     <div>
