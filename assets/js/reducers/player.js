@@ -66,10 +66,7 @@ export default function(state={
       return {...state, playersWatching: action.playersWatching}
     }
     case REMOVE_PLAYER: {
-      var newPlayerList = state.playersWatching
-      newPlayerList.splice(action.indexOfPlayer, 1)
-
-      return {...state, playersWatching: newPlayerList}
+      return {...state, playersWatching: action.playersWatching}
     }
   }
   return state;

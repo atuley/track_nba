@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
 import { removePlayer, subscribeToPlayerStats } from "../actions";
 
-const remove = (dispatch, player) => {
-  dispatch(removePlayer(player));
+const remove = (dispatch, playersWatching, player) => {
+  dispatch(removePlayer(playersWatching, player));
 }
 
 const watchLive = (dispatch, player) => {
@@ -17,7 +17,7 @@ const watchLiveButton = (dispatch, player) => {
   );
 }
 
-const PlayerStat = ({player, dispatch, isLoading}) => {
+const PlayerStat = ({player, playersWatching,dispatch, isLoading}) => {
   return(
     <div>
       <div className="col-md-5 player-stat__container">
@@ -43,7 +43,7 @@ const PlayerStat = ({player, dispatch, isLoading}) => {
               </div>
               <div className="col-md-4 col-xs-4 u-main-stat">
                 <div className="remove">
-                  <span className="delete" onClick={remove.bind(this, dispatch, player)}>X</span>
+                  <span className="delete" onClick={remove.bind(this, dispatch, playersWatching, player)}>X</span>
                 </div>
                 <h2>{player.stats.stats.totReb || 0}</h2>REB
               </div>
