@@ -23,7 +23,7 @@ export default function(state={
         var cachedPlayers = JSON.parse(localStorage.getItem('playersWatching'));
         for (var i = 0; i < newPlayers.length; i++) {
           for (var j = 0; j < cachedPlayers.length; j++) {
-            if (cachedPlayers[j].personId == newPlayers[i].personId) {
+            if (cachedPlayers[j] == newPlayers[i].personId) {
               newPlayers[i].isWatching = true
             }
           }
