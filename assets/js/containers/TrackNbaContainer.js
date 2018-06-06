@@ -21,11 +21,12 @@ const mapDispatchToProps = (dispatch) => ({
 
 export class TrackNbaContainer extends React.Component {
   componentDidMount() {
-    if (localStorage.getItem('playersWatching')) {
+    if (localStorage.getItem('playersWatching') && localStorage.getItem('playersWatching') != "[]") {
       this.props.dispatch(getCachedPlayers());
     }
     this.props.dispatch(getAllPlayers());
   }
+
   render() {
     return <TrackNba {...this.props} />;
   }

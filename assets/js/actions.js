@@ -49,23 +49,26 @@ export function receivePlayer(player) {
   };
 }
 
-export function removePlayer(player) {
+export function removePlayer(playersWatching, player) {
   // let channel = socket.channel(`rooms:${player.personId}`);
   // channel.leave()
   //   .receive("ok", resp => { console.log("Left successful", resp); })
   //   .receive("error", resp => { console.log("Unable to leave", resp); });
-
   var cachedPlayers = JSON.parse(localStorage.getItem('playersWatching'))
+
   var index = _.findIndex(cachedPlayers, function(o) {
     return o == player.personId;
   });
 
   cachedPlayers.splice(index, 1)
-  localStorage.setItem('playersWatching', cachedPlayers)
+  localStorage.setItem('playersWatching', JSON.stringify(cachedPlayers))
 
+  var newPlayers = playersWatching.slice(0)
+  newPlayers.splice(index, 1)
+  
   return {
     type: REMOVE_PLAYER,
-    indexOfPlayer: index
+    thing: newPlayers
   };
 }
 
