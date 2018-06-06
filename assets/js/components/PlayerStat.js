@@ -17,17 +17,6 @@ const watchLiveButton = (dispatch, player) => {
   );
 }
 
-const gameToday = (dispatch, player) => {
-  //isGameActivated field can be used if this doesn't work
-  // this could have issues if game log isnt updated frequently
-  // change functionality to look at previous game id which is on boxscore. Go back until there is game info?
-  if (player.stats.game.endTimeUTC == "") {
-    return (<button onClick={watchLive.bind(this, dispatch, player)}>Watch live</button>);
-  } else {
-    return(`${player.stats.game.hTeam.triCode} ${player.stats.game.hTeam.score} - ${player.stats.game.vTeam.triCode} ${player.stats.game.vTeam.score}`);
-  }
-}
-
 const PlayerStat = ({player, dispatch, isLoading}) => {
   return(
     <div>
@@ -41,7 +30,7 @@ const PlayerStat = ({player, dispatch, isLoading}) => {
               <strong>{player.firstName} {player.lastName}</strong>
             </div>
             <div className="row game-stat">
-              {gameToday(dispatch, player)}
+              {`${player.stats.game.hTeam.triCode} ${player.stats.game.hTeam.score} - ${player.stats.game.vTeam.triCode} ${player.stats.game.vTeam.score}`}
             </div>
           </div>
           <div className="col-md-7 col-xs-7 u-border-left">

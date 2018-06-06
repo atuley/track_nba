@@ -57,7 +57,7 @@ export function removePlayer(player) {
 
   var cachedPlayers = JSON.parse(localStorage.getItem('playersWatching'))
   var index = _.findIndex(cachedPlayers, function(o) {
-    return o.personId == player.personId;
+    return o == player.personId;
   });
 
   cachedPlayers.splice(index, 1)
@@ -65,7 +65,7 @@ export function removePlayer(player) {
 
   return {
     type: REMOVE_PLAYER,
-    playersWatching: cachedPlayers
+    indexOfPlayer: index
   };
 }
 
