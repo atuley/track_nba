@@ -1,6 +1,7 @@
 import React from "react";
 import _ from 'lodash';
 import { addPlayer, addPlayerToWatch, subscribeToPlayerStats, manageButton } from "../actions";
+import { searchPlayers } from "../utils";
 import { bindActionCreators } from 'redux';
 import PlayerStat from "./PlayerStat";
 
@@ -30,28 +31,12 @@ export default class TrackNba extends React.Component {
     })
   }
 
-  searchPlayers(searchContent, { target: { value: searchText } }) {
-    let currentPlayers = this.props[searchContent];
-    const updatedPlayers = _.filter(currentPlayers, function(player) {
-      return _.chain(player)
-              .values()
-              .lowerCase()
-              .includes(
-                _.lowerCase(searchText))
-                .value();
-    })
-
-    this.setState({
-      [searchContent]: updatedPlayers
-    });
-  }
-
   render() {
     if (this.props.isLoading) {
       return (
         <div>
           <div className="row">
-            <input className="form-control" placeholder="Search for a player by name" type="text" onChange={this.searchPlayers.bind(this, 'players')}/>
+            <input className="form-control" placeholder="Search for a player by name" type="text" onChange={searchPlayers.bind(this, 'players')}/>
             <div className="player-search">
               <table className="table">
                 <tbody>
@@ -92,7 +77,7 @@ export default class TrackNba extends React.Component {
       return (
         <div>
           <div className="row">
-            <input className="form-control" placeholder="Search for a player by name" type="text" onChange={this.searchPlayers.bind(this, 'players')}/>
+            <input className="form-control" placeholder="Search for a player by name" type="text" onChange={searchPlayers.bind(this, 'players')}/>
             <div className="player-search">
               <table className="table">
                 <tbody>
