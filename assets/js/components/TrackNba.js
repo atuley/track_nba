@@ -1,6 +1,6 @@
 import React from "react";
 import _ from 'lodash';
-import { addPlayer, addPlayerToWatch, subscribeToPlayerStats, manageButton } from "../actions";
+import { addPlayer, addPlayerToWatch } from "../actions";
 import { searchPlayers } from "../utils";
 import { bindActionCreators } from 'redux';
 import PlayerStat from "./PlayerStat";

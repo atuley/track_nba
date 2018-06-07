@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
-import { removePlayer, subscribeToPlayerStats } from "../actions";
+import { removePlayer } from "../actions";
 
 const remove = (dispatch, playersWatching, player) => {
   dispatch(removePlayer(playersWatching, player));

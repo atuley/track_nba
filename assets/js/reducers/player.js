@@ -2,7 +2,6 @@ import _ from "lodash";
 import { replaceListItem } from "../utils";
 import {
   RECEIVE_PLAYERS,
-  UPDATE_PLAYER_STATE,
   RECEIVE_PLAYER_TO_WATCH,
   RECEIVE_CACHED_PLAYERS,
   ADD_PLAYER_TO_WATCH,
@@ -18,32 +17,7 @@ export default function(state={
 }, action) {
   switch(action.type) {
     case RECEIVE_PLAYERS: {
-      var newPlayers = action.players;
-      if (localStorage.getItem('playersWatching')) {
-        var cachedPlayers = JSON.parse(localStorage.getItem('playersWatching'));
-        for (var i = 0; i < newPlayers.length; i++) {
-          for (var j = 0; j < cachedPlayers.length; j++) {
-            if (cachedPlayers[j] == newPlayers[i].personId) {
-              newPlayers[i].isWatching = true
-            }
-          }
-        }
-      }
-      return {...state, players: newPlayers}
-    }
-    case UPDATE_PLAYER_STATE: {
-      var origPlayerPayload = _.find(state.playersWatching, function(o){ return o.personId == action.player.personId; });
-
-      var newPlayersList = replaceListItem(
-        state.playersWatching,
-        origPlayerPayload,
-        action.player
-      );
-
-      return {
-        ...state,
-        playersWatching: newPlayersList
-      };
+      return {...state, players: action.players}
     }
     case ADD_PLAYER_TO_WATCH: {
       return {...state, isLoading: action.isLoading}

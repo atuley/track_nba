@@ -6,7 +6,6 @@ import _ from 'lodash';
 
 import {
   RECEIVE_PLAYERS,
-  UPDATE_PLAYER_STATE,
   RECEIVE_PLAYER_TO_WATCH,
   RECEIVE_CACHED_PLAYERS,
   ADD_PLAYER_TO_WATCH,
@@ -18,13 +17,6 @@ const defaultHeaders = {
   'Content-Type': 'application/json',
 };
 
-export function addPlayer() {
-  return {
-    type: ADD_PLAYER_TO_WATCH,
-    isLoading: true
-  };
-}
-
 export function addPlayerToWatch(player) {
   return dispatch => {
     fetch(`/api/player/${player.personId}`, {
@@ -35,47 +27,6 @@ export function addPlayerToWatch(player) {
       .then((response) => {
         return dispatch(receivePlayer(response.data));
       });
-  };
-}
-
-export function receivePlayer(player) {
-  return {
-    type: RECEIVE_PLAYER_TO_WATCH,
-    player: player,
-    isLoading: false
-  };
-}
-
-export function removePlayer(playersWatching, player) {
-  var cachedPlayers = JSON.parse(localStorage.getItem('playersWatching'))
-  var index = _.findIndex(cachedPlayers, function(o) {
-    return o == player.personId;
-  });
-
-  cachedPlayers.splice(index, 1)
-  localStorage.setItem('playersWatching', JSON.stringify(cachedPlayers))
-
-  var newPlayersWatching = playersWatching.slice(0)
-  newPlayersWatching.splice(index, 1)
-
-  return {
-    type: REMOVE_PLAYER,
-    playersWatching: newPlayersWatching
-  };
-}
-
-export function subscribeToPlayerStats(player) {
-  return dispatch => {
-    let channel = socket.channel(`rooms:${player.personId}`);
-
-    channel.join()
-      .receive("ok", resp => { console.log("Joined player channel successful", resp); })
-      .receive("error", resp => { console.log("Unable to join", resp); });
-
-    channel.on("player_stat_update", payload => {
-      console.log(`Got score update message for ${player.personId}`, payload);
-      dispatch({type: UPDATE_PLAYER_STATE, player: payload.player});
-    });
   };
 }
 
@@ -104,6 +55,39 @@ export function getCachedPlayers() {
   };
 }
 
+export function removePlayer(playersWatching, player) {
+  var cachedPlayers = JSON.parse(localStorage.getItem('playersWatching'))
+  var index = _.findIndex(cachedPlayers, function(o) {
+    return o == player.personId;
+  });
+
+  cachedPlayers.splice(index, 1)
+  localStorage.setItem('playersWatching', JSON.stringify(cachedPlayers))
+
+  var newPlayersWatching = playersWatching.slice(0)
+  newPlayersWatching.splice(index, 1)
+
+  return {
+    type: REMOVE_PLAYER,
+    playersWatching: newPlayersWatching
+  };
+}
+
+export function addPlayer() {
+  return {
+    type: ADD_PLAYER_TO_WATCH,
+    isLoading: true
+  };
+}
+
+export function receivePlayer(player) {
+  return {
+    type: RECEIVE_PLAYER_TO_WATCH,
+    player: player,
+    isLoading: false
+  };
+}
+
 export function sendCachedPlayers(cachedPlayers) {
   return {
     type: RECEIVE_CACHED_PLAYERS,
@@ -112,9 +96,20 @@ export function sendCachedPlayers(cachedPlayers) {
 }
 
 export function receivePlayers(players) {
+  var newPlayers = players;
+  if (localStorage.getItem('playersWatching')) {
+    var cachedPlayers = JSON.parse(localStorage.getItem('playersWatching'));
+    for (var i = 0; i < newPlayers.length; i++) {
+      for (var j = 0; j < cachedPlayers.length; j++) {
+        if (cachedPlayers[j] == newPlayers[i].personId) {
+          newPlayers[i].isWatching = true
+        }
+      }
+    }
+  }
   return {
     type: RECEIVE_PLAYERS,
-    players: players
+    players: newPlayers
   };
 }
 
