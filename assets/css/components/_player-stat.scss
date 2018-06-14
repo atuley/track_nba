@@ -46,6 +46,10 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 10px;
+  @media only screen and (max-width: 767px) {
+    height: 100px;
+    margin-top: 25px;
+  }
 }
 
 .player-stat {
@@ -56,6 +60,11 @@
     margin-top: 20px;
     margin-right: 20px;
     font-family: 'Roboto', sans-serif;
+
+    @media only screen and (max-width: 767px) {
+      margin: 20px auto auto auto;
+      width: 90%;
+    }
   }
 }
 
