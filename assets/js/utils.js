@@ -19,14 +19,15 @@ export function replaceListItem(list, oldItem, newItem) {
 }
 
 export function searchPlayers(searchContent, { target: { value: searchText } }) {
-  let currentPlayers = this.props[searchContent];
+  var searchQuery = _.toLower(searchText);
+  var currentPlayers = this.props[searchContent];
+
   const updatedPlayers = _.filter(currentPlayers, function(player) {
     return _.chain(player)
             .values()
-            .lowerCase()
-            .includes(
-              _.lowerCase(searchText))
-              .value();
+            .toLower()
+            .includes(searchQuery)
+            .value();
   })
 
   this.setState({

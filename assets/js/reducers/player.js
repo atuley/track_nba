@@ -9,7 +9,6 @@ import {
 } from "../constants";
 
 export default function(state={
-  name: "before",
   players: [],
   stats: [],
   playersWatching: [],

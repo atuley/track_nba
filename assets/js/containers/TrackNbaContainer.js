@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
-import { changeTheName, getAllPlayers, getCachedPlayers } from "../actions";
+import { getAllPlayers, getCachedPlayers } from "../actions";
 import TrackNba from "../components/TrackNba"
 
 const mapStateToProps = (state) => {
@@ -26,10 +26,10 @@ export class TrackNbaContainer extends React.Component {
     }
     this.props.dispatch(getAllPlayers());
   }
+
   render() {
     return <TrackNba {...this.props} />;
   }
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(TrackNbaContainer);
