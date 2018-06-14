@@ -3,7 +3,7 @@
 
 // To use Phoenix channels, the first step is to import Socket
 // and connect at the socket path in "lib/web/endpoint.ex":
-import {Socket} from "phoenix"
+// import {Socket} from "phoenix"
 
 // let socket = new Socket("/socket", {params: {token: window.userToken}})
 
@@ -72,4 +72,4 @@ import {Socket} from "phoenix"
 //   document.querySelector(".the-score").textContent = `${payload.score}`;
 // })
 
-export default socket
+// export default socket
