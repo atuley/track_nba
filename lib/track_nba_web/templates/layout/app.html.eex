@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>TrackNBA</title>
+    <title>Player Tracker | Watch your favorite NBA player's stats</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   </head>
@@ -18,4 +18,12 @@
     </div>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
+  
+  <div class="disclaimer">
+    <hr>
+    <footer>
+      This site has no official affiliation with the National Basketball Association or any other 3rd-party entities listed on this site.
+      <p> © 2018 Player Tracker</p>
+    </footer>
+  </div>
 </html>
