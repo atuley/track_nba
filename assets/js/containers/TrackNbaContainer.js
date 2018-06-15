@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
-import { getAllPlayers, getCachedPlayers, cachedPlayersLoading } from "../actions";
+import { getAllPlayers, getCachedPlayers } from "../actions";
 import TrackNba from "../components/TrackNba"
 
 const mapStateToProps = (state) => {
@@ -23,7 +23,6 @@ export class TrackNbaContainer extends React.Component {
   componentDidMount() {
     if (localStorage.getItem('playersWatching') && localStorage.getItem('playersWatching') != "[]") {
       this.props.dispatch(getCachedPlayers());
-      this.props.dispatch(cachedPlayersLoading());
     }
     this.props.dispatch(getAllPlayers());
   }

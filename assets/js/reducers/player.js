@@ -5,15 +5,14 @@ import {
   RECEIVE_PLAYER_TO_WATCH,
   RECEIVE_CACHED_PLAYERS,
   ADD_PLAYER_TO_WATCH,
-  REMOVE_PLAYER,
-  CACHED_PLAYERS_LOADING
+  REMOVE_PLAYER
 } from "../constants";
 
 export default function(state={
   players: [],
   stats: [],
   playersWatching: [],
-  isLoading: false
+  isLoading: true
 }, action) {
   switch(action.type) {
     case RECEIVE_PLAYERS: {
@@ -30,9 +29,6 @@ export default function(state={
       })
       localStorage.setItem('playersWatching', JSON.stringify(playerIdList))
       return {...state, playersWatching: newPlayersList, isLoading: action.isLoading}
-    }
-    case CACHED_PLAYERS_LOADING: {
-      return {...state, isLoading: action.isLoading}
     }
     case RECEIVE_CACHED_PLAYERS: {
       return {...state, playersWatching: action.playersWatching, isLoading: action.isLoading}

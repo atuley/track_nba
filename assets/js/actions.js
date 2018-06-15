@@ -51,15 +51,12 @@ export function getCachedPlayers() {
     })
       .then(grabJSON)
       .then((response) => {
-        return dispatch(sendCachedPlayers(response.data));
+        return dispatch({
+          type: RECEIVE_CACHED_PLAYERS,
+          playersWatching: response.data,
+          isLoading: false
+        });
       });
-  };
-}
-
-export function cachedPlayersLoading() {
-  return {
-    type: CACHED_PLAYERS_LOADING,
-    isLoading: true
   };
 }
 
@@ -92,14 +89,6 @@ export function receivePlayer(player) {
   return {
     type: RECEIVE_PLAYER_TO_WATCH,
     player: player,
-    isLoading: false
-  };
-}
-
-export function sendCachedPlayers(cachedPlayers) {
-  return {
-    type: RECEIVE_CACHED_PLAYERS,
-    playersWatching: cachedPlayers,
     isLoading: false
   };
 }
