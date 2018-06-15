@@ -9,7 +9,8 @@ import {
   RECEIVE_PLAYER_TO_WATCH,
   RECEIVE_CACHED_PLAYERS,
   ADD_PLAYER_TO_WATCH,
-  REMOVE_PLAYER
+  REMOVE_PLAYER,
+  CACHED_PLAYERS_LOADING
 } from "./constants";
 
 const defaultHeaders = {
@@ -55,6 +56,13 @@ export function getCachedPlayers() {
   };
 }
 
+export function cachedPlayersLoading() {
+  return {
+    type: CACHED_PLAYERS_LOADING,
+    isLoading: true
+  };
+}
+
 export function removePlayer(playersWatching, player) {
   var cachedPlayers = JSON.parse(localStorage.getItem('playersWatching'))
   var index = _.findIndex(cachedPlayers, function(o) {
@@ -91,7 +99,8 @@ export function receivePlayer(player) {
 export function sendCachedPlayers(cachedPlayers) {
   return {
     type: RECEIVE_CACHED_PLAYERS,
-    playersWatching: cachedPlayers
+    playersWatching: cachedPlayers,
+    isLoading: false
   };
 }
 

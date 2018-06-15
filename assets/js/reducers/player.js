@@ -6,6 +6,7 @@ import {
   RECEIVE_CACHED_PLAYERS,
   ADD_PLAYER_TO_WATCH,
   REMOVE_PLAYER,
+  CACHED_PLAYERS_LOADING
 } from "../constants";
 
 export default function(state={
@@ -30,8 +31,11 @@ export default function(state={
       localStorage.setItem('playersWatching', JSON.stringify(playerIdList))
       return {...state, playersWatching: newPlayersList, isLoading: action.isLoading}
     }
+    case CACHED_PLAYERS_LOADING: {
+      return {...state, isLoading: action.isLoading}
+    }
     case RECEIVE_CACHED_PLAYERS: {
-      return {...state, playersWatching: action.playersWatching}
+      return {...state, playersWatching: action.playersWatching, isLoading: action.isLoading}
     }
     case REMOVE_PLAYER: {
       return {...state, playersWatching: action.playersWatching}

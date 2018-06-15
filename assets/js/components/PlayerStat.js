@@ -7,7 +7,7 @@ const remove = (dispatch, playersWatching, player) => {
   dispatch(removePlayer(playersWatching, player));
 }
 
-const PlayerStat = ({player, playersWatching,dispatch, isLoading}) => {
+const PlayerStat = ({player, playersWatching, dispatch, isLoading}) => {
   return(
     <div>
       <div className="col-md-5 player-stat__container">
