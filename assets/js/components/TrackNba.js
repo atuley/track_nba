@@ -17,6 +17,18 @@ export default class TrackNba extends React.Component {
     this.disableButton(player)
     this.props.dispatch(addPlayer())
     this.props.dispatch(addPlayerToWatch(player))
+    this.clearPlayers()
+    this.clearInputText()
+  }
+
+  clearInputText() {
+    document.getElementById("reset-value").value=""
+  }
+
+  clearPlayers() {
+    this.setState({
+      players: []
+    })
   }
 
   disableButton(player) {
@@ -48,7 +60,7 @@ export default class TrackNba extends React.Component {
     return (
       <div>
         <div className="row">
-          <input className="player-search-bar" placeholder="Search for a player by name" type="text" onChange={searchPlayers.bind(this, 'players')}/>
+          <input id="reset-value" className="player-search-bar" placeholder="Search for a player by name" type="text" onChange={searchPlayers.bind(this, 'players')}/>
           <div className="player-search">
             <table className="table">
               <tbody>
