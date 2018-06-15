@@ -78,6 +78,13 @@ export function removePlayer(playersWatching, player) {
   };
 }
 
+export function cachedPlayersLoading() {
+  return {
+    type: CACHED_PLAYERS_LOADING,
+    isLoading: true
+  }
+}
+
 export function addPlayer() {
   return {
     type: ADD_PLAYER_TO_WATCH,
