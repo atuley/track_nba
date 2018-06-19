@@ -13,12 +13,18 @@
   </head>
 
   <body>
+    <div id="navbar">
+      <a href="#" id="title">playertracker.io</a>
+      <a href="#news">Home</a>
+      <a href="#contact">About</a>
+      <a href="#contact">Contact</a>
+    </div>
     <div class="container">
       <%= render @view_module, @view_template, assigns %>
     </div>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
-  
+
   <div class="disclaimer">
     <hr>
     <footer>

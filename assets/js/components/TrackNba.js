@@ -92,7 +92,7 @@ export default class TrackNba extends React.Component {
             </table>
           </div>
         </div>
-        <div className="row">
+        <div className="row u-margin-bottom">
           {this.props.isLoading ? loading() : playersLoaded()}
         </div>
       </div>
