@@ -10,9 +10,9 @@ const remove = (dispatch, playersWatching, player) => {
 const PlayerStat = ({player, playersWatching, dispatch, isLoading}) => {
   return(
     <div>
-      <div className="col-md-5 player-stat__container">
-        <div className="row player-stat__border" style={{borderLeft: `8px solid ${player.teamColor}`}}>
-          <div className="col-md-5 col-xs-5">
+      <div className="col-sm-6 col-md-6 col-lg-4">
+        <div className="player-stat__container">
+          <div className="col-md-5 col-xs-5 pic-border">
             <div className="row">
               <img className="player-pic" src={`https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/${player.teamId}/2017/260x190/${player.personId}.png`}/>
             </div>
@@ -23,7 +23,7 @@ const PlayerStat = ({player, playersWatching, dispatch, isLoading}) => {
               {`${player.stats.game.hTeam.triCode} ${player.stats.game.hTeam.score} - ${player.stats.game.vTeam.triCode} ${player.stats.game.vTeam.score}`}
             </div>
           </div>
-          <div className="col-md-7 col-xs-7 u-border-left">
+          <div className="col-md-7 col-xs-7">
             <div className="row main-stats">
               <div className="col-md-4 col-xs-4 u-border-right u-main-stat">
                 <h2>{player.stats.stats.points || 0}</h2>PTS
