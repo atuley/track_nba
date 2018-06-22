@@ -40,7 +40,7 @@
 
 .player-pic {
   border-radius: 50%;
-  height: 125px;
+  height: 100px;
   width: auto;
   display: block;
   margin-left: auto;
@@ -54,17 +54,10 @@
 
 .player-stat {
   &__container {
-    border-right: 1px solid #aaaaaa;
-    border-top: 1px solid #aaaaaa;
-    border-bottom: 1px solid #aaaaaa;
     margin-top: 20px;
-    margin-right: 20px;
     font-family: 'Roboto', sans-serif;
-
-    @media only screen and (max-width: 767px) {
-      margin: 20px auto auto auto;
-      width: 90%;
-    }
+    height: 210px;
+    border: 1px solid #aaaaaa;
   }
 }
 
@@ -75,4 +68,9 @@
 .game-stat {
   margin-bottom: 3px;
   text-align: center;
+}
+
+.pic-border {
+  height: 100%;
+  border-right: 1px solid #aaaaaa;
 }
