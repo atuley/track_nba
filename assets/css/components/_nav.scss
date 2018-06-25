@@ -28,13 +28,6 @@
   right: 22px;
 }
 
-@font-face {
-  font-family: 'icomoon';
-  src: url("/fonts/icomoon.ttf");
-  font-weight: normal;
-  font-style: normal;
-}
-
 [data-icon]:before {
   font-family: 'icomoon';
   content: attr(data-icon);
