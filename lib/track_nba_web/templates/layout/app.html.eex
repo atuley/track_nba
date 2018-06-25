@@ -10,15 +10,14 @@
     <title>Player Tracker | Watch your favorite NBA player's stats</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="stylesheet" href="https://i.icomoon.io/public/temp/f9c79d9354/UntitledProject/style.css">
+    <link rel="stylesheet" href="https://i.icomoon.io/public/temp/b9a82734f2/UntitledProject/style.css">
   </head>
 
   <body>
     <div id="navbar">
       <a href="/" id="title">playertracker.io</a>
-      <a href="/"><span class="refresh-button icon-spinner11"></span></a>
-      <!-- <a href="#">About</a>
-      <a href="#">Contact</a> -->
+      <a href="/" class="refresh-button "><span class="icon-spinner11"></span></a>
+      <a href="mailto:help@playertracker.io">Contact</a>
     </div>
     <div class="container">
       <%= render @view_module, @view_template, assigns %>
