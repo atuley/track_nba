@@ -7,7 +7,7 @@ use Mix.Config
 
 # General application configuration
 config :track_nba,
-  ecto_repos: [TrackNba.Repo]
+  ecto_repos: []
 
 # Configures the endpoint
 config :track_nba, TrackNbaWeb.Endpoint,

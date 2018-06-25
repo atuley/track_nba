@@ -10,10 +10,10 @@ config :track_nba, TrackNbaWeb.Endpoint,
 config :logger, level: :warn
 
 # Configure your database
-config :track_nba, TrackNba.Repo,
-  adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
-  database: "track_nba_test",
-  hostname: "localhost",
-  pool: Ecto.Adapters.SQL.Sandbox
+# config :track_nba, TrackNba.Repo,
+#   adapter: Ecto.Adapters.Postgres,
+#   username: "postgres",
+#   password: "postgres",
+#   database: "track_nba_test",
+#   hostname: "localhost",
+#   pool: Ecto.Adapters.SQL.Sandbox
