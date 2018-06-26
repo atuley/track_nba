@@ -32,10 +32,12 @@ defmodule UtilsTest do
     test "should return player stats if game has begun" do
       use_cassette "boxscore" do
         stats = Utils.retrieve_stats_for_player("0041700233", "201939", "20180504")
+        |> Map.get(:player_stats)
+        |> List.first
 
-        assert stats.assists == "2"
-        assert stats.points == "19"
-        assert stats.totReb == "6"
+        assert stats.assists == "3"
+        assert stats.points == "22"
+        assert stats.totReb == "3"
       end
     end
 
@@ -81,10 +83,12 @@ defmodule UtilsTest do
   test "find_last_game/1" do
     use_cassette "game_log" do
       stats = Utils.find_last_game("201939")
+      |> Map.get(:player_stats)
+      |> List.first
 
-      assert stats.fgp == "36.8"
-      assert stats.min == "34:06"
-      assert stats.points == "16"
+      assert stats.fgp == "50.0"
+      assert stats.min == "27:03"
+      assert stats.points == "5"
     end
   end
 end
