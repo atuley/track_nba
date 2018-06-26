@@ -9,10 +9,9 @@ defmodule TrackNba.Application do
     # Define workers and child supervisors to be supervised
     children = [
       # Start the Ecto repository
-      # supervisor(TrackNba.Repo, []),
+      supervisor(TrackNba.Repo, []),
       # Start the endpoint when the application starts
-      supervisor(TrackNbaWeb.Endpoint, []),
-      worker(TrackNba.GameLogServer, [])
+      supervisor(TrackNbaWeb.Endpoint, [])
       # Start your own worker by calling: TrackNba.Worker.start_link(arg1, arg2, arg3)
       # worker(TrackNba.Worker, [arg1, arg2, arg3]),
     ]
