@@ -2,7 +2,6 @@ defmodule TrackNbaWeb.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  channel "rooms:*", TrackNbaWeb.RoomChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket,
