@@ -25,7 +25,7 @@ config :track_nba, TrackNba.Repo,
   username: System.get_env("DATABASE_USERNAME"),
   password: System.get_env("DATABASE_PASSWORD"),
   database: "track_nba_prod",
-  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
+  pool_size: 20,
   ssl: true
 
 # Do not print debug messages in production
