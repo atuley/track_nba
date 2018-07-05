@@ -58,28 +58,6 @@ defmodule UtilsTest do
     end
   end
 
-  test "filter_out_non_franchise_players/1" do
-    use_cassette "players" do
-      players = NbaEx.players()
-
-      assert players |> length == 604
-      assert Utils.filter_out_non_franchise_players(players) |> length == 505
-    end
-  end
-
-  test "add_team_colors/1" do
-    use_cassette "players" do
-      result = NbaEx.players()
-      |> Utils.filter_out_non_franchise_players()
-      |> Utils.add_team_colors()
-
-      first_player = result
-      |> List.first()
-
-      assert first_player.teamColor == "#002d62"
-    end
-  end
-
   test "find_last_game/1" do
     use_cassette "game_log" do
       stats = Utils.find_last_game("201939")
