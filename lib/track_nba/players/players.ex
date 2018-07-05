@@ -1,6 +1,5 @@
 defmodule TrackNba.Players do
   alias TrackNba.Colors
-  alias TrackNbaWeb.Utils
 
   def all do
     NbaEx.players()
