@@ -18,4 +18,15 @@ defmodule PlayersTest do
       end
     end
   end
+
+  describe "find_player_stats/1" do
+    test "should return a player with last game played stats" do
+      player = Players.find_player_stats("201939")
+
+      assert player.firstName == "Stephen"
+      assert player.stats.stats.points == "37"
+      assert player.teamColor == "#003399"
+      assert player.stats.home_team_stats.totals.points == "85"
+    end
+  end
 end

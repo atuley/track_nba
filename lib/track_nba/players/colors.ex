@@ -290,4 +290,13 @@ defmodule TrackNba.Colors do
   ]
 
   def all, do: @colors
+
+  def add_color(player) do
+    team_color_for_player =
+      Enum.find(all(), fn(color) ->
+        color.teamId == player.teamId
+      end)
+
+    Map.put(player, :teamColor, team_color_for_player.primaryColor)
+  end
 end
