@@ -1,4 +1,4 @@
-defmodule PlayersTest do
+defmodule TrackNba.PlayersTest do
   use ExUnit.Case, async: false
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
 

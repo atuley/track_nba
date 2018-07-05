@@ -293,7 +293,7 @@ defmodule TrackNba.Colors do
 
   def add_color(player) do
     team_color_for_player =
-      Enum.find(all(), fn(color) ->
+      Enum.find(all(), fn color ->
         color.teamId == player.teamId
       end)
 

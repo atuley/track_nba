@@ -2,9 +2,11 @@ defmodule TrackNbaWeb.PlayerView do
   use TrackNbaWeb, :view
 
   def render("players.json", %{data: players}) do
-    %{data: Enum.map(players, fn(player) ->
-        render(__MODULE__, "player.json", data: player)
-      end)
+    %{
+      data:
+        Enum.map(players, fn player ->
+          render(__MODULE__, "player.json", data: player)
+        end)
     }
   end
 
@@ -26,8 +28,8 @@ defmodule TrackNbaWeb.PlayerView do
   end
 
   def render("player_stat.json", %{data: player}) do
-    %{data:
-      %{
+    %{
+      data: %{
         personId: player.personId,
         country: player.country,
         firstName: player.firstName,
@@ -45,9 +47,11 @@ defmodule TrackNbaWeb.PlayerView do
   end
 
   def render("player_stats.json", %{data: players}) do
-    %{data: Enum.map(players, fn(player) ->
-        render(__MODULE__, "player_s.json", data: player)
-      end)
+    %{
+      data:
+        Enum.map(players, fn player ->
+          render(__MODULE__, "player_s.json", data: player)
+        end)
     }
   end
 
