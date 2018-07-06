@@ -28,8 +28,9 @@ defmodule TrackNbaWeb do
 
   def view do
     quote do
-      use Phoenix.View, root: "lib/track_nba_web/templates",
-                        namespace: TrackNbaWeb
+      use Phoenix.View,
+        root: "lib/track_nba_web/templates",
+        namespace: TrackNbaWeb
 
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_flash: 2, view_module: 1]

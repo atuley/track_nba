@@ -3,7 +3,7 @@ defmodule TrackNbaWeb.WatchPlayerFeature do
   alias TrackNbaWeb.WatchPlayerPage
 
   setup do
-    WatchPlayerPage.visit
+    WatchPlayerPage.visit()
     WatchPlayerPage.search("steph")
     WatchPlayerPage.watch_player("player-201939")
     :ok

@@ -16,13 +16,14 @@ defmodule TrackNbaWeb.AsyncHelpers do
 
   def eventually(func), do: eventually(func, @default_timeout)
   def eventually(func, 0), do: func.()
+
   def eventually(func, timeout) do
     try do
       func.()
     rescue
       _ ->
         :timer.sleep(@interval)
-      eventually(func, max(0, timeout - @interval))
+        eventually(func, max(0, timeout - @interval))
     end
   end
 end
