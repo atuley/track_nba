@@ -6,7 +6,10 @@ import {
   RECEIVE_CACHED_PLAYERS,
   ADD_PLAYER_TO_WATCH,
   REMOVE_PLAYER,
-  CACHED_PLAYERS_LOADING
+  CACHED_PLAYERS_LOADING,
+  FETCH_PLAYERS_STARTED,
+  FETCH_PLAYERS_ERROR,
+  FETCH_PLAYERS_SUCCESS
 } from "../constants";
 
 export default function(state={
@@ -16,6 +19,16 @@ export default function(state={
   isLoading: false
 }, action) {
   switch(action.type) {
+    case FETCH_PLAYERS_STARTED: {
+      return {...state};
+    }
+    case FETCH_PLAYERS_ERROR: {
+      return {...state, error: action.error};
+    }
+    case FETCH_PLAYERS_SUCCESS: {
+      return {...state, players: action.players};
+    }
+    
     case RECEIVE_PLAYERS: {
       return {...state, players: action.players}
     }
@@ -38,7 +51,7 @@ export default function(state={
       return {...state, playersWatching: action.playersWatching, isLoading: action.isLoading}
     }
     case REMOVE_PLAYER: {
-      var newPlayers = state.players.slice(0)      
+      var newPlayers = state.players.slice(0)
       var index = _.findIndex(newPlayers, function(o) {
         return o.personId == action.personId;
       });

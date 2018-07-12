@@ -10,13 +10,26 @@ import {
   RECEIVE_CACHED_PLAYERS,
   ADD_PLAYER_TO_WATCH,
   REMOVE_PLAYER,
-  CACHED_PLAYERS_LOADING
+  CACHED_PLAYERS_LOADING,
+  fetchPlayersStarted,
+  fetchPlayersError,
+  fetchPlayersSuccess
 } from "./constants";
 
 const defaultHeaders = {
   'Accept': 'application/json',
   'Content-Type': 'application/json',
 };
+
+export function getAllPlayers() {
+  return dispatch => {
+    dispatch(fetchPlayersStarted());
+    fetch(`/api/players`)
+      .then(response => response.json())
+      .then(players => dispatch(fetchPlayersSuccess(players.data)))
+      .catch(error => dispatch(fetchPlayersError(error)));
+  };
+}
 
 export function addPlayerToWatch(player) {
   return dispatch => {
@@ -27,16 +40,6 @@ export function addPlayerToWatch(player) {
       .then(grabJSON)
       .then((response) => {
         return dispatch(receivePlayer(response.data));
-      });
-  };
-}
-
-export function getAllPlayers() {
-  return dispatch => {
-    fetch(`/api/players`)
-      .then(grabJSON)
-      .then((response) => {
-        return dispatch(receivePlayers(response.data));
       });
   };
 }
