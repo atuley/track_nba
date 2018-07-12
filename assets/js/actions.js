@@ -74,7 +74,8 @@ export function removePlayer(playersWatching, player) {
 
   return {
     type: REMOVE_PLAYER,
-    playersWatching: newPlayersWatching
+    playersWatching: newPlayersWatching,
+    personId: player.personId
   };
 }
 

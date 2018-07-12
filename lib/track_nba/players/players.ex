@@ -57,7 +57,6 @@ defmodule TrackNba.Players do
   end
 
   defp has_stats?(1, result, _player_id), do: result
-
   defp has_stats?(_length, result, player_id) do
     result
     |> Map.get(:player_stats)

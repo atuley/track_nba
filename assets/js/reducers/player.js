@@ -38,7 +38,12 @@ export default function(state={
       return {...state, playersWatching: action.playersWatching, isLoading: action.isLoading}
     }
     case REMOVE_PLAYER: {
-      return {...state, playersWatching: action.playersWatching}
+      var newPlayers = state.players.slice(0)      
+      var index = _.findIndex(newPlayers, function(o) {
+        return o.personId == action.personId;
+      });
+      newPlayers[index].isWatching = false;
+      return {...state, playersWatching: action.playersWatching, players: newPlayers}
     }
   }
   return state;
