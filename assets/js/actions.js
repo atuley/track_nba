@@ -16,7 +16,10 @@ import {
   fetchPlayersSuccess,
   fetchCachedPlayersStarted,
   fetchCachedPlayersError,
-  fetchCachedPlayersSuccess
+  fetchCachedPlayersSuccess,
+  fetchPlayerStarted,
+  fetchPlayerError,
+  fetchPlayerSuccess,
 } from "./constants";
 
 export function getAllPlayers() {
@@ -43,48 +46,11 @@ export function getCachedPlayers() {
 
 export function addPlayerToWatch(player) {
   return dispatch => {
-    fetch(`/api/player/${player.personId}`, {
-      headers: defaultHeaders,
-      method: 'POST'
-    })
-      .then(grabJSON)
-      .then((response) => {
-        return dispatch(receivePlayer(response.data));
-      });
-  };
-}
-
-export function removePlayer(playersWatching, player) {
-  var cachedPlayers = JSON.parse(localStorage.getItem('playersWatching'))
-  var index = _.findIndex(cachedPlayers, function(o) {
-    return o == player.personId;
-  });
-
-  cachedPlayers.splice(index, 1)
-  localStorage.setItem('playersWatching', JSON.stringify(cachedPlayers))
-
-  var newPlayersWatching = playersWatching.slice(0)
-  newPlayersWatching.splice(index, 1)
-
-  return {
-    type: REMOVE_PLAYER,
-    playersWatching: newPlayersWatching,
-    personId: player.personId
-  };
-}
-
-export function addPlayer() {
-  return {
-    type: ADD_PLAYER_TO_WATCH,
-    loading: true
-  };
-}
-
-export function receivePlayer(player) {
-  return {
-    type: RECEIVE_PLAYER_TO_WATCH,
-    player: player,
-    loading: false
+    dispatch(fetchPlayerStarted())
+    fetch(`/api/player/${player.personId}`, {headers: defaultHeaders, method: 'POST'})
+      .then(response => response.json())
+      .then(player => dispatch(fetchPlayerSuccess(player.data)))
+      .catch(error => dispatch(fetchPlayerError(error)));
   };
 }
 
@@ -106,6 +72,21 @@ export function receivePlayers(players) {
   };
 }
 
-function grabJSON(response) {
-  return response.json();
+export function removePlayer(playersWatching, player) {
+  var cachedPlayers = JSON.parse(localStorage.getItem('playersWatching'))
+  var index = _.findIndex(cachedPlayers, function(o) {
+    return o == player.personId;
+  });
+
+  cachedPlayers.splice(index, 1)
+  localStorage.setItem('playersWatching', JSON.stringify(cachedPlayers))
+
+  var newPlayersWatching = playersWatching.slice(0)
+  newPlayersWatching.splice(index, 1)
+
+  return {
+    type: REMOVE_PLAYER,
+    playersWatching: newPlayersWatching,
+    personId: player.personId
+  };
 }

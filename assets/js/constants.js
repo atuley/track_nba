@@ -41,6 +41,7 @@ export const fetchCachedPlayersStarted = () => ({
 
 export const fetchCachedPlayersError = error => ({
   type: FETCH_CACHED_PLAYERS_ERROR,
+  loading: false,
   error
 });
 
@@ -48,4 +49,25 @@ export const fetchCachedPlayersSuccess = players => ({
   type: FETCH_CACHED_PLAYERS_SUCCESS,
   loading: false,
   players
+});
+
+export const FETCH_PLAYER_STARTED = "FETCH_PLAYER_STARTED";
+export const FETCH_PLAYER_ERROR = "FETCH_PLAYER_ERROR";
+export const FETCH_PLAYER_SUCCESS = "FETCH_PLAYER_SUCCESS";
+
+export const fetchPlayerStarted = () => ({
+  type: FETCH_PLAYER_STARTED,
+  loading: true
+});
+
+export const fetchPlayerError = error => ({
+  type: FETCH_PLAYER_ERROR,
+  loading: false,
+  error
+});
+
+export const fetchPlayerSuccess = player => ({
+  type: FETCH_PLAYER_SUCCESS,
+  loading: false,
+  player
 });

@@ -11,7 +11,10 @@ import {
   FETCH_PLAYERS_SUCCESS,
   FETCH_CACHED_PLAYERS_STARTED,
   FETCH_CACHED_PLAYERS_ERROR,
-  FETCH_CACHED_PLAYERS_SUCCESS
+  FETCH_CACHED_PLAYERS_SUCCESS,
+  FETCH_PLAYER_STARTED,
+  FETCH_PLAYER_ERROR,
+  FETCH_PLAYER_SUCCESS
 } from "../constants";
 
 export default function(state={
@@ -29,14 +32,30 @@ export default function(state={
     case FETCH_PLAYERS_SUCCESS: {
       return {...state, players: action.players};
     }
+
     case FETCH_CACHED_PLAYERS_STARTED: {
       return {...state, loading: true};
     }
     case FETCH_CACHED_PLAYERS_ERROR: {
-      return {...state, error: action.error};
+      return {...state, error: action.error, loading: action.loading};
     }
     case FETCH_CACHED_PLAYERS_SUCCESS: {
       return {...state, playersWatching: action.players, loading: action.loading};
+    }
+
+    case FETCH_PLAYER_STARTED:
+      return {...state, loading: action.loading};
+    case FETCH_PLAYER_ERROR: {
+      return {...state, error: action.error, loading: action.loading};
+    }
+    case FETCH_PLAYER_SUCCESS: {
+      var newPlayersList = _.concat(state.playersWatching, action.player)
+      var playerIdList = []
+      _.forEach(newPlayersList, function(value) {
+        playerIdList.push(value.personId)
+      })
+      localStorage.setItem('playersWatching', JSON.stringify(playerIdList))
+      return {...state, playersWatching: newPlayersList, loading: action.loading}
     }
 
     case RECEIVE_PLAYERS: {
