@@ -10,16 +10,14 @@ import {
   RECEIVE_CACHED_PLAYERS,
   ADD_PLAYER_TO_WATCH,
   REMOVE_PLAYER,
-  CACHED_PLAYERS_LOADING,
+  defaultHeaders,
   fetchPlayersStarted,
   fetchPlayersError,
-  fetchPlayersSuccess
+  fetchPlayersSuccess,
+  fetchCachedPlayersStarted,
+  fetchCachedPlayersError,
+  fetchCachedPlayersSuccess
 } from "./constants";
-
-const defaultHeaders = {
-  'Accept': 'application/json',
-  'Content-Type': 'application/json',
-};
 
 export function getAllPlayers() {
   return dispatch => {
@@ -28,6 +26,18 @@ export function getAllPlayers() {
       .then(response => response.json())
       .then(players => dispatch(fetchPlayersSuccess(players.data)))
       .catch(error => dispatch(fetchPlayersError(error)));
+  };
+}
+
+export function getCachedPlayers() {
+  const cachedPlayers = JSON.parse(localStorage.getItem('playersWatching'));
+
+  return dispatch => {
+    dispatch(fetchCachedPlayersStarted());
+    fetch(`/api/players/${cachedPlayers}`, {headers: defaultHeaders, method: 'POST'})
+      .then(response => response.json())
+      .then(players => dispatch(fetchCachedPlayersSuccess(players.data)))
+      .catch(error => dispatch(fetchCachedPlayersError(error)));
   };
 }
 
@@ -40,25 +50,6 @@ export function addPlayerToWatch(player) {
       .then(grabJSON)
       .then((response) => {
         return dispatch(receivePlayer(response.data));
-      });
-  };
-}
-
-export function getCachedPlayers() {
-  var cachedPlayers = JSON.parse(localStorage.getItem('playersWatching'));
-
-  return dispatch => {
-    fetch(`/api/players/${cachedPlayers}`, {
-      headers: defaultHeaders,
-      method: 'POST'
-    })
-      .then(grabJSON)
-      .then((response) => {
-        return dispatch({
-          type: RECEIVE_CACHED_PLAYERS,
-          playersWatching: response.data,
-          isLoading: false
-        });
       });
   };
 }
@@ -80,13 +71,6 @@ export function removePlayer(playersWatching, player) {
     playersWatching: newPlayersWatching,
     personId: player.personId
   };
-}
-
-export function cachedPlayersLoading() {
-  return {
-    type: CACHED_PLAYERS_LOADING,
-    isLoading: true
-  }
 }
 
 export function addPlayer() {
