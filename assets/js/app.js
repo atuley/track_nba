@@ -23,8 +23,6 @@ import store from "./store"
 // Local files can be imported directly using relative
 // paths "./socket" or full ones "web/static/js/socket".
 
-import socket from "./socket"
-
 const app = document.getElementById('app')
 
 ReactDOM.render(<Provider store={store}>

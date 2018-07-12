@@ -1,5 +1,4 @@
 import _ from "lodash";
-import { replaceListItem } from "../utils";
 import {
   RECEIVE_PLAYERS,
   RECEIVE_PLAYER_TO_WATCH,
@@ -21,7 +20,8 @@ export default function(state={
   players: [],
   stats: [],
   playersWatching: [],
-  loading: false
+  loading: false,
+  error: null
 }, action) {
   switch(action.type) {
     case FETCH_PLAYERS_STARTED:

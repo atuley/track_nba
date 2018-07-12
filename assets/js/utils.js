@@ -1,23 +1,6 @@
 import _ from 'lodash';
 import React from 'react';
 
-export function replaceListItem(list, oldItem, newItem) {
-  var index = _.findIndex(list, {personId: oldItem.personId}); //use newItem instead?
-
-  if(newItem) {
-    return [
-      ..._.slice(list, 0, index),
-      newItem,
-      ..._.slice(list, index + 1, list.length)
-    ];
-  } else {
-    return [
-      ..._.slice(list, 0, index),
-      ..._.slice(list, index + 1, list.length)
-    ];
-  }
-}
-
 export function searchPlayers(searchContent, { target: { value: searchText } }) {
   var searchQuery = _.toLower(searchText);
   var currentPlayers = this.props[searchContent];
@@ -33,4 +16,17 @@ export function searchPlayers(searchContent, { target: { value: searchText } }) 
   this.setState({
     [searchContent]: updatedPlayers
   });
+}
+
+export function updateWatchingState(players) {
+  let newPlayers = players.slice(0);
+  const cachedPlayers = JSON.parse(localStorage.getItem('playersWatching'));
+  if (localStorage.getItem('playersWatching')) {
+    newPlayers.forEach(function(player) {
+      if (cachedPlayers.includes(player.personId)) {
+        player.isWatching = true
+      }
+    })
+  }
+  return newPlayers;
 }

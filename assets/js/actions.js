@@ -1,7 +1,7 @@
 import thunk from 'redux-thunk';
 import fetch from 'isomorphic-fetch';
 import { polyfill } from 'es6-promise';
-import socket from "./socket";
+import { updateWatchingState } from './utils';
 import _ from 'lodash';
 
 import {
@@ -27,7 +27,7 @@ export function getAllPlayers() {
     dispatch(fetchPlayersStarted());
     fetch(`/api/players`)
       .then(response => response.json())
-      .then(players => dispatch(fetchPlayersSuccess(players.data)))
+      .then(players => dispatch(fetchPlayersSuccess(updateWatchingState(players.data))))
       .catch(error => dispatch(fetchPlayersError(error)));
   };
 }
@@ -51,24 +51,6 @@ export function addPlayerToWatch(player) {
       .then(response => response.json())
       .then(player => dispatch(fetchPlayerSuccess(player.data)))
       .catch(error => dispatch(fetchPlayerError(error)));
-  };
-}
-
-export function receivePlayers(players) {
-  var newPlayers = players;
-  if (localStorage.getItem('playersWatching')) {
-    var cachedPlayers = JSON.parse(localStorage.getItem('playersWatching'));
-    for (var i = 0; i < newPlayers.length; i++) {
-      for (var j = 0; j < cachedPlayers.length; j++) {
-        if (cachedPlayers[j] == newPlayers[i].personId) {
-          newPlayers[i].isWatching = true
-        }
-      }
-    }
-  }
-  return {
-    type: RECEIVE_PLAYERS,
-    players: newPlayers
   };
 }
 
