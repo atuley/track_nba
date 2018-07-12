@@ -18,7 +18,7 @@ export default function(state={
   players: [],
   stats: [],
   playersWatching: [],
-  isLoading: false
+  loading: false
 }, action) {
   switch(action.type) {
     case FETCH_PLAYERS_STARTED:
@@ -30,20 +30,20 @@ export default function(state={
       return {...state, players: action.players};
     }
     case FETCH_CACHED_PLAYERS_STARTED: {
-      return {...state, isLoading: true};
+      return {...state, loading: true};
     }
     case FETCH_CACHED_PLAYERS_ERROR: {
       return {...state, error: action.error};
     }
     case FETCH_CACHED_PLAYERS_SUCCESS: {
-      return {...state, playersWatching: action.players, isLoading: action.isLoading};
+      return {...state, playersWatching: action.players, loading: action.loading};
     }
 
     case RECEIVE_PLAYERS: {
       return {...state, players: action.players}
     }
     case ADD_PLAYER_TO_WATCH: {
-      return {...state, isLoading: action.isLoading}
+      return {...state, loading: action.loading}
     }
     case RECEIVE_PLAYER_TO_WATCH: {
       var newPlayersList = _.concat(state.playersWatching, action.player)
@@ -52,10 +52,10 @@ export default function(state={
         playerIdList.push(value.personId)
       })
       localStorage.setItem('playersWatching', JSON.stringify(playerIdList))
-      return {...state, playersWatching: newPlayersList, isLoading: action.isLoading}
+      return {...state, playersWatching: newPlayersList, loading: action.loading}
     }
     case RECEIVE_CACHED_PLAYERS: {
-      return {...state, playersWatching: action.playersWatching, isLoading: action.isLoading}
+      return {...state, playersWatching: action.playersWatching, loading: action.loading}
     }
     case REMOVE_PLAYER: {
       var newPlayers = state.players.slice(0)

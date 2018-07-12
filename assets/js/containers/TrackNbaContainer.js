@@ -10,7 +10,7 @@ const mapStateToProps = (state) => {
     players: state.playerReducer.players,
     stats: state.playerReducer.stats,
     playersWatching: state.playerReducer.playersWatching,
-    isLoading: state.playerReducer.isLoading
+    loading: state.playerReducer.loading
   }
 };
 

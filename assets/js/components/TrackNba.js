@@ -93,7 +93,7 @@ export default class TrackNba extends React.Component {
           </div>
         </div>
         <div className="row u-margin-bottom">
-          {this.props.isLoading ? loading() : playersLoaded()}
+          {this.props.loading ? loading() : playersLoaded()}
         </div>
       </div>
     );

@@ -76,7 +76,7 @@ export function removePlayer(playersWatching, player) {
 export function addPlayer() {
   return {
     type: ADD_PLAYER_TO_WATCH,
-    isLoading: true
+    loading: true
   };
 }
 
@@ -84,7 +84,7 @@ export function receivePlayer(player) {
   return {
     type: RECEIVE_PLAYER_TO_WATCH,
     player: player,
-    isLoading: false
+    loading: false
   };
 }
 

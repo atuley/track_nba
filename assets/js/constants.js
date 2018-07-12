@@ -36,7 +36,7 @@ export const FETCH_CACHED_PLAYERS_SUCCESS = "FETCH_CACHED_PLAYERS_SUCCESS";
 
 export const fetchCachedPlayersStarted = () => ({
   type: FETCH_CACHED_PLAYERS_STARTED,
-  isLoading: true
+  loading: true
 });
 
 export const fetchCachedPlayersError = error => ({
@@ -46,6 +46,6 @@ export const fetchCachedPlayersError = error => ({
 
 export const fetchCachedPlayersSuccess = players => ({
   type: FETCH_CACHED_PLAYERS_SUCCESS,
-  isLoading: false,
+  loading: false,
   players
 });
