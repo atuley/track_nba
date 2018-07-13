@@ -5,10 +5,6 @@ import { updateWatchingState } from './utils';
 import _ from 'lodash';
 
 import {
-  RECEIVE_PLAYERS,
-  RECEIVE_PLAYER_TO_WATCH,
-  RECEIVE_CACHED_PLAYERS,
-  ADD_PLAYER_TO_WATCH,
   REMOVE_PLAYER,
   defaultHeaders,
   fetchPlayersStarted,

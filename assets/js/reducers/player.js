@@ -1,9 +1,5 @@
 import _ from "lodash";
 import {
-  RECEIVE_PLAYERS,
-  RECEIVE_PLAYER_TO_WATCH,
-  RECEIVE_CACHED_PLAYERS,
-  ADD_PLAYER_TO_WATCH,
   REMOVE_PLAYER,
   FETCH_PLAYERS_STARTED,
   FETCH_PLAYERS_ERROR,
@@ -16,13 +12,15 @@ import {
   FETCH_PLAYER_SUCCESS
 } from "../constants";
 
-export default function(state={
+const initialState = {
   players: [],
   stats: [],
   playersWatching: [],
   loading: false,
   error: null
-}, action) {
+};
+
+export default function(state=initialState, action) {
   switch(action.type) {
     case FETCH_PLAYERS_STARTED:
       return {...state};
@@ -58,24 +56,6 @@ export default function(state={
       return {...state, playersWatching: newPlayersList, loading: action.loading}
     }
 
-    case RECEIVE_PLAYERS: {
-      return {...state, players: action.players}
-    }
-    case ADD_PLAYER_TO_WATCH: {
-      return {...state, loading: action.loading}
-    }
-    case RECEIVE_PLAYER_TO_WATCH: {
-      var newPlayersList = _.concat(state.playersWatching, action.player)
-      var playerIdList = []
-      _.forEach(newPlayersList, function(value) {
-        playerIdList.push(value.personId)
-      })
-      localStorage.setItem('playersWatching', JSON.stringify(playerIdList))
-      return {...state, playersWatching: newPlayersList, loading: action.loading}
-    }
-    case RECEIVE_CACHED_PLAYERS: {
-      return {...state, playersWatching: action.playersWatching, loading: action.loading}
-    }
     case REMOVE_PLAYER: {
       var newPlayers = state.players.slice(0)
       var index = _.findIndex(newPlayers, function(o) {
@@ -84,6 +64,7 @@ export default function(state={
       newPlayers[index].isWatching = false;
       return {...state, playersWatching: action.playersWatching, players: newPlayers}
     }
+    default:
+      return state;
   }
-  return state;
 }
