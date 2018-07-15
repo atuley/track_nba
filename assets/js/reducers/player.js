@@ -67,15 +67,9 @@ export default function(state=initialState, action) {
         loading: action.loading
       };
     case FETCH_PLAYER_SUCCESS:
-      var newPlayersList = _.concat(state.playersWatching, action.player)
-      var playerIdList = []
-      _.forEach(newPlayersList, function(value) {
-        playerIdList.push(value.personId)
-      })
-      localStorage.setItem('playersWatching', JSON.stringify(playerIdList))
       return {
         ...state,
-        playersWatching: newPlayersList,
+        playersWatching: action.playersWatching,
         loading: action.loading
       };
 

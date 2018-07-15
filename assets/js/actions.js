@@ -1,7 +1,10 @@
 import thunk from 'redux-thunk';
 import fetch from 'isomorphic-fetch';
 import { polyfill } from 'es6-promise';
-import { updateWatchingState } from './utils';
+import {
+  updateWatchingState,
+  updatePlayersWatching
+ } from './utils';
 import _ from 'lodash';
 
 import {
@@ -40,31 +43,28 @@ export function getCachedPlayers() {
   };
 }
 
-export function addPlayerToWatch(player) {
+export function addPlayerToWatch(player, playersWatching) {
   return dispatch => {
     dispatch(fetchPlayerStarted())
     fetch(`/api/player/${player.personId}`, {headers: defaultHeaders, method: 'POST'})
       .then(response => response.json())
-      .then(player => dispatch(fetchPlayerSuccess(player.data)))
+      .then(player => dispatch(fetchPlayerSuccess(updatePlayersWatching(player.data, playersWatching))))
       .catch(error => dispatch(fetchPlayerError(error)));
   };
 }
 
 export function removePlayer(playersWatching, player, players) {
   const cachedPlayers = JSON.parse(localStorage.getItem('playersWatching'))
-  const index = _.findIndex(cachedPlayers, function(cp) { return cp == player.personId; });
-  cachedPlayers.splice(index, 1)
-  localStorage.setItem('playersWatching', JSON.stringify(cachedPlayers))
-
-  const newPlayersWatching = playersWatching.slice(0)
-  newPlayersWatching.splice(index, 1)
-
-
   const newPlayers = players.slice(0)
-  const indexPlayer = _.findIndex(newPlayers, function(o) {
-    return o.personId == player.personId;
-  });
-  newPlayers[indexPlayer].isWatching = false;
+  const cachedIndex = _.findIndex(cachedPlayers, function(cp) { return cp == player.personId; });
+  const index = _.findIndex(newPlayers, function(p) { return p.personId == player.personId; });
+  const newPlayersWatching = playersWatching.slice(0)
+
+  // Remove player from cache, reset watching state
+  cachedPlayers.splice(cachedIndex, 1)
+  newPlayersWatching.splice(cachedIndex, 1)
+  localStorage.setItem('playersWatching', JSON.stringify(cachedPlayers))
+  newPlayers[index].isWatching = false;
 
   return {
     type: REMOVE_PLAYER,

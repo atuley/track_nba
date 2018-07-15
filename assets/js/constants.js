@@ -56,8 +56,8 @@ export const fetchPlayerError = error => ({
   error
 });
 
-export const fetchPlayerSuccess = player => ({
+export const fetchPlayerSuccess = playersWatching => ({
   type: FETCH_PLAYER_SUCCESS,
   loading: false,
-  player
+  playersWatching
 });

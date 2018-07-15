@@ -30,3 +30,15 @@ export function updateWatchingState(players) {
   }
   return newPlayers;
 }
+
+export function updatePlayersWatching(player, playersWatching) {
+  const updatedPlayersWatching = _.concat(playersWatching, player);
+  const updatedCachedPlayers = []
+
+  _.forEach(updatedPlayersWatching, function(player) {
+    updatedCachedPlayers.push(player.personId)
+  })
+  localStorage.setItem('playersWatching', JSON.stringify(updatedCachedPlayers));
+
+  return updatedPlayersWatching;
+}
