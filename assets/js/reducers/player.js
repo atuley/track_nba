@@ -80,15 +80,10 @@ export default function(state=initialState, action) {
       };
 
     case REMOVE_PLAYER:
-      var newPlayers = state.players.slice(0)
-      var index = _.findIndex(newPlayers, function(o) {
-        return o.personId == action.personId;
-      });
-      newPlayers[index].isWatching = false;
       return {
         ...state,
         playersWatching: action.playersWatching,
-        players: newPlayers
+        players: action.players
       };
 
     default:

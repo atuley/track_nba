@@ -50,21 +50,25 @@ export function addPlayerToWatch(player) {
   };
 }
 
-export function removePlayer(playersWatching, player) {
-  var cachedPlayers = JSON.parse(localStorage.getItem('playersWatching'))
-  var index = _.findIndex(cachedPlayers, function(o) {
-    return o == player.personId;
-  });
-
+export function removePlayer(playersWatching, player, players) {
+  const cachedPlayers = JSON.parse(localStorage.getItem('playersWatching'))
+  const index = _.findIndex(cachedPlayers, function(cp) { return cp == player.personId; });
   cachedPlayers.splice(index, 1)
   localStorage.setItem('playersWatching', JSON.stringify(cachedPlayers))
 
-  var newPlayersWatching = playersWatching.slice(0)
+  const newPlayersWatching = playersWatching.slice(0)
   newPlayersWatching.splice(index, 1)
+
+
+  const newPlayers = players.slice(0)
+  const indexPlayer = _.findIndex(newPlayers, function(o) {
+    return o.personId == player.personId;
+  });
+  newPlayers[indexPlayer].isWatching = false;
 
   return {
     type: REMOVE_PLAYER,
     playersWatching: newPlayersWatching,
-    personId: player.personId
+    players: newPlayers
   };
 }
