@@ -2,10 +2,9 @@ import _ from 'lodash';
 import React from 'react';
 
 export function searchPlayers(searchContent, { target: { value: searchText } }) {
-  var searchQuery = _.toLower(searchText);
-  var currentPlayers = this.props[searchContent];
+  const searchQuery = _.toLower(searchText);
 
-  const updatedPlayers = _.filter(currentPlayers, function(player) {
+  const updatedPlayers = _.filter(this.props[searchContent], function(player) {
     return _.chain(player)
             .values()
             .toLower()
@@ -19,8 +18,9 @@ export function searchPlayers(searchContent, { target: { value: searchText } }) 
 }
 
 export function updateWatchingState(players) {
-  let newPlayers = players.slice(0);
+  const newPlayers = players.slice(0);
   const cachedPlayers = JSON.parse(localStorage.getItem('playersWatching'));
+
   if (localStorage.getItem('playersWatching')) {
     newPlayers.forEach(function(player) {
       if (cachedPlayers.includes(player.personId)) {

@@ -8,38 +8,26 @@ import PlayerStat from "./PlayerStat";
 export default class TrackNba extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      players: []
-    };
+    this.state = { players: [] };
   }
 
   findPlayerStats(player, playersWatching) {
     this.disableButton(player)
     this.props.dispatch(addPlayerToWatch(player, playersWatching))
-    this.clearPlayers()
     this.clearInputText()
+  }
+
+  disableButton(player) {
+    const updatedPlayers = this.state.players
+    const index = _.findIndex(updatedPlayers, function(p) { return p.personId == player.personId; })
+
+    updatedPlayers[index].isWatching = true
+    this.setState({ players: updatedPlayers })
   }
 
   clearInputText() {
     document.getElementById("reset-value").value=""
-  }
-
-  clearPlayers() {
-    this.setState({
-      players: []
-    })
-  }
-
-  disableButton(player) {
-    var updatedPlayers = this.state.players
-    var index = _.findIndex(updatedPlayers, function(p) {
-      return p.personId == player.personId;
-    })
-    updatedPlayers[index].isWatching = true
-
-    this.setState({
-      players: updatedPlayers
-    })
+    this.setState({ players: [] })
   }
 
   render() {
