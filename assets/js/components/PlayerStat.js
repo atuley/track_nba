@@ -3,11 +3,11 @@ import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
 import { removePlayer } from "../actions";
 
-const remove = (dispatch, playersWatching, player) => {
-  dispatch(removePlayer(playersWatching, player));
+const remove = (dispatch, playersWatching, player, players) => {
+  dispatch(removePlayer(playersWatching, player, players));
 }
 
-const PlayerStat = ({player, playersWatching, dispatch, isLoading}) => {
+const PlayerStat = ({players, player, playersWatching, dispatch, loading}) => {
   return(
     <div>
       <div className="col-sm-6 col-md-6 col-lg-4">
@@ -33,7 +33,7 @@ const PlayerStat = ({player, playersWatching, dispatch, isLoading}) => {
               </div>
               <div className="col-md-4 col-xs-4 u-main-stat">
                 <div className="remove">
-                  <span className="delete" onClick={remove.bind(this, dispatch, playersWatching, player)}>X</span>
+                  <span className="delete" onClick={remove.bind(this, dispatch, playersWatching, player, players)}>X</span>
                 </div>
                 <h2>{player.stats.stats.totReb || 0}</h2>REB
               </div>

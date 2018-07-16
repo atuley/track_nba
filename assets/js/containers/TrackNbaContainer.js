@@ -10,7 +10,8 @@ const mapStateToProps = (state) => {
     players: state.playerReducer.players,
     stats: state.playerReducer.stats,
     playersWatching: state.playerReducer.playersWatching,
-    isLoading: state.playerReducer.isLoading
+    loading: state.playerReducer.loading,
+    error: state.playerReducer.error
   }
 };
 
@@ -23,7 +24,6 @@ export class TrackNbaContainer extends React.Component {
   componentDidMount() {
     if (localStorage.getItem('playersWatching') && localStorage.getItem('playersWatching') != "[]") {
       this.props.dispatch(getCachedPlayers());
-      this.props.dispatch(cachedPlayersLoading());
     }
     this.props.dispatch(getAllPlayers());
   }

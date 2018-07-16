@@ -8,39 +8,26 @@ import PlayerStat from "./PlayerStat";
 export default class TrackNba extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      players: []
-    };
+    this.state = { players: [] };
   }
 
-  findPlayerStats(player) {
+  findPlayerStats(player, playersWatching) {
     this.disableButton(player)
-    this.props.dispatch(addPlayer())
-    this.props.dispatch(addPlayerToWatch(player))
-    this.clearPlayers()
+    this.props.dispatch(addPlayerToWatch(player, playersWatching))
     this.clearInputText()
+  }
+
+  disableButton(player) {
+    const updatedPlayers = this.state.players
+    const index = _.findIndex(updatedPlayers, function(p) { return p.personId == player.personId; })
+
+    updatedPlayers[index].isWatching = true
+    this.setState({ players: updatedPlayers })
   }
 
   clearInputText() {
     document.getElementById("reset-value").value=""
-  }
-
-  clearPlayers() {
-    this.setState({
-      players: []
-    })
-  }
-
-  disableButton(player) {
-    var updatedPlayers = this.state.players
-    var index = _.findIndex(updatedPlayers, function(p) {
-      return p.personId == player.personId;
-    })
-    updatedPlayers[index].isWatching = true
-
-    this.setState({
-      players: updatedPlayers
-    })
+    this.setState({ players: [] })
   }
 
   render() {
@@ -79,7 +66,7 @@ export default class TrackNba extends React.Component {
                         </span>
                       </td>
                       <td className="u-align-right col-md-2">
-                        <button className={`add-button player-${player.personId}`} disabled={player.isWatching} onClick={this.findPlayerStats.bind(this, player)}>
+                        <button className={`add-button player-${player.personId}`} disabled={player.isWatching} onClick={this.findPlayerStats.bind(this, player, this.props.playersWatching)}>
                           <span>
                             {player.isWatching ? "Watching" : "Watch"}
                           </span>
@@ -93,7 +80,7 @@ export default class TrackNba extends React.Component {
           </div>
         </div>
         <div className="row u-margin-bottom">
-          {this.props.isLoading ? loading() : playersLoaded()}
+          {this.props.loading ? loading() : playersLoaded()}
         </div>
       </div>
     );
