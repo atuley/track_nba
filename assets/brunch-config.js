@@ -2,7 +2,7 @@ exports.config = {
   // See http://brunch.io/#documentation for docs.
   files: {
     javascripts: {
-      joinTo: "js/app.js"
+      joinTo: 'js/app.js',
 
       // To use a separate vendor.js bundle, specify two files path
       // http://brunch.io/docs/config#-files-
@@ -20,26 +20,26 @@ exports.config = {
       // }
     },
     stylesheets: {
-      joinTo: "css/app.css"
+      joinTo: 'css/app.css',
     },
     templates: {
-      joinTo: "js/app.js"
-    }
+      joinTo: 'js/app.js',
+    },
   },
 
   conventions: {
     // This option sets where we should place non-css and non-js assets in.
     // By default, we set this to "/assets/static". Files in this directory
     // will be copied to `paths.public`, which is "priv/static" by default.
-    assets: /^(static)/
+    assets: /^(static)/,
   },
 
   // Phoenix paths configuration
   paths: {
     // Dependencies and current project directories to watch
-    watched: ["static", "css", "js", "vendor"],
+    watched: ['static', 'css', 'js', 'vendor'],
     // Where to compile files to
-    public: "../priv/static"
+    public: '../priv/static',
   },
 
   // Configure your plugins
@@ -47,25 +47,25 @@ exports.config = {
     babel: {
       // Do not use ES6 compiler in vendor code
       ignore: [/vendor/],
-      presets: ["latest", "react", "stage-0"]
+      presets: ['latest', 'react', 'stage-0'],
     },
     sass: {
       mode: 'native',
       options: {
-        includePaths: ['node_modules/bulma']
-      }
-    }
+        includePaths: ['node_modules/bulma'],
+      },
+    },
   },
 
   modules: {
     autoRequire: {
-      "js/app.js": ["js/app"]
-    }
+      'js/app.js': ['js/app'],
+    },
   },
 
   npm: {
     enabled: true,
-    whitelist: ["phoenix", "phoenix_html", "react",
-                "react-dom", "redux", "react-redux", "redux-thunk", "leaflet"]
-  }
+    whitelist: ['phoenix', 'phoenix_html', 'react',
+      'react-dom', 'redux', 'react-redux', 'redux-thunk', 'leaflet'],
+  },
 };

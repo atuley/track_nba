@@ -11,19 +11,19 @@
 //
 // If you no longer want to use a dependency, remember
 // to also remove its path from "config.paths.watched".
-import "phoenix_html"
-import React from "react";
-import {render} from "react-dom";
+import 'phoenix_html';
+import React from 'react';
+import { render } from 'react-dom';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import TrackNbaContainer from './containers/TrackNbaContainer';
-import ReactDOM from "react-dom"
-import { Provider } from "react-redux"
-import store from "./store"
+import store from './store';
 // Import local files
 //
 // Local files can be imported directly using relative
 // paths "./socket" or full ones "web/static/js/socket".
 
-const app = document.getElementById('app')
+const app = document.getElementById('app');
 
 ReactDOM.render(<Provider store={store}>
   <TrackNbaContainer />
