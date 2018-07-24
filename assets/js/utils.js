@@ -1,5 +1,4 @@
 import _ from 'lodash';
-import React from 'react';
 
 export function searchPlayers(searchContent, { target: { value: searchText } }) {
   const searchQuery = _.toLower(searchText);

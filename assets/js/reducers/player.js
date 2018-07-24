@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import {
   REMOVE_PLAYER,
   FETCH_PLAYERS_STARTED,

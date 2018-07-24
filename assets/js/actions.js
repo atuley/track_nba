@@ -1,6 +1,4 @@
-import thunk from 'redux-thunk';
 import fetch from 'isomorphic-fetch';
-import { polyfill } from 'es6-promise';
 import _ from 'lodash';
 import {
   updateWatchingState,
@@ -48,7 +46,8 @@ export function addPlayerToWatch(player, playersWatching) {
     dispatch(fetchPlayerStarted());
     fetch(`/api/player/${player.personId}`, { headers: defaultHeaders, method: 'POST' })
       .then(response => response.json())
-      .then(player => dispatch(fetchPlayerSuccess(updatePlayersWatching(player.data, playersWatching))))
+      .then(player =>
+        dispatch(fetchPlayerSuccess(updatePlayersWatching(player.data, playersWatching))))
       .catch(error => dispatch(fetchPlayerError(error)));
   };
 }
@@ -56,8 +55,8 @@ export function addPlayerToWatch(player, playersWatching) {
 export function removePlayer(playersWatching, player, players) {
   const cachedPlayers = JSON.parse(localStorage.getItem('playersWatching'));
   const newPlayers = players.slice(0);
-  const cachedIndex = _.findIndex(cachedPlayers, cp => cp == player.personId);
-  const index = _.findIndex(newPlayers, p => p.personId == player.personId);
+  const cachedIndex = _.findIndex(cachedPlayers, cp => cp === player.personId);
+  const index = _.findIndex(newPlayers, p => p.personId === player.personId);
   const newPlayersWatching = playersWatching.slice(0);
 
   // Remove player from cache, reset watching state

@@ -13,7 +13,6 @@
 // to also remove its path from "config.paths.watched".
 import 'phoenix_html';
 import React from 'react';
-import { render } from 'react-dom';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import TrackNbaContainer from './containers/TrackNbaContainer';
@@ -25,6 +24,8 @@ import store from './store';
 
 const app = document.getElementById('app');
 
-ReactDOM.render(<Provider store={store}>
-  <TrackNbaContainer />
-</Provider>, app);
+ReactDOM.render(
+  <Provider store={store}>
+    <TrackNbaContainer />
+  </Provider>, app
+);

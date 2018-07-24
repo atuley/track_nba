@@ -8,14 +8,14 @@ const remove = (dispatch, playersWatching, player, players) => {
 };
 
 const PlayerStat = ({
-  players, player, playersWatching, dispatch, loading,
+  players, player, playersWatching, dispatch,
 }) => (
   <div>
     <div className="col-sm-6 col-md-6 col-lg-4">
       <div className="player-stat__container" style={{ borderLeft: `8px solid ${player.teamColor}` }}>
         <div className="col-md-5 col-xs-5 pic-border">
           <div className="row">
-            <img className="player-pic" src={`https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/${player.teamId}/2017/260x190/${player.personId}.png`} />
+            <img alt="picture of player" className="player-pic" src={`https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/${player.teamId}/2017/260x190/${player.personId}.png`} />
           </div>
           <div className="row player-name">
             <strong>

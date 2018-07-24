@@ -1,7 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
-import { bindActionCreators } from 'redux';
-import { addPlayer, addPlayerToWatch } from '../actions';
+import { addPlayerToWatch } from '../actions';
 import { searchPlayers } from '../utils';
 import PlayerStat from './PlayerStat';
 
@@ -19,7 +18,7 @@ export default class TrackNba extends React.Component {
 
   disableButton(player) {
     const updatedPlayers = this.state.players;
-    const index = _.findIndex(updatedPlayers, p => p.personId == player.personId);
+    const index = _.findIndex(updatedPlayers, p => p.personId === player.personId);
 
     updatedPlayers[index].isWatching = true;
     this.setState({ players: updatedPlayers });
@@ -32,11 +31,13 @@ export default class TrackNba extends React.Component {
 
   render() {
     const loading = () => (
-      <img className="loading-gif" src="images/load.gif" />
+      <img alt="" className="loading-gif" src="images/load.gif" />
     );
 
     const playersLoaded = () => (
-      _.map(this.props.playersWatching, player => <PlayerStat key={player.personId} {...this.props} player={player} />)
+      _.map(this.props.playersWatching, player =>
+        <PlayerStat key={player.personId} {...this.props} player={player} />
+      )
     );
     return (
       <div>
@@ -48,7 +49,7 @@ export default class TrackNba extends React.Component {
                 {_.map(this.state.players, player => (
                   <tr className="search-border" key={player.personId} style={{ borderLeft: `8px solid ${player.teamColor}` }}>
                     <td className="col-md-2">
-                      <img className="search-player-pic" src={`https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/${player.teamId}/2017/260x190/${player.personId}.png`} />
+                      <img alt="picture of player" className="search-player-pic" src={`https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/${player.teamId}/2017/260x190/${player.personId}.png`} />
                     </td>
                     <td className="col-md-8">
                       <span className="player-name">
