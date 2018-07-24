@@ -1,4 +1,4 @@
-import {combineReducers} from "redux";
-import playerReducer from "./player";
+import { combineReducers } from 'redux';
+import playerReducer from './player';
 
-export default combineReducers({playerReducer});
+export default combineReducers({ playerReducer });
