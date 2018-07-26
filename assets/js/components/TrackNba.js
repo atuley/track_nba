@@ -11,13 +11,17 @@ export default class TrackNba extends React.Component {
   }
 
   findPlayerStats(player, playersWatching) {
+    const { dispatch } = this.props;
+
     this.disableButton(player);
-    this.props.dispatch(addPlayerToWatch(player, playersWatching));
+    dispatch(addPlayerToWatch(player, playersWatching));
     this.clearInputText();
   }
 
   disableButton(player) {
-    const updatedPlayers = this.state.players;
+    const { players } = this.state;
+
+    const updatedPlayers = players;
     const index = _.findIndex(updatedPlayers, p => p.personId === player.personId);
 
     updatedPlayers[index].isWatching = true;
@@ -30,12 +34,15 @@ export default class TrackNba extends React.Component {
   }
 
   render() {
-    const loading = () => (
+    const { players } = this.state;
+    const { playersWatching, loading } = this.props;
+
+    const playersLoading = () => (
       <img alt="" className="loading-gif" src="images/load.gif" />
     );
 
     const playersLoaded = () => (
-      _.map(this.props.playersWatching, player =>
+      _.map(playersWatching, player =>
         <PlayerStat key={player.personId} {...this.props} player={player} />
       )
     );
@@ -46,10 +53,10 @@ export default class TrackNba extends React.Component {
           <div className="player-search">
             <table className="table">
               <tbody>
-                {_.map(this.state.players, player => (
+                {_.map(players, player => (
                   <tr className="search-border" key={player.personId} style={{ borderLeft: `8px solid ${player.teamColor}` }}>
                     <td className="col-md-2">
-                      <img alt="picture of player" className="search-player-pic" src={`https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/${player.teamId}/2017/260x190/${player.personId}.png`} />
+                      <img className="search-player-pic" src={`https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/${player.teamId}/2017/260x190/${player.personId}.png`} />
                     </td>
                     <td className="col-md-8">
                       <span className="player-name">
@@ -60,7 +67,7 @@ export default class TrackNba extends React.Component {
                       </span>
                     </td>
                     <td className="u-align-right col-md-2">
-                      <button className={`add-button player-${player.personId}`} disabled={player.isWatching} onClick={this.findPlayerStats.bind(this, player, this.props.playersWatching)}>
+                      <button className={`add-button player-${player.personId}`} disabled={player.isWatching} onClick={this.findPlayerStats.bind(this, player, playersWatching)}>
                         <span>
                           {player.isWatching ? 'Watching' : 'Watch'}
                         </span>
@@ -73,7 +80,7 @@ export default class TrackNba extends React.Component {
           </div>
         </div>
         <div className="row u-margin-bottom">
-          {this.props.loading ? loading() : playersLoaded()}
+          {loading ? playersLoading() : playersLoaded()}
         </div>
       </div>
     );

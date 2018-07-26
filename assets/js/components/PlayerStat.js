@@ -15,7 +15,7 @@ const PlayerStat = ({
       <div className="player-stat__container" style={{ borderLeft: `8px solid ${player.teamColor}` }}>
         <div className="col-md-5 col-xs-5 pic-border">
           <div className="row">
-            <img alt="picture of player" className="player-pic" src={`https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/${player.teamId}/2017/260x190/${player.personId}.png`} />
+            <img className="player-pic" src={`https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/${player.teamId}/2017/260x190/${player.personId}.png`} />
           </div>
           <div className="row player-name">
             <strong>

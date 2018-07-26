@@ -27,5 +27,6 @@ const app = document.getElementById('app');
 ReactDOM.render(
   <Provider store={store}>
     <TrackNbaContainer />
-  </Provider>, app
+  </Provider>,
+  app,
 );

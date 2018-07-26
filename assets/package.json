@@ -2,9 +2,7 @@
   "repository": {},
   "license": "MIT",
   "scripts": {
-    "deploy": "brunch build --production",
-    "watch": "brunch watch --stdin",
-    "lint": "./node_modules/.bin/eslint *"
+    "lint": "./node_modules/.bin/eslint js/*"
   },
   "dependencies": {
     "es6-promise": "^4.1.1",

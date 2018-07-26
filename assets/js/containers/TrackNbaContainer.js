@@ -20,10 +20,12 @@ const mapDispatchToProps = dispatch => ({
 
 export class TrackNbaContainer extends React.Component {
   componentDidMount() {
+    const { dispatch } = this.props;
+
     if (localStorage.getItem('playersWatching') && localStorage.getItem('playersWatching') !== '[]') {
-      this.props.dispatch(getCachedPlayers());
+      dispatch(getCachedPlayers());
     }
-    this.props.dispatch(getAllPlayers());
+    dispatch(getAllPlayers());
   }
 
   render() {
