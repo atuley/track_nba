@@ -33,6 +33,14 @@ export default class TrackNba extends React.Component {
     this.setState({ players: [] });
   }
 
+  searchForPlayers() {
+    const { players } = this.props;
+    const searchText = document.getElementById('reset-value').value;
+    const updatedPlayers = searchPlayers(players, searchText);
+
+    this.setState({ players: updatedPlayers });
+  }
+
   render() {
     const { players } = this.state;
     const { playersWatching, loading } = this.props;
@@ -49,7 +57,7 @@ export default class TrackNba extends React.Component {
     return (
       <div>
         <div className="row">
-          <input id="reset-value" className="player-search-bar" placeholder="Search for a player by name" type="text" onChange={searchPlayers.bind(this, 'players')} />
+          <input id="reset-value" className="player-search-bar" placeholder="Search for a player by name" type="text" onChange={this.searchForPlayers.bind(this)} />
           <div className="player-search">
             <table className="table">
               <tbody>

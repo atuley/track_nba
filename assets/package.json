@@ -2,7 +2,7 @@
   "repository": {},
   "license": "MIT",
   "scripts": {
-    "lint": "./node_modules/.bin/eslint js/*",
+    "lint": "./node_modules/.bin/eslint __tests__ js/*",
     "test": "jest"
   },
   "dependencies": {

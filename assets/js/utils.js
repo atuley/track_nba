@@ -1,17 +1,13 @@
 import _ from 'lodash';
 
-export function searchPlayers(searchContent, { target: { value: searchText } }) {
+export function searchPlayers(searchContent, searchText) {
   const searchQuery = _.toLower(searchText);
 
-  const updatedPlayers = _.filter(this.props[searchContent], player => _.chain(player)
+  return _.filter(searchContent, player => _.chain(player)
     .values()
     .toLower()
     .includes(searchQuery)
     .value());
-
-  this.setState({
-    [searchContent]: updatedPlayers,
-  });
 }
 
 export function updateWatchingState(players) {
