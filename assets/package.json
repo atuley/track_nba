@@ -25,7 +25,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
-    "brunch": "2.10.9",
+    "brunch": "2.10.16",
     "clean-css-brunch": "2.10.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^17.0.0",
@@ -48,6 +48,9 @@
     ]
   },
   "jest": {
-    "testRegex": ".+assets.+__tests__.+-test.js$"
+    "testRegex": ".+assets.+__tests__.+-test.js$",
+    "setupFiles": [
+      "<rootDir>/__tests__/mocks/local-storage.js"
+    ]
   }
 }

@@ -20,11 +20,13 @@ import {
 } from './constants';
 
 export function getAllPlayers() {
+  const cachedPlayers = JSON.parse(localStorage.getItem('playersWatching'));
+
   return (dispatch) => {
     dispatch(fetchPlayersStarted());
     fetch('/api/players')
       .then(response => response.json())
-      .then(players => dispatch(fetchPlayersSuccess(updateWatchingState(players.data))))
+      .then(players => dispatch(fetchPlayersSuccess(updateWatchingState(players.data, cachedPlayers))))
       .catch(error => dispatch(fetchPlayersError(error)));
   };
 }

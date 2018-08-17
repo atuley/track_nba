@@ -10,10 +10,9 @@ export function searchPlayers(searchContent, searchText) {
     .value());
 }
 
-export function updateWatchingState(players) {
+export function updateWatchingState(players, cachedPlayers) {
   const newPlayers = players.slice(0);
-  const cachedPlayers = JSON.parse(localStorage.getItem('playersWatching'));
-
+  
   if (localStorage.getItem('playersWatching')) {
     newPlayers.forEach((player) => {
       if (cachedPlayers.includes(player.personId)) {
