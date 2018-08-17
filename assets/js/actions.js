@@ -26,7 +26,8 @@ export function getAllPlayers() {
     dispatch(fetchPlayersStarted());
     fetch('/api/players')
       .then(response => response.json())
-      .then(players => dispatch(fetchPlayersSuccess(updateWatchingState(players.data, cachedPlayers))))
+      .then(players => dispatch(fetchPlayersSuccess(
+        updateWatchingState(players.data, cachedPlayers))))
       .catch(error => dispatch(fetchPlayersError(error)));
   };
 }

@@ -12,7 +12,6 @@ export function searchPlayers(searchContent, searchText) {
 
 export function updateWatchingState(players, cachedPlayers) {
   const newPlayers = players.slice(0);
-  
   if (localStorage.getItem('playersWatching')) {
     newPlayers.forEach((player) => {
       if (cachedPlayers.includes(player.personId)) {
