@@ -62,9 +62,9 @@ export default class TrackNba extends React.Component {
             <table className="table">
               <tbody>
                 {_.map(players, player => (
-                  <tr className="search-border" key={player.personId} style={{ borderLeft: `8px solid ${player.teamColor}` }}>
+                  <tr className="player-search-border" key={player.personId} style={{ borderLeft: `8px solid ${player.teamColor}` }}>
                     <td className="col-md-2">
-                      <img className="search-player-pic" src={`https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/${player.teamId}/2017/260x190/${player.personId}.png`} />
+                      <img className="player-search-pic" src={`https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/${player.teamId}/2017/260x190/${player.personId}.png`} />
                     </td>
                     <td className="col-md-8">
                       <span className="player-name">

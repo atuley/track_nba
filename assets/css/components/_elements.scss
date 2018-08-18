@@ -3,6 +3,10 @@ body {
   margin-top: 0px !important;
 }
 
+.container {
+  max-width: 2000px !important;
+}
+
 hr {
   margin: 0 0 10px 0 !important
 }
@@ -18,24 +22,15 @@ h2 {
 
 table {
   border-bottom: 1px solid #aaaaaa;
+
+  tbody tr td {
+    border-top: 1px solid #aaaaaa !important;
+    padding: 0px !important;
+    vertical-align: middle !important;
+  }
+
   @media only screen and (max-width: 767px) {
     margin: auto !important;
     width: 90% !important;
   }
-}
-table>tbody>tr>td {
-  border-top: 1px solid #aaaaaa !important;
-  padding: 0px !important;
-  vertical-align: middle !important;
-}
-
-.disclaimer {
-  background-color: #fff;
-  bottom:0;
-  color: #d1cccc;
-  font-family: "Architects Daughter", sans-serif !important;
-  font-size: 12px;
-  padding: 0 20px;
-  position: fixed;
-  width:100%;
 }

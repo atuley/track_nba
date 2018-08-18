@@ -6,16 +6,16 @@
   top: 0;
   width: 100%;
   z-index: 1;
-}
 
-#navbar a {
-  color: #f2f2f2;
-  display: block;
-  float: left;
-  line-height: 27px;
-  padding: 14px;
-  text-align: center;
-  text-decoration: none;
+  a {
+    color: #f2f2f2;
+    display: block;
+    float: left;
+    line-height: 27px;
+    padding: 14px;
+    text-align: center;
+    text-decoration: none;
+  }
 }
 
 #title {

@@ -1,6 +1,7 @@
 /* This file is for your main application css. */
-@import 'components/player-search';
-@import 'components/player-stat';
-@import 'components/nav';
-@import 'components/fonts';
-@import 'components/elements';
+@import 'components/elements',
+        'components/footer',
+        'components/fonts',
+        'components/nav',
+        'components/player-search',
+        'components/player-stat';

@@ -1,5 +1,61 @@
-.container {
-  max-width: 2000px !important;
+.delete {
+  display: block;
+  padding-top: 3px;
+}
+
+.game-stat {
+  margin-bottom: 3px;
+  text-align: center;
+}
+
+.loading-gif {
+  display: block;
+  margin: auto;
+  width: 125px;
+}
+
+.main-stats {
+  border-bottom: 1px solid #aaaaaa;
+  padding: 5px;
+  text-align: center;
+}
+
+.player {
+  &-name {
+    font-size: 15px;
+    margin-top: 8px;
+    text-align: center;
+  }
+
+  &-pic {
+    border-radius: 50%;
+    display: block;
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    width: auto;
+    @media only screen and (max-width: 767px) {
+      height: 100px;
+      margin-top: 25px;
+    }
+  }
+
+  &-stat {
+    &__container {
+      border-bottom: 1px solid #aaaaaa;
+      border-right: 1px solid #aaaaaa;
+      border-top: 1px solid #aaaaaa;
+      font-family: 'Roboto', sans-serif;
+      height: 210px;
+      margin-top: 20px;
+    }
+  }
+}
+
+.pic-border {
+  border-right: 1px solid #aaaaaa;
+  height: 100%;
 }
 
 .remove {
@@ -11,68 +67,12 @@
   margin-right: -27px;
   margin-top: -16px;
   width: 25px;
-}
-.remove:hover {
-  cursor: pointer;
-}
 
-.delete {
-  display: block;
-  padding-top: 3px;
-}
-
-.main-stats {
-  border-bottom: 1px solid #aaaaaa;
-  padding: 5px;
-  text-align: center;
-}
-
-.loading-gif {
-  display: block;
-  margin: auto;
-  width: 125px;
-}
-
-.player-name {
-  margin-top: 8px;
-  text-align: center;
-}
-
-.player-pic {
-  border-radius: 50%;
-  display: block;
-  height: 100px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 10px;
-  width: auto;
-  @media only screen and (max-width: 767px) {
-    height: 100px;
-    margin-top: 25px;
-  }
-}
-
-.player-stat {
-  &__container {
-    border-bottom: 1px solid #aaaaaa;
-    border-right: 1px solid #aaaaaa;
-    border-top: 1px solid #aaaaaa;
-    font-family: 'Roboto', sans-serif;
-    height: 210px;
-    margin-top: 20px;
+  &:hover {
+    cursor: pointer;
   }
 }
 
 .secondary-stats {
   text-align: center;
-}
-
-.game-stat {
-  margin-bottom: 3px;
-  text-align: center;
-}
-
-.pic-border {
-  border-right: 1px solid #aaaaaa;
-  height: 100%;
 }
