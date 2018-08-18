@@ -8,34 +8,34 @@ hr {
 }
 
 h2 {
-  margin-top: 0px !important;
   margin-bottom: 0px !important;
-}
-
-table {
-  border-bottom: 1px solid #aaaaaa;
-  @media only screen and (max-width: 767px) {
-    width: 90% !important;
-    margin: auto !important;
-  }
-}
-table>tbody>tr>td {
-  border-top: 1px solid #aaaaaa !important;
-  vertical-align: middle !important;
-  padding: 0px !important;
+  margin-top: 0px !important;
 }
 
 .row {
   padding: 0px !important;
 }
 
+table {
+  border-bottom: 1px solid #aaaaaa;
+  @media only screen and (max-width: 767px) {
+    margin: auto !important;
+    width: 90% !important;
+  }
+}
+table>tbody>tr>td {
+  border-top: 1px solid #aaaaaa !important;
+  padding: 0px !important;
+  vertical-align: middle !important;
+}
+
 .disclaimer {
-  font-family: "Architects Daughter", sans-serif !important;
-  font-size: 12px;
-  color: #d1cccc;
-  padding: 0 20px;
-  position: fixed;
   background-color: #fff;
   bottom:0;
+  color: #d1cccc;
+  font-family: "Architects Daughter", sans-serif !important;
+  font-size: 12px;
+  padding: 0 20px;
+  position: fixed;
   width:100%;
 }
