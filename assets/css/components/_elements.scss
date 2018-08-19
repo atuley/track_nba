@@ -21,10 +21,10 @@ h2 {
 }
 
 table {
-  border-bottom: 1px solid #aaaaaa;
+  border-bottom: 1px solid $primary-grey;
 
   tbody tr td {
-    border-top: 1px solid #aaaaaa !important;
+    border-top: 1px solid $primary-grey !important;
     padding: 0px !important;
     vertical-align: middle !important;
   }

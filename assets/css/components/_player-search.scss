@@ -4,14 +4,14 @@
 
   &-bar {
     -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-box-shadow: inset 0 1px 1px $transparent;
     -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-    background-color: #fff;
+    background-color: $primary-white;
     background-image: none;
-    border: 1px solid #ccc;
+    border: 1px solid $primary-grey;
     border-radius: 0px;
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-    color: #555;
+    box-shadow: inset 0 1px 1px $transparent;
+    color: $primary-black;
     display: block;
     font-size: 14px;
     height: 34px;
@@ -32,7 +32,7 @@
   }
 
   &-border {
-    border-right: 1px solid #aaaaaa;
+    border-right: 1px solid $primary-grey;
   }
 
   &-pic {
@@ -49,26 +49,30 @@
 }
 
 .add-button {
-  background-color: #006BB6;
+  background-color: $button-blue;
   border: none;
   border-radius: 3px;
-  color: white;
+  color: $primary-white;
   margin-right: 20px;
   padding: 7px;
   width: 75px;
 
   &:disabled {
-    background-color: #528ab2;
+    background-color: $button-blue-disabled-hover;
     cursor: not-allowed;
 
     &:hover {
-      background-color: #528ab2;
+      background-color: $button-blue-disabled-hover;
       cursor: not-allowed;
     }
   }
+  
+  &:focus {
+    outline: none !important;
+  }
 
   &:hover {
-    background-color: #004d84;
+    background-color: $button-blue-hover;
   }
 }
 

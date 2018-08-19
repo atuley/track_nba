@@ -267,14 +267,14 @@ defmodule TrackNba.Colors do
       ttsName: nil
     },
     %NbaEx.TeamConfig{
-      primaryColor: "#ffffff",
+      primaryColor: "$primary-whitefff",
       secondaryColor: nil,
       teamId: "000000",
       tricode: "LKR",
       ttsName: nil
     },
     %NbaEx.TeamConfig{
-      primaryColor: "#ffffff",
+      primaryColor: "$primary-whitefff",
       secondaryColor: nil,
       teamId: "000000",
       tricode: "CLP",

@@ -55,7 +55,7 @@ const PlayerStat = ({
             </div>
           </div>
           <div className="secondary-stats">
-            <div className="row u-border-bottom u-main-stat">
+            <div className="row u-border-secondary u-main-stat">
               <div className="col-md-6 col-xs-6">
                 {player.stats.stats.steals || 0}
               </div>
@@ -63,7 +63,7 @@ const PlayerStat = ({
                 STL
               </div>
             </div>
-            <div className="row u-border-bottom u-main-stat">
+            <div className="row u-border-secondary u-main-stat">
               <div className="col-md-6 col-xs-6">
                 {player.stats.stats.blocks || 0}
               </div>
@@ -71,7 +71,7 @@ const PlayerStat = ({
                 BLK
               </div>
             </div>
-            <div className="row u-border-bottom u-main-stat">
+            <div className="row u-border-secondary u-main-stat">
               <div className="col-md-6 col-xs-6">
                 {player.stats.stats.turnovers || 0}
               </div>
@@ -79,7 +79,7 @@ const PlayerStat = ({
                 TO
               </div>
             </div>
-            <div className="row u-border-bottom u-main-stat">
+            <div className="row u-border-secondary u-main-stat">
               <div className="col-md-6 col-xs-6">
                 {player.stats.stats.fgp || 0}
                 %
@@ -88,7 +88,7 @@ const PlayerStat = ({
                 FGP
               </div>
             </div>
-            <div className="row u-border-bottom u-main-stat">
+            <div className="row u-border-secondary u-main-stat">
               <div className="col-md-6 col-xs-6">
                 {player.stats.stats.fgm || 0}
                 /

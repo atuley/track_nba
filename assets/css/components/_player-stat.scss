@@ -15,7 +15,7 @@
 }
 
 .main-stats {
-  border-bottom: 1px solid #aaaaaa;
+  border-bottom: 1px solid $primary-grey;
   padding: 5px;
   text-align: center;
 }
@@ -43,9 +43,9 @@
 
   &-stat {
     &__container {
-      border-bottom: 1px solid #aaaaaa;
-      border-right: 1px solid #aaaaaa;
-      border-top: 1px solid #aaaaaa;
+      border-bottom: 1px solid $primary-grey;
+      border-right: 1px solid $primary-grey;
+      border-top: 1px solid $primary-grey;
       font-family: 'Roboto', sans-serif;
       height: 210px;
       margin-top: 20px;
@@ -54,14 +54,14 @@
 }
 
 .pic-border {
-  border-right: 1px solid #aaaaaa;
+  border-right: 1px solid $primary-grey;
   height: 100%;
 }
 
 .remove {
-  background-color: #c62525;
+  background-color: $button-red;
   border-radius: 50%;
-  color: white;
+  color: $primary-white;
   float: right;
   height: 25px;
   margin-right: -27px;

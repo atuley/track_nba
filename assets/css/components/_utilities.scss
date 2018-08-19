@@ -1,0 +1,30 @@
+.u {
+  &-align-right {
+    padding: 0px !important;
+    text-align: right;
+  }
+
+  &-border {
+    &-left {
+      border-left: 1px solid $primary-grey;
+    }
+
+    &-right {
+      border-right: 1px solid $primary-grey;
+    }
+
+    &-secondary {
+      border-bottom: 1px solid $primary-grey;
+      margin-bottom: 3px;
+      margin-top: 3px;
+    }
+  }
+
+  &-main-stat {
+    padding: 5px;
+  }
+
+  &-margin-bottom {
+    margin-bottom: 75px;
+  }
+}

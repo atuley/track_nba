@@ -1,5 +1,5 @@
 #navbar {
-  background-color: #333;
+  background-color: $navigation;
   height: 54px;
   overflow: hidden;
   position: fixed;
@@ -8,7 +8,7 @@
   z-index: 1;
 
   a {
-    color: #f2f2f2;
+    color: $primary-white;
     display: block;
     float: left;
     line-height: 27px;
