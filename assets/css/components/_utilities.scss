@@ -24,7 +24,13 @@
     padding: 5px;
   }
 
-  &-margin-bottom {
-    margin-bottom: 75px;
+  &-margin {
+    &-bottom {
+      margin-bottom: 75px;
+    }
+
+    &-top {
+      margin-top: 80px;
+    }
   }
 }

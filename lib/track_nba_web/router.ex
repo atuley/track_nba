@@ -25,5 +25,6 @@ defmodule TrackNbaWeb.Router do
     pipe_through(:browser)
 
     get("/", PageController, :index)
+    get("/player/:player_id", StatsController, :show)
   end
 end
