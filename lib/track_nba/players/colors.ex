@@ -298,5 +298,6 @@ defmodule TrackNba.Colors do
       end)
 
     Map.put(player, :teamColor, team_color_for_player.primaryColor)
+    |> Map.put(:tricode, team_color_for_player.tricode)
   end
 end

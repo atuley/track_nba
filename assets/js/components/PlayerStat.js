@@ -12,20 +12,25 @@ const PlayerStat = ({
 }) => (
   <div>
     <div className="col-sm-6 col-md-6 col-lg-4">
-      <div className="player-stat__container" style={{ borderLeft: `8px solid ${player.teamColor}` }}>
+      <div className="player-stat__container" style={{ borderLeft: `8px solid ${player.teamColor}`, backgroundImage: `linear-gradient(to right, transparent 15%, ${player.teamColor} 150%)` }}>
         <div className="col-md-5 col-xs-5 pic-border">
-          <div className="row">
-            <img className="player-pic" src={`https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/${player.teamId}/2017/260x190/${player.personId}.png`} />
+          <div className="row team-logo-container" style={{ borderTop: `55px solid ${player.teamColor}` }}>
+            <img className="team-logo" src={`https://www.nba.com/assets/logos/teams/primary/web/${player.tricode}.svg`} />
           </div>
-          <div className="row player-name">
-            <strong>
-              {player.firstName}
-              {' '}
-              {player.lastName}
-            </strong>
-          </div>
-          <div className="row game-stat">
-            {`${player.stats.game.hTeam.triCode} ${player.stats.game.hTeam.score} - ${player.stats.game.vTeam.triCode} ${player.stats.game.vTeam.score}`}
+          <div className="left-player-info">
+            <div className="row">
+              <img className="player-pic" src={`https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/${player.teamId}/2017/260x190/${player.personId}.png`} />
+            </div>
+            <div className="row player-name">
+              <strong>
+                {player.firstName}
+                {' '}
+                {player.lastName}
+              </strong>
+            </div>
+            <div className="row game-stat">
+              {`${player.stats.game.hTeam.triCode} ${player.stats.game.hTeam.score} - ${player.stats.game.vTeam.triCode} ${player.stats.game.vTeam.score}`}
+            </div>
           </div>
         </div>
         <div className="col-md-7 col-xs-7">

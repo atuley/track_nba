@@ -14,6 +14,10 @@
   width: 125px;
 }
 
+.left-player-info {
+  margin-top: -37px;
+}
+
 .main-stats {
   border-bottom: 1px solid $primary-grey;
   padding: 5px;
@@ -75,4 +79,16 @@
 
 .secondary-stats {
   text-align: center;
+}
+
+.team-logo {
+  height: 35px;
+  margin-top: -93px;
+  margin-left: -5px;
+}
+
+.team-logo-container {
+  border-right: 55px solid transparent;
+  height: 0;
+  width: 0;
 }
