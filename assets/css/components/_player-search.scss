@@ -22,8 +22,7 @@
     width: 100%;
 
     @media only screen and (max-width: 767px) {
-      margin: 65px auto auto auto !important;
-      width: 90% !important;
+      margin-top: 65px !important;
     }
 
     &:focus {
@@ -66,7 +65,7 @@
       cursor: not-allowed;
     }
   }
-  
+
   &:focus {
     outline: none !important;
   }

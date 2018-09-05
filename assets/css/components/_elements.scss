@@ -22,15 +22,10 @@ h2 {
 
 table {
   border-bottom: 1px solid $primary-grey;
-
+  margin-bottom: 0px !important;
   tbody tr td {
     border-top: 1px solid $primary-grey !important;
     padding: 0px !important;
     vertical-align: middle !important;
-  }
-
-  @media only screen and (max-width: 767px) {
-    margin: auto !important;
-    width: 90% !important;
   }
 }

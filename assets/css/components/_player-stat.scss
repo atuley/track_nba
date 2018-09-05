@@ -1,6 +1,8 @@
 .delete {
   display: block;
-  padding-top: 3px;
+  padding-top: 1px;
+  border: 1px solid white;
+  border-radius: 100px;
 }
 
 .game-stat {
@@ -34,7 +36,7 @@
   &-pic {
     border-radius: 50%;
     display: block;
-    height: 100px;
+    height: 105px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;
@@ -81,14 +83,24 @@
   text-align: center;
 }
 
+.large-team-logo {
+  height: 175px;
+  position: absolute;
+  right: 25px;
+  bottom: 30px;
+  opacity: .2;
+}
+
 .team-logo {
-  height: 35px;
-  margin-top: -93px;
-  margin-left: -5px;
+  height: 32px;
+  margin-top: -96px;
+  margin-left: -1px;
 }
 
 .team-logo-container {
   border-right: 55px solid transparent;
+  margin-top: -1px;
+  margin-left: -20px !important;
   height: 0;
   width: 0;
 }

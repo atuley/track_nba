@@ -57,35 +57,38 @@ export default class TrackNba extends React.Component {
     return (
       <div>
         <div className="row">
-          <input id="reset-value" className="player-search-bar" placeholder="Search for a player by name" type="text" onChange={this.searchForPlayers.bind(this)} />
-          <div className="player-search">
-            <table className="table">
-              <tbody>
-                {_.map(players, player => (
-                  <tr className="player-search-border" key={player.personId} style={{ borderLeft: `8px solid ${player.teamColor}` }}>
-                    <td className="col-md-2">
-                      <img className="player-search-pic" src={`https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/${player.teamId}/2017/260x190/${player.personId}.png`} />
-                    </td>
-                    <td className="col-md-8">
-                      <span className="player-name">
-                        {`${player.firstName} ${player.lastName}`}
-                      </span>
-                      <span className="player-pos">
-                        {player.pos}
-                      </span>
-                    </td>
-                    <td className="u-align-right col-md-2">
-                      <button className={`add-button player-${player.personId}`} disabled={player.isWatching} onClick={this.findPlayerStats.bind(this, player, playersWatching)}>
-                        <span>
-                          {player.isWatching ? 'Watching' : 'Watch'}
+          <div className="col-md-12">
+            <input id="reset-value" className="player-search-bar" placeholder="Search for a player by name" type="text" onChange={this.searchForPlayers.bind(this)} />
+            <div className="player-search">
+              <table className="table">
+                <tbody>
+                  {_.map(players, player => (
+                    <tr className="player-search-border" key={player.personId} style={{ borderLeft: `8px solid ${player.teamColor}` }}>
+                      <td className="col-md-2">
+                        <img className="player-search-pic" src={`https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/${player.teamId}/2017/260x190/${player.personId}.png`} />
+                      </td>
+                      <td className="col-md-8">
+                        <span className="player-name">
+                          {`${player.firstName} ${player.lastName}`}
                         </span>
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+                        <span className="player-pos">
+                          {player.pos}
+                        </span>
+                      </td>
+                      <td className="u-align-right col-md-2">
+                        <button className={`add-button player-${player.personId}`} disabled={player.isWatching} onClick={this.findPlayerStats.bind(this, player, playersWatching)}>
+                          <span>
+                            {player.isWatching ? 'Watching' : 'Watch'}
+                          </span>
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
+
         </div>
         <div className="row u-margin-bottom">
           {loading ? playersLoading() : playersLoaded()}

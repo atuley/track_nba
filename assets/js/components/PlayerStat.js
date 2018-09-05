@@ -12,7 +12,10 @@ const PlayerStat = ({
 }) => (
   <div>
     <div className="col-sm-6 col-md-6 col-lg-4">
-      <div className="player-stat__container" style={{ borderLeft: `8px solid ${player.teamColor}`, backgroundImage: `linear-gradient(to right, transparent 15%, ${player.teamColor} 150%)` }}>
+      <div className="row">
+        <img className="large-team-logo" src={`https://www.nba.com/assets/logos/teams/primary/web/${player.tricode}.svg`} />
+      </div>
+      <div className="player-stat__container" style={{ borderLeft: `10px solid ${player.teamColor}`, backgroundImage: `linear-gradient(to right, transparent 38%, ${player.teamColor} 150%)` }}>
         <div className="col-md-5 col-xs-5 pic-border">
           <div className="row team-logo-container" style={{ borderTop: `55px solid ${player.teamColor}` }}>
             <img className="team-logo" src={`https://www.nba.com/assets/logos/teams/primary/web/${player.tricode}.svg`} />
