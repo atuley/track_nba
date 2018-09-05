@@ -14,7 +14,7 @@
     &-top {
       border-top: 1px solid $primary-grey;
     }
-    
+
     &-left {
       border-left: 1px solid $primary-grey;
     }
@@ -36,6 +36,10 @@
 
   &-no-padding {
     padding: 0px !important;
+  }
+
+  &-pad-left {
+    padding-left: 6px;
   }
 
   &-margin {
