@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Player Tracker | Watch your favorite NBA player's stats</title>
+    <title>playertracker.io | Watch your favorite NBA player's stats</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   </head>

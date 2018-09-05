@@ -1,7 +1,60 @@
 <div class="row u-margin-top">
   <div class="col-md-12">
-    <p class="game-1">hello</p>
-    <p class="game-2">hello</p>
-    <p class="game-3">hello</p>
+    <div class="col-md-12">
+      <div class="basic-player-info">
+        <div class="row pd-logo-container">
+          <img class="team-logo" src="https://www.nba.com/assets/logos/teams/primary/web/GSW.svg" />
+        </div>
+        <div class="basic-player-info-container">
+          <div class="col-md-3">
+            <img
+              class="player-detail-pic"
+              src="https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/1610612744/2017/260x190/201939.png"
+            />
+          </div>
+          <div class="col-md-9 u-margin-sm-top u-border-top">
+            <div class="row basic">
+              <div class="col-md-6 u-no-padding u-border-right u-border-left">
+                <p class="title">NAME</p>
+                <p class="value-name">Stephen Curry</p>
+              </div>
+              <div class="col-md-2 u-align-center u-no-padding u-border-right">
+                <p class="title">NUMBER</p>
+                <p class="value">#30</p>
+              </div>
+              <div class="col-md-2 u-align-center u-no-padding u-border-right">
+                <p class="title">POSITION</p>
+                <p class="value">PG</p>
+              </div>
+              <div class="col-md-2 u-align-center u-no-padding">
+                <p class="title">YEARS PRO</p>
+                <p class="value">7</p>
+              </div>
+            </div>
+            <div class="row basic">
+              <div class="col-md-6 u-no-padding u-border-right u-border-left">
+                <p class="title">TEAM</p>
+                <p class="value-name">Golden State Warriors</p>
+              </div>
+              <div class="col-md-2 u-align-center u-no-padding u-border-right">
+                <p class="title">DOB</p>
+                <p class="value">04/19/1986</p>
+              </div>
+              <div class="col-md-2 u-align-center u-no-padding u-border-right">
+                <p class="title">HEIGHT</p>
+                <p class="value">6' 1"</p>
+              </div>
+              <div class="col-md-2 u-align-center u-no-padding">
+                <p class="title">WEIGHT</p>
+                <p class="value-name">180LBS</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="col-md-8">
+      Other stuff
+    </div> -->
   </div>
 </div>

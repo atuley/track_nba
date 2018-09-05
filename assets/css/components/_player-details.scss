@@ -1,0 +1,66 @@
+.basic-player-info {
+  border-top: 1px solid $primary-grey;
+  border-right: 1px solid $primary-grey;
+  border-left: 10px solid rgb(0, 51, 153);
+  border-bottom: 1px solid $primary-grey;
+  background-image: linear-gradient(to right, transparent 38%, rgb(0, 51, 153) 150%);
+  height: 105px;
+}
+
+.pd-logo-container {
+  border-right: 55px solid transparent;
+  border-top: 55px solid rgb(0, 51, 153);
+  margin-top: -1px;
+  margin-left: -6px !important;
+  height: 0;
+  width: 0;
+}
+
+.player-detail-pic {
+  display: block;
+  height: 95px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 29px;
+  width: auto;
+}
+
+.basic {
+  border-bottom: 1px solid $primary-grey;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.basic-player-info-container {
+  margin-top: -75px;
+}
+
+.num-weight {
+  background: blue;
+}
+
+.team-name {
+  color: white;
+}
+
+.title {
+  font-size: 10px;
+  text-align: left;
+  padding-left: 6px;
+  padding-top: 6px;
+}
+
+.value {
+  font-size: 18px;
+  padding-bottom: 6px;
+}
+
+.value-name {
+  font-size: 18px;
+  padding-left: 6px;
+  padding-bottom: 6px;
+}
+
+.row .basic p {
+  margin: 0px;
+}
