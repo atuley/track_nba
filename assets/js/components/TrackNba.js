@@ -70,7 +70,7 @@ export default class TrackNba extends React.Component {
                         </div>
                         <img className="player-search-pic" src={`https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/${player.teamId}/2017/260x190/${player.personId}.png`} />
                       </td>
-                      <td className="table-name u-border-right">
+                      <td className="table-name">
                         <p className="title">NAME</p>
                         <p className="value u-pad-left">
                           {`${player.firstName} ${player.lastName}`}

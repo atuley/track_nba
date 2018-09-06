@@ -108,15 +108,30 @@
 .table {
   &-name {
     width: 30%;
+    border-right: 1px solid $primary-grey;
+    @media only screen and(max-width: 768px) {
+      border: none;
+      .value {font-size: 14px};
+    }
   }
   &-pos {
     width: 15%;
+    @media only screen and(max-width: 768px) {
+      display: none;
+    }
   }
   &-pic {
     width: 10%;
     border-right: 1px solid $primary-grey;
   }
+
   &-watch-button {
     width: 45%;
+  }
+
+  p {
+    @media only screen and(max-width: 768px) {
+      margin: 0 0 4px;
+    }
   }
 }
