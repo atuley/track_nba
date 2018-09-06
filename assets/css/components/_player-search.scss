@@ -34,27 +34,49 @@
     border-right: 1px solid $primary-grey;
   }
 
+  &-logo {
+    border-right: 55px solid transparent;
+    margin-top: -1px;
+    margin-left: -20px !important;
+    height: 0;
+    width: 0;
+  }
+
   &-pic {
     background-position: 50% 50%;
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 50%;
     height: 75px;
-    margin: auto;
+    margin-top: -55px;
     padding: 7px;
     position: relative;
     width: auto;
   }
+
+  &-team-logo {
+    height: 21px;
+    margin-top: -105px;
+    margin-left: 15px;
+  }
+}
+
+.button-text {
+  border: 1px solid white;
+  padding-top: 8px;
+  padding-bottom: 6px;
+  padding-left: 17px;
+  padding-right: 17px;
+  width: 75px;
 }
 
 .add-button {
   background-color: $button-blue;
   border: none;
-  border-radius: 3px;
   color: $primary-white;
   margin-right: 20px;
-  padding: 7px;
-  width: 75px;
+  padding: 7px 0px 7px 0px;
+  width: auto;
 
   &:disabled {
     background-color: $button-blue-disabled-hover;
@@ -80,5 +102,21 @@
     font-size: 12px !important;
     font-weight: bold;
     margin-left: 10px;
+  }
+}
+
+.table {
+  &-name {
+    width: 30%;
+  }
+  &-pos {
+    width: 15%;
+  }
+  &-pic {
+    width: 10%;
+    border-right: 1px solid $primary-grey;
+  }
+  &-watch-button {
+    width: 45%;
   }
 }

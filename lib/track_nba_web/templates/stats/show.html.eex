@@ -31,9 +31,13 @@
             </div>
           </div>
           <div class="row separator">
-            <div class="col-md-6 col-sm-6 u-no-padding u-border-right u-border-left">
+            <div class="col-md-4 col-sm-6 u-no-padding u-border-right u-border-left">
               <p class="title">TEAM</p>
               <p class="value u-pad-left">Golden State Warriors</p>
+            </div>
+            <div class="col-md-2 col-sm-2 u-align-center u-no-padding u-border-right">
+              <p class="title">COUNTRY</p>
+              <p class="value">USA</p>
             </div>
             <div class="col-md-2 col-sm-2 u-align-center u-no-padding u-border-right">
               <p class="title">DOB</p>

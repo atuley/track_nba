@@ -23,7 +23,9 @@ defmodule TrackNbaWeb.PlayerView do
       teamId: player.teamId,
       fullName: "#{player.firstName} #{player.lastName}",
       isWatching: false,
-      teamColor: player.teamColor
+      teamColor: player.teamColor,
+      tricode: player.tricode,
+      jersey: player.jersey
     }
   end
 
