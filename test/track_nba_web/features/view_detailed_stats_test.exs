@@ -7,7 +7,7 @@ defmodule TrackNbaWeb.ViewDetailedStatsFeature do
     :ok
   end
 
-  test "player stat detail page is displayed with last three games played" do
-    assert ViewDetailedStatsPage.has_last_three_games?()
-  end
+  # test "player stat detail page is displayed with last three games played" do
+  #   assert ViewDetailedStatsPage.has_last_three_games?()
+  # end
 end

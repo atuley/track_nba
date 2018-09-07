@@ -71,26 +71,32 @@ export default class TrackNba extends React.Component {
                         <img className="player-search-pic" src={`https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/${player.teamId}/2017/260x190/${player.personId}.png`} />
                       </td>
                       <td className="table-name">
-                        <p className="title">NAME</p>
+                        <p className="title">
+                          NAME
+                        </p>
                         <p className="value u-pad-left">
                           {`${player.firstName} ${player.lastName}`}
                         </p>
                       </td>
                       <td className="table-pos u-border-right">
-                        <p className="title">POSITION</p>
+                        <p className="title">
+                          POSITION
+                        </p>
                         <p className="value u-pad-left">
                           {player.pos}
                         </p>
                       </td>
                       <td className="table-pos">
-                        <p className="title">NUMBER</p>
+                        <p className="title">
+                          NUMBER
+                        </p>
                         <p className="value u-pad-left">
                           {player.jersey}
                         </p>
                       </td>
                       <td className="table-logo">
                         <div className="row">
-                          <div className="logo-image" style={{ backgroundImage: `url("https://www.nba.com/assets/logos/teams/primary/web/${player.tricode}.svg")`}}></div>
+                          <div className="logo-image" style={{ backgroundImage: `url("https://www.nba.com/assets/logos/teams/primary/web/${player.tricode}.svg")` }} />
                         </div>
                       </td>
                       <td className="table-watch-button u-align-right">
