@@ -1,0 +1,59 @@
+<div class="row u-margin-top">
+  <div class="col-md-12 col-sm-12">
+    <div class="player-info__container">
+      <div class="row logo-container">
+        <img class="team-logo" src="https://www.nba.com/assets/logos/teams/primary/web/GSW.svg" />
+      </div>
+      <div class="player-info">
+        <div class="col-md-3 col-sm-3">
+          <img
+            class="player-detail__pic"
+            src="https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/1610612744/2017/260x190/201939.png"
+          />
+        </div>
+        <div class="col-md-9 col-sm-9 u-margin-sm-top u-border-top">
+          <div class="row separator">
+            <div class="col-md-6 col-sm-6 u-no-padding u-border-right u-border-left">
+              <p class="title">NAME</p>
+              <p class="value u-pad-left">Stephen Curry</p>
+            </div>
+            <div class="col-md-2 col-sm-2 u-align-center u-no-padding u-border-right">
+              <p class="title">NUMBER</p>
+              <p class="value">#30</p>
+            </div>
+            <div class="col-md-2 col-sm-2 u-align-center u-no-padding u-border-right">
+              <p class="title">POSITION</p>
+              <p class="value">PG</p>
+            </div>
+            <div class="col-md-2 col-sm-2 u-align-center u-no-padding">
+              <p class="title">YEARS PRO</p>
+              <p class="value">7</p>
+            </div>
+          </div>
+          <div class="row separator">
+            <div class="col-md-4 col-sm-6 u-no-padding u-border-right u-border-left">
+              <p class="title">TEAM</p>
+              <p class="value u-pad-left">Golden State Warriors</p>
+            </div>
+            <div class="col-md-2 col-sm-2 u-align-center u-no-padding u-border-right">
+              <p class="title">COUNTRY</p>
+              <p class="value">USA</p>
+            </div>
+            <div class="col-md-2 col-sm-2 u-align-center u-no-padding u-border-right">
+              <p class="title">DOB</p>
+              <p class="value">04/19/1986</p>
+            </div>
+            <div class="col-md-2 col-sm-2 u-align-center u-no-padding u-border-right">
+              <p class="title">HEIGHT</p>
+              <p class="value">6' 1"</p>
+            </div>
+            <div class="col-md-2 col-sm-2 u-align-center u-no-padding">
+              <p class="title">WEIGHT</p>
+              <p class="value u-pad-left">180LBS</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

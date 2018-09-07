@@ -1,10 +1,20 @@
 .u {
-  &-align-right {
-    padding: 0px !important;
-    text-align: right;
+  &-align {
+    &-right {
+      padding: 0px !important;
+      text-align: right;
+    }
+
+    &-center {
+      text-align: center;
+    }
   }
 
   &-border {
+    &-top {
+      border-top: 1px solid $primary-grey;
+    }
+
     &-left {
       border-left: 1px solid $primary-grey;
     }
@@ -24,7 +34,25 @@
     padding: 5px;
   }
 
-  &-margin-bottom {
-    margin-bottom: 75px;
+  &-no-padding {
+    padding: 0px !important;
+  }
+
+  &-pad-left {
+    padding-left: 6px;
+  }
+
+  &-margin {
+    &-bottom {
+      margin-bottom: 75px;
+    }
+
+    &-sm-top {
+      margin-top: 20px;
+    }
+
+    &-top {
+      margin-top: 80px;
+    }
   }
 }

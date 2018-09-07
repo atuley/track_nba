@@ -1,0 +1,54 @@
+.logo-container {
+  border-right: 55px solid transparent;
+  border-top: 55px solid rgb(0, 51, 153);
+  height: 0;
+  margin-left: -6px !important;
+  margin-top: -1px;
+  width: 0;
+}
+
+.player {
+  &-detail__pic {
+    display: block;
+    height: 95px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 29px;
+    width: auto;
+  }
+
+  &-info {
+    margin-top: -75px;
+
+    &__container {
+      background-image: linear-gradient(to right, transparent 38%, rgb(0, 51, 153) 150%);
+      border-bottom: 1px solid $primary-grey;
+      border-left: 10px solid rgb(0, 51, 153);
+      border-right: 1px solid $primary-grey;
+      border-top: 1px solid $primary-grey;
+      height: 105px;
+    }
+  }
+}
+
+.separator {
+  border-bottom: 1px solid $primary-grey;
+  padding-bottom: 3px;
+  padding-top: 3px;
+}
+
+.title {
+  font-size: 10px;
+  padding-left: 6px;
+  padding-top: 6px;
+  text-align: left;
+}
+
+.value {
+  font-size: 18px;
+  padding-bottom: 6px;
+}
+
+.row .separator p {
+  margin: 0px;
+}
