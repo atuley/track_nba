@@ -88,6 +88,11 @@ export default class TrackNba extends React.Component {
                           {player.jersey}
                         </p>
                       </td>
+                      <td className="table-logo">
+                        <div className="row">
+                          <div className="logo-image" style={{ backgroundImage: `url("https://www.nba.com/assets/logos/teams/primary/web/${player.tricode}.svg")`}}></div>
+                        </div>
+                      </td>
                       <td className="table-watch-button u-align-right">
                         <button className={`add-button player-${player.personId}`} disabled={player.isWatching} onClick={this.findPlayerStats.bind(this, player, playersWatching)}>
                           <span className="button-text">

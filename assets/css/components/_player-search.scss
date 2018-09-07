@@ -36,9 +36,9 @@
 
   &-logo {
     border-right: 55px solid transparent;
-    margin-top: -1px;
-    margin-left: -20px !important;
     height: 0;
+    margin-left: -20px !important;
+    margin-top: -1px;
     width: 0;
   }
 
@@ -56,17 +56,33 @@
 
   &-team-logo {
     height: 21px;
-    margin-top: -105px;
     margin-left: 15px;
+    margin-top: -105px;
+  }
+}
+
+.logo-image {
+  background-image: url("https://www.nba.com/assets/logos/teams/primary/web/GSW.svg");
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 75px;
+  opacity: .2;
+  width: 175px;
+  @media only screen and (max-width: 768px) {
+    width: 136px;
+  }
+  @media only screen and (max-width: 438px) {
+    display: none;
   }
 }
 
 .button-text {
   border: 1px solid white;
-  padding-top: 8px;
   padding-bottom: 6px;
   padding-left: 17px;
   padding-right: 17px;
+  padding-top: 8px;
   width: 75px;
 }
 
@@ -74,6 +90,7 @@
   background-color: $button-blue;
   border: none;
   color: $primary-white;
+  margin-left: 20px;
   margin-right: 20px;
   padding: 7px 0px 7px 0px;
   width: auto;
@@ -107,12 +124,15 @@
 
 .table {
   &-name {
-    width: 30%;
     border-right: 1px solid $primary-grey;
+    width: 30%;
     @media only screen and(max-width: 768px) {
       border: none;
       .value {font-size: 14px};
     }
+  }
+  &-logo {
+    width: 30%;
   }
   &-pos {
     width: 15%;
@@ -121,12 +141,12 @@
     }
   }
   &-pic {
-    width: 10%;
     border-right: 1px solid $primary-grey;
+    width: 10%;
   }
 
   &-watch-button {
-    width: 45%;
+    width: 30%;
   }
 
   p {
