@@ -15,7 +15,7 @@
           <div class="row separator">
             <div class="col-md-6 col-sm-6 u-no-padding u-border-right u-border-left">
               <p class="title">NAME</p>
-              <p class="value u-pad-left">Stephen Curry</p>
+              <p class="value u-pad-left qa-player-name">Stephen Curry</p>
             </div>
             <div class="col-md-2 col-sm-2 u-align-center u-no-padding u-border-right">
               <p class="title">NUMBER</p>
