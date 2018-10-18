@@ -63,7 +63,10 @@ export default class TrackNba extends React.Component {
               <table className="table">
                 <tbody>
                   {_.map(players, player => (
-                    <tr className="player-search-border" key={player.personId} style={{ backgroundImage: `linear-gradient(to right, transparent 38%, ${player.teamColor} 150%)` }}>
+                    <tr className="player-search-border" key={player.personId} style={{
+                      backgroundImage: `linear-gradient(to right, transparent 38%, ${player.teamColor} 150%)`,
+                      backgroundImage: `-webkit-linear-gradient(to right, transparent 38%, ${player.teamColor} 150%)`,
+                      backgroundImage: `-o-linear-gradient(to right, transparent 38%, ${player.teamColor} 150%)` }}>
                       <td className="table-pic" style={{ borderLeft: `10px solid ${player.teamColor}` }}>
                         <div className="row player-search-logo" style={{ borderTop: `55px solid ${player.teamColor}` }}>
                           <img className="player-search-team-logo" src={`https://www.nba.com/assets/logos/teams/primary/web/${player.tricode}.svg`} />
