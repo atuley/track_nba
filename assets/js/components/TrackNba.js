@@ -71,7 +71,7 @@ export default class TrackNba extends React.Component {
                         <div className="row player-search-logo" style={{ borderTop: `55px solid ${player.teamColor}` }}>
                           <img className="player-search-team-logo" src={`https://www.nba.com/assets/logos/teams/primary/web/${player.tricode}.svg`} />
                         </div>
-                        <img className="player-search-pic" src={`https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/${player.teamId}/2017/260x190/${player.personId}.png`} />
+                        <img className="player-search-pic" src={`https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/${player.teamId}/2018/260x190/${player.personId}.png`} />
                       </td>
                       <td className="table-name">
                         <p className="title">

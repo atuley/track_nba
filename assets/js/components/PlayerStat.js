@@ -22,7 +22,7 @@ const PlayerStat = ({
           </div>
           <div className="left-player-info">
             <div className="row">
-              <img className="player-pic" src={`https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/${player.teamId}/2017/260x190/${player.personId}.png`} />
+              <img className="player-pic" src={`https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/${player.teamId}/2018/260x190/${player.personId}.png`} />
             </div>
             <div className="row player-name">
               <strong>
