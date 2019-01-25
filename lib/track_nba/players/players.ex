@@ -66,6 +66,7 @@ defmodule TrackNba.Players do
   defp filter_out_non_franchise_players(players) do
     players
     |> Enum.filter(fn player -> player.yearsPro != "" end)
+    |> Enum.filter(fn player -> player.teamId != "" end)
   end
 
   defp add_team_colors(players) do
